@@ -9,12 +9,51 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
 
+-# コメントアウトを外すとheaderのhamlが見れます
+
+  -# %header.pcHeader
+  -#   .headerInner
+  -#     .mainHeader
+  -#       %h1.icon
+  -#         = link_to "/" do
+  -#           = image_tag 'material/logo/logo.png', alt: 'ロゴ'
+  -#       .searchBox
+  -#         %form{action: '#', accept: {charset: "UTF-8"}, method: "get"} 
+  -#           %input{name: "utf8", type: "hidden", value: "✔︎"}
+  -#           %input{class: "serchBox--input", id: "searchInput", name: "key", placeholder: "キーワードから探す"}
+  -#           %button{button: "submit"}
+  -#             .searchBox__icon
+  -#               = image_tag 'material/icon/icon-search 1.png', alt: 'サーチアイコン'
+  -#           %input{type: "hidden", name: "authenticity_token", value:""}
+  -#         %ul.resultLists
+  -#     .nav
+  -#       %ul.listsLeft
+  -#         %li.listsLeft__item.listsLeft__item--first
+  -#           = link_to "#", id: "catBtn" do
+  -#             カテゴリー
+  -#         .tree.displayNone
+  -#           %ul.categoryTree
+  -#             %li.categoryTree--item
+  -#               = link_to "#", id: 1 do
+  -#                 レディース
+  -#         %li.listsLeft__item
+  -#           = link_to "#", id: "brandBtn" do
+  -#             ブランド
+  -#           %ul.brandsPulldown.displayNone
+  -#       %ul.listsRight
+  -#         %li.listsRight__item.listsRight__item--login
+  -#           = link_to "#" do
+  -#             ログイン
+  -#         %li.listsRight__item.listsRight__item--new
+  -#           = link_to "#" do
+  -#             新規会員登録
+
   %header.header
     .header__interior
       .middle
         %h1.icon
           = link_to('FM_log', root_path)
-            = image_tag "images/material/logo/logo.png"
+            = image_tag "material/logo/logo.png"
         .searchBox
           = form_with(action = "#", local: true, method: :get) do |form|
             = form.text_field name: "key", placeholder: "キーワードから探す", class: "searchBox-input", id: "searchInput"
@@ -27,7 +66,7 @@
       %nav
         %ul.listLeft
           %li.listLeft__item.listLeft__item-first
-            = link_to "カテゴリー", "#", id:categoryBtn
+            = link_to "カテゴリー", "#", id: "categoryBtn"
           .tree.displayNone
             %ul.categoryTree
               %li.categoryTree--item
@@ -57,7 +96,7 @@
               %li.categoryTree--item
                 = link_to "その他", "#", id:13
           %li.listLeft__item
-            = link_to "ブランド", "#", id:brandBtn
+            = link_to "ブランド", "#", id: "brandBtn"
             %ul.brandPlldouwn.displayNone
 
         %ul.listsRight
@@ -65,5 +104,5 @@
             = link_to "ログイン", "#"
           %li.listsRight__item.listsRight__item--new
             = link_to "新規会員登録", "#"
-            
+
     = yield
