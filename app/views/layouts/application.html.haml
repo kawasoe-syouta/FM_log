@@ -13,8 +13,7 @@
     .header__interior
       .middle
         %h1.icon
-          = link_to "/" do
-            = image_tag 'material/logo/logo.png', alt: 'ロゴ'
+          = link_to image_tag('material/logo/logo.png'), "/"
         .searchBox
           %form{action: '#', accept: {charset: "UTF-8"}, method: "get"} 
             %input{name: "utf8", type: "hidden", value: "✔︎"}
