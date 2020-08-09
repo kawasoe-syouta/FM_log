@@ -65,4 +65,54 @@
             = link_to "ログイン", "#"
           %li.listsRight__item.listsRight__item--new
             = link_to "新規会員登録", "#"
-    = yield
+
+  = yield
+
+  %aside.appliBanner
+    .middle
+      %h2.middle__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.middle__text 今すぐ無料ダウンロード！
+    .middle__icon
+      = link_to "/" do
+        = image_tag('material/logo/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg', class: "appleBtn")
+      = link_to "/" do
+        = image_tag('material/logo/google-play-badge.svg', class: "googleBtn")
+
+  %footer.footer
+    %ul.contents
+      %li.content
+        %h2.content__title FM_logについて
+        %ul
+          %li
+            = link_to "会社概要(運営会社)", "#"
+          %li
+            = link_to "プライバシーポリシー", "#"
+          %li
+            = link_to "FURIMA利用規約", "#"
+          %li
+            = link_to "ポイントに関する特約", "#"
+      %li.content
+        %h2.content__title FM_logを見る
+        %ul
+          %li
+            = link_to "カテゴリー一覧", "#"
+          %li
+            = link_to "ブランド一覧", "#"
+      %li.content
+        %h2.content__title ヘルプ＆ガイド
+        %ul
+          %li
+            = link_to "FURIMAガイド", "#"
+          %li
+            = link_to "FURIMAロゴ利用ガイドライン", "#"
+          %li
+            = link_to "お知らせ", "#"
+
+    .footer__logo
+      = link_to "/" do
+        = image_tag('material/logo/logo-white.png')
+    %p &copy; FM_log
+  = link_to "/" do
+    .buyBtn
+      %span.buyBtn__text 出品する
+      = image_tag('material/icon/icon_camera.png', class: "buyBtn__icon")
