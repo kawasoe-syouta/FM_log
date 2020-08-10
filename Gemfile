@@ -77,3 +77,5 @@ gem "active_hash"
 
 # include ancestry gem, Referenced ancestry README.md
 gem "ancestry"
+
+gem 'devise'
