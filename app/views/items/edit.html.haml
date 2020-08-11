@@ -25,12 +25,12 @@
                               編集
                             = link_to "#" do
                               削除
-                  .sell-upload-drop-box.have-item-4
-                    %input{type: "file", class: "sell-upload-drop-file", name: "image5", style: "display: none;"}
-                    %pre.visible-pc
-                      ドラックアンドドロップ
-                      またはクリックしてファイルをアップロード
-                    -# = image_tag 'material/icon/icon_camera.png', class: 'icon-camera'
+                  -# .sell-upload-drop-box.have-item-4
+                  -#   %input{type: "file", class: "sell-upload-drop-file", name: "image5", style: "display: none;"}
+                  -#   %pre.visible-pc
+                  -#     ドラックアンドドロップ
+                  -#     またはクリックしてファイルをアップロード
+                  -#   = image_tag 'material/icon/icon_camera.png', class: 'icon-camera'
                 .sell-content
                   .form-group
                     %label
@@ -38,7 +38,7 @@
                       %span.form-require
                         必須
                     %div
-                      %input{class: "input-default", value: "SanDisk iXpand ワイヤレスチャージャー", placeholder: "商品名(必須 40文字まで)"}
+                      %input{class: "input-default", placeholder: "商品名(必須 40文字まで)"}
                   .form-group
                     %label
                       商品の説明
@@ -59,23 +59,50 @@
                         .select-wrap
                           = icon("fas", "angle-down")
                           %select.select-default
-                            %option
-                        .select-wrap
-                          = icon("fas", "angle-down")
-                          %select.select-default
-                            %option
-                        .select-wrap
-                          = icon("fas", "angle-down")
-                          %select.select-default
-                            %option
-                    .form-group.form-suggest-container
-                      %label
-                        ブランド
-                        %span.form-arbitrary
-                          任意
-                      %div
-                        %input{class: "input-default", placeholder: "例)シャネル"}
-                        %div
+                            %option{value: ""}
+                              ーーー
+                            %option{value: 1}
+                              レディース
+                            %option{value: 2}
+                              メンズ
+                            %option{value: 3}
+                              ベビー・キッズ
+                            %option{value: 4}
+                              インテリア・住まい・小物
+                            %option{value: 5}
+                              本・音楽・ゲーム
+                            %option{value: 6}
+                              おもちゃ・ホビー・グッズ
+                            %option{value: 7}
+                              コスメ・香水・美容
+                            %option{value: 8}
+                              家電・スマホ・カメラ
+                            %option{value: 9}
+                              スポーツ・レジャー
+                            %option{value: 10}
+                              ハンドメイド
+                            %option{value: 11}
+                              チケット
+                            %option{value: 12}
+                              自動車・オートバイ
+                            %option{value: 13}
+                              その他
+                        -# .select-wrap
+                        -#   = icon("fas", "angle-down")
+                        -#   %select.select-default
+                        -#     %option
+                        -# .select-wrap
+                        -#   = icon("fas", "angle-down")
+                        -#   %select.select-default
+                        -#     %option
+                    -# .form-group.form-suggest-container
+                    -#   %label
+                    -#     ブランド
+                    -#     %span.form-arbitrary
+                    -#       任意
+                    -#   %div
+                    -#     %input{class: "input-default", placeholder: "例)シャネル"}
+                    -#     %div
                     .form-group
                       %label
                         商品の状態
@@ -143,7 +170,7 @@
                           .l-right.sell-price-input
                             ¥
                             %div
-                              %input{class: "input-default", value: "9999", placeholder: "例)300"}
+                              %input{class: "input-default", placeholder: "例)300"}
                       %li.clearfix
                         .l-left
                           販売手数料 (10%)

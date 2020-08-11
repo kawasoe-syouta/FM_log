@@ -40,6 +40,7 @@ main {
 .sell-upload-head+p {
   margin: 8px 0 0;
   line-height: 1.5;
+  font-size: 12px;
 }
 
 .sell-dropbox-container {
@@ -69,7 +70,7 @@ main {
   position: relative;
   display: inline-block;
   width: 18%;
-  margin: 0 0 2% 2%;
+  margin: 2% 0 2% 2%;
   border: 1px solid #eee;
   vertical-align: top;
 }
@@ -95,6 +96,7 @@ img {
 
 .sell-upload-button {
   font-size: 14px;
+  display: flex;
 }
 
 .sell-upload-button a {
@@ -211,6 +213,23 @@ label {
   font-size: 16px;
 }
 
+.textarea-default {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+textarea {
+  border-radius: 0;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
 .form-group label+.textarea-default {
   margin: 8px 0 0;
 }
@@ -236,7 +255,7 @@ label {
   background: #fff;
 }
 
-.select-wrap .icon-arrow-bottom {
+.select-wrap .fa-angle-down {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -246,7 +265,7 @@ label {
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-.form-group .icon-arrow-bottom {
+.form-group .fa-angle-down {
   position: absolute;
 }
 
