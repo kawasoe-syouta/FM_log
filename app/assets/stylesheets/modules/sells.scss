@@ -67,6 +67,9 @@
       &--text {
         color: #333333;
       }
+      &--file {
+        display: none;
+      }
     }
     &__backlink {
       display: block;

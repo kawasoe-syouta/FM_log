@@ -12,10 +12,12 @@
             必須
         .SellPage__contents__detail
           画像をアップロード出来ます
-        .SellPage__contents__imgbtm
-          = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
-          .SellPage__contents__imgbtm--text
-            クリックしてファイルをアップロード
+        = form.fields_for :item_image do |image|
+          = image.label :image, class: "SellPage__contents__imgbtm" do
+            = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
+            = image.file_field :image, class: "SellPage__contents__imgbtm--file"
+            .SellPage__contents__imgbtm--text
+              クリックしてファイルをアップロード
         .SellPage__contents__title
           商品名
           %span.SellPage__contents--required
