@@ -78,6 +78,7 @@ end
 
 # include haml-rails gem, Referenced haml-rails README.md
 gem "haml-rails", "~> 2.0"
+<<<<<<< HEAD
 gem 'font-awesome-sass'
 gem "active_hash"
 gem 'carrierwave'
@@ -85,3 +86,6 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'devise'
 gem 'ancestry'
+=======
+gem 'font-awesome-sass'
+>>>>>>> 55513b6... initial commit
