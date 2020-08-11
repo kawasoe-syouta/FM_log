@@ -1,8 +1,8 @@
 class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
-      t.references :sell_user, null: false, foreign_key: {to_table: :users}
-      t.references :buy_user, null: false, foreign_key: {to_table: :users}
+      # t.references :sell_user, null: false, foreign_key: {to_table: :users}
+      # t.references :buy_user, null: false, foreign_key: {to_table: :users}
       t.references :category, null: false, foreign_key: true
       t.integer :phase_id, null: false, foreign_key: true
       t.integer :status_id, null: false, foreign_key: true
