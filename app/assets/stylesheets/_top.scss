@@ -40,14 +40,14 @@
             width: 180px;
           }
           .appleBtn:hover {
-            opacity: 0.5
+            opacity: 0.5;
           }
         }
         .googleBtn{
           width: 180px;
         }
         .googleBtn:hover {
-          opacity: 0.5
+          opacity: 0.5;
         }
       }
     }
@@ -154,7 +154,7 @@
         a{
           margin-right: 10px;
           :hover {
-            opacity: 0.5
+            opacity: 0.5;
           }
           img{
             width: 180px;
@@ -243,7 +243,7 @@
         display: flex;
         justify-content: space-around;
         :hover {
-          opacity: 0.8
+          opacity: 0.8;
         }
         a {
           text-decoration: none;
