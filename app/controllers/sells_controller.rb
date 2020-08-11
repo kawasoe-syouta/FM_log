@@ -11,8 +11,7 @@ class SellsController < ApplicationController
     #フォームの取得(カテゴリ、phase:出品中 追加)
     @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
     binding.pry
-    @image = @item.item_images.new(item_image_params)
-    if @item.save && @image.save
+    if @item.save
       respond_to do |format|
         #出品完了(出品完了ページに飛ばす事)
         format.html {redirect_to sells_path, notice: '出品完了'}
@@ -23,15 +22,10 @@ class SellsController < ApplicationController
   end
 
   private
-
-  #ストロングパラメータ(items)
+  
+  #ストロングパラメータ
   def item_params
     params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price)
-  end
-
-  #ストロングパラメータ(item_images)
-  def item_image_params
-    params.require(:item).require(:item_image).permit(:image)
   end
 
   #数値に変換可能な文字列を数値に変換する
