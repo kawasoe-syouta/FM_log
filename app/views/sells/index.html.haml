@@ -31,12 +31,12 @@
           カテゴリー
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_fee_detail, options_for_select([], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :category, options_for_select([], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
           商品の状態
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_fee_detail, options_for_select([], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :item_status, options_for_select(Status.all.map { |st| [st.status, st.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           配送について
@@ -44,7 +44,7 @@
           配送料の負担
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_fee_detail, options_for_select([['送料込み(出品者負担)', 1],['着払い(購入者負担)', 2]], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :delivery_to_pay, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
           発送までの日数
           = form.number_field :delivery_days, in: 1.0..10.0, step: 1, value: 1, class: "SellPage__format--numfield SellPage__format--numfield--deliverdays"
