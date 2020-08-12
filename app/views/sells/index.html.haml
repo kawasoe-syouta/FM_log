@@ -1,0 +1,65 @@
+.SellPage
+  .SellPage__header
+    = image_tag "material/logo/logo.png", class: "SellPage__header__logo"
+  .SellPage__contents
+    = form_with url: "#", class: "SellPage__format" do |form|
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          全般
+        .SellPage__contents__title
+          出品画像
+          %span.SellPage__contents--required
+            必須
+        .SellPage__contents__detail
+          画像をアップロード出来ます
+        .SellPage__contents__imgbtm
+          = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
+          .SellPage__contents__imgbtm--text
+            クリックしてファイルをアップロード
+        .SellPage__contents__title
+          商品名
+          %span.SellPage__contents--required
+            必須
+          = form.text_field :name, placeholder: "40文字まで", class: "SellPage__format--text"
+        .SellPage__contents__title
+          商品の説明
+          = form.text_area :item_detail, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）", class: "SellPage__format--textarea"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          商品の状態
+        .SellPage__contents__title
+          カテゴリー
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_fee_detail, options_for_select([], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
+          商品の状態
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_fee_detail, options_for_select([], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          配送について
+        .SellPage__contents__title
+          配送料の負担
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_fee_detail, options_for_select([['送料込み(出品者負担)', 1],['着払い(購入者負担)', 2]], 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
+          発送までの日数
+          = form.number_field :delivery_days, in: 1.0..10.0, step: 1, value: 1, class: "SellPage__format--numfield SellPage__format--numfield--deliverdays"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          価格
+        .SellPage__contents__titleline
+          .SellPage__contents__titleline
+            .SellPage__contents__title
+              販売価格
+            #pricetitle.SellPage__contents__title
+              ¥
+          = form.number_field :price, in: 1.0..10.0, step: 1, value: 0, class: "SellPage__format--numfield SellPage__format--numfield--prices"
+      = form.submit "出品する", class: "SellPage__format__submit"
+    = link_to "#", class: "SellPage__contents__backlink" do
+      もどる
+  .SellPage__footer
+    = image_tag "material/logo/logo.png", class: "SellPage__footer__logo"

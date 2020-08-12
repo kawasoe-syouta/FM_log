@@ -1,0 +1,138 @@
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "/" do
+        FURIMA
+    %li
+      = icon('fas', 'angle-right')
+.show__main
+  .showMain
+    .contentLeftqq
+    .showMain__contentRight
+      .showMain__content
+        .itemBox
+          %h2.itemBox__name
+            テスト
+          .itemBox__body
+            %ul
+              %li
+                = image_tag "material/beef.jpeg", alt: "サンプル画像"
+                %ul
+                  %li
+                    = image_tag "material/beef.jpeg",size: "75x75", alt: "サンプル画像"
+          .itemBox__price
+            %span
+              ¥10000
+            .itemBox__price-detail
+              %span
+                (税込)
+              %span
+                送料込み
+          .itemDetail
+            テストテストテストテストテストテスト
+          .showTable
+            %table.showTable__table
+              %tbody.showTable__tbody
+                %tr.showTable__tr
+                  %th.showTable__th
+                    出品者
+                  %td.showTable__td
+                    あああ
+                %tr.showTable__tr
+                  %th.showTable__th
+                    カテゴリー
+                  %td.showTable__td
+                    = link_to "#" do
+                      レディース
+                    %br/
+                    = link_to "#" do
+                      トップス
+                    %br/
+                    = link_to "#" do
+                      Tシャツ/カットソー(半袖/袖なし)
+                %tr.showTable__tr
+                  %th.showTable__th
+                    ブランド
+                  %td.showTable__td
+                    
+                %tr.showTable__tr
+                  %th.showTable__th
+                    商品のサイズ
+                  %td.showTable__td
+                    
+                %tr.showTable__tr
+                  %th.showTable__th
+                    商品の状態
+                  %td.showTable__td
+                    新品/未使用
+                %tr.showTable__tr
+                  %th.showTable__th
+                    配送料の負担
+                  %td.showTable__td
+                    送料込み (出品者負担)
+                %tr.showTable__tr
+                  %th.showTable__th
+                    発送元の地域
+                  %td.showTable__td
+                    = link_to "#" do
+                      北海道
+                %tr.showTable__tr
+                  %th.showTable__th
+                    発送日の目安
+                  %td.showTable__td
+                    1-2日で発送
+          .optionalArea
+            %ul
+              %li.optionalBtn.likeBtn#likeBtn
+                = icon('fas', 'star')
+                お気に入り １
+            %ul.optinal
+              %li.optionalBtn
+                = link_to "#" do
+                  = icon('fas', 'flag')
+                  不適切な商品の通報
+        .commentBox
+          %ul.commentContents
+          %form.new_comments
+            %input{name: "utf8", type: "hidden", value: "✔︎"}
+            %input{type: "hidden", name: "authenticity_token", value: ""}
+            %textarea{required: "required", name: "comment[body]", id: "comment_body"}
+            %p.noticeMsg
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となる事があります。
+            %br/
+            %button.commentBtn{name: "button", type: "submit"}
+              = icon('fas', 'comment')
+              コメントする
+        %ul.links
+          %li
+            = link_to "#" do
+              = icon('fas', 'angle-left')
+              %span
+              前の商品
+          %li
+            = link_to "#" do
+              %span
+                後ろの商品
+              = icon('fas', 'angle-right')
+        .relatedItems
+          = link_to "#" do
+            レディースをもっと見る
+          .productLists
+            .productList
+              = link_to "#" do
+                %figure.productList--img
+                  = image_tag 'material/a001.png', alt: 'サンプル画像'
+                .productList--body
+                  %h3.productList--body__name
+                    product1
+                  .details
+                    %ul
+                      %li
+                        10000円
+                      %li
+                        = icon('fas', 'star')
+                        1
+                    %p
+                      (税込)
