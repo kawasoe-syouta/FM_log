@@ -28,7 +28,7 @@
 |------|----|-------|
 |id|integer|primary_key|
 |sell_user_id|integer|null: false, foreign_key: true|
-|buy_user_id|integer|null: false, foreign_key: true|
+|buy_user_id|integer|foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |phase_id|integer|null: false, foreign_key: true|
 |status_id|integer|null: false, foreign_key: true|
