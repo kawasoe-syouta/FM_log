@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
   end
 
   create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "prefecture_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "prefecture_id", null: false
     t.string "postal_code", limit: 7, null: false
     t.string "city", null: false
     t.string "address", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
     t.string "phone_number", limit: 12, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_streets_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -80,4 +81,5 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buy_user_id"
   add_foreign_key "items", "users", column: "sell_user_id"
+  add_foreign_key "streets", "users"
 end
