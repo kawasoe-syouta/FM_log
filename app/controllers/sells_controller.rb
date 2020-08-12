@@ -10,7 +10,6 @@ class SellsController < ApplicationController
     category_data = Category.find_by(id: params[:item][:category])
     #フォームの取得(カテゴリ、phase:出品中 追加)
     @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
-    binding.pry
     @image = @item.item_images.new(item_image_params)
     if @item.save && @image.save
       respond_to do |format|
@@ -27,6 +26,7 @@ class SellsController < ApplicationController
   #ストロングパラメータ(items)
   def item_params
     params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price)
+    # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
   end
 
   #ストロングパラメータ(item_images)
