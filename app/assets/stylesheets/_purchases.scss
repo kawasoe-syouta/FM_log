@@ -1,0 +1,244 @@
+// Place all the styles related to the purchases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.Wrapper {
+  background-color: whitesmoke;
+  min-width: 100vw;
+  height: 100vh;
+  .Header {
+    &__list {
+      height: 130px;
+      &__btn {
+        &__logo {
+          height: 70px;
+          width: 15%;
+          padding-top: 35px;
+          margin-left: 42%;
+        }
+      }
+    }
+  }
+  .Contents {
+    background-color: whitesmoke;
+    &__box {
+      background-color: white;
+      margin: 0px 27% 0px 27%;
+      padding: 20px 0px 20px;
+      &__title {
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+        padding: 19px 0px 20px 0px;
+        &__weight {
+          font-weight: bolder;
+        }
+      }
+      &__center {
+        border-top: 1px solid rgb(245, 245, 245);
+        display: flex;
+        justify-content: center;
+        max-width: 375px;
+        padding: 32px 16px;
+        margin: 0px auto;
+        &__field {
+          display: flex;
+          width: 100vw;
+          &__field__left {
+            &__photo {
+              height: 80px;
+              width: 80px;
+              border-radius: 4px;
+              display: inline-block;
+              margin: 0;
+              overflow: hidden;
+            }
+          }
+          &__right {
+            width: 300px;
+            &__name {
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+            &__titleBox {
+              text-align: right;
+              &__name {
+                font-size: 12px;
+              }
+              &__price {
+                font-size: 15px;
+                font-weight: bolder;
+                margin-left: 8px;
+              }
+            }
+          }
+        }
+      }
+      &__centerZero {
+        border-top: 1px solid rgb(245, 245, 245);
+        max-width: 375px;
+        margin: 0px auto;
+        padding: 32px 16px;
+        &__payment {
+          display: flex;
+          font-size: 18px;
+          font-weight: bolder;
+          justify-content: space-between;
+          align-items: center;
+          &__price {
+            color: black;
+          }
+        }
+        &__point {
+          padding-top: 20px;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &__left {
+            cursor: not-allowed;
+            &__checkBox {
+              color: #888;
+              font-size: 14px;
+              &__click {
+                display: inline-block;
+                flex: 0 0 auto;
+                height: 20px;
+                position: relative;
+                width: 20px;
+              }
+            }
+            &__title {
+              display: inline-block;
+              font-weight: 600;
+              line-height: 1.4em;
+              vertical-align: middle;
+              margin-bottom: 5px;
+            }
+          }
+          &__right {
+            font-size: 12px;
+            text-align: right;
+            line-height: 1.6;
+            margin-left: 16px;
+          }
+        }
+      }
+      &__centerOne {
+        border-top: 1px solid rgb(245, 245, 245);
+        padding: 32px 16px;
+        max-width: 375px;
+        margin: 0px auto;
+        &__field {
+          &__methodOfPayment {
+            margin-bottom: 16px;
+            &__title {
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+          &__register {
+            &__btn {
+              text-decoration: none;
+              .Contents__box__centerOne__field__register__text {
+                color: rgb(0, 149, 238);
+                margin-left: 4px;
+              }
+            }
+          }
+        }
+      }
+      &__centerTwo {
+        border-top: 1px solid rgb(245, 245, 245);
+        padding: 32px 16px;
+        max-width: 375px;
+        margin: 0px auto;
+        &__field {
+          &__shippingAddress {
+            display: flex;
+            justify-content: space-between;
+            &__text {
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 8px;
+            }
+            &__btn {
+              text-decoration: none;
+            }
+          }
+          &__details {
+            line-height: 1.4em;
+          }
+        }
+      }
+      &__centerThree {
+        padding: 32px 16px 56px;
+        border-top: 1px solid rgb(245, 245, 245);
+        max-width: 375px;
+        margin: 0px auto;
+        &__field {
+          &__text {
+            color: rgb(255, 2, 17);
+            line-height: 1.5;
+            margin-bottom: 24px;
+          }
+          .Form__submitBtn {
+            background-color: #ccc;
+            color: #888;
+            width: 100%;
+            font-size: 17px;
+            min-height: 48px;
+            padding: 0 24px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .Footer {
+    background-color: whitesmoke;
+    padding: 40px 0px 41px;
+    margin-top: auto;
+    text-align: center;
+    &__title {
+      &__field {
+        display: inline-block;
+        margin: -16px 0px 40px -16px;
+        &__text {
+          margin: 16px 0px 0px 16px;
+          display: inline-block;
+          &__privacy {
+            font-size: 12px;
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+        &__text {
+          margin: 16px 0px 0px 16px;
+          &__termsOfService {
+            font-size: 12px;
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+        .Footer__title__field__text {
+          margin: 16px 0px 0px 16px;
+          &__transaction {
+            font-size: 12px;
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .Footer__logo {
+      color: inherit;
+      text-decoration: none;
+    }
+    .Footer__box__text {
+      font-size: 12px;
+    }
+  }
+}
