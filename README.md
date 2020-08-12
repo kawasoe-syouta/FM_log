@@ -28,11 +28,11 @@
 |------|----|-------|
 |id|integer|primary_key|
 |sell_user_id|integer|null: false, foreign_key: true|
-|buy_user_id|integer|null: false, foreign_key: true|
+|buy_user_id|integer|foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |phase_id|integer|null: false, foreign_key: true|
 |status_id|integer|null: false, foreign_key: true|
-|delivery_to_pay_id|string|null: false, foreign_key: true|
+|delivery_to_pay_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
 |item_detail|text||
@@ -117,28 +117,13 @@
 |------|----|-------|
 |id|integer|primary_key|
 |user_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
-|card_number|string|null: false, limit: 16|
-|expiration|string|null: false, limit: 5|
-|secret_code|string|null: false, limit: 3|
-|card_surname|string|null: false|
-|card_firstname|string|null: false|
+|card_customer|string|null: false|
+|card_default|string||
 |created_at|date|null: false|
 |updated_at|date|null: false|
 
 #### Association
 - belongs_to :user
-
-### brands table
-- use active_hash
-
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|primary_key|
-|brand|string|null: false|
-
-#### Association
-<!-- no association because use active_hash -->
 
 ### messages table
 |Column|Type|Options|
