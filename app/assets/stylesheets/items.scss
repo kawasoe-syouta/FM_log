@@ -283,50 +283,31 @@ img {
   font-size: 14px;
   display: flex;
 }
-
-.sell-upload-button a {
+.sell__upload__button a {
   display: inline-block;
   width: 50%;
   background: #f5f5f5;
   line-height: 44px;
   text-align: center;
 }
-a {
-  color: #0099e8;
-  text-decoration: none;
-}
 
-.sell-upload-button a:last-child {
-  border-left: 1px solid #eee;
+img {
+  vertical-align: middle;
 }
-
-.sell-upload-drop-box.have-item-4 {
-  width: 20%;
+.sell__upload__figure img {
+  cursor: default;
 }
-.sell-upload-drop-box {
-  position: relative;
-  min-height: 162px;
-  background: #f5f5f5;
-  border: 1px dashed #ccc;
-  font-size: 0;
-  text-align: center;
-  -webkit-transition: -webkit-box-shadow ease-out .3s;
-  transition: -webkit-box-shadow ease-out .3s;
-  transition: box-shadow ease-out .3s;
-  transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
-  cursor: pointer;
-  float: right;
-  margin-left: 2%;
+.sell__upload__figure.square img {
+  width: 100%;
 }
-
-input {
-  border: 0;
-  outline: 0;
-  font-family: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+.sell__upload__items ul {
+  margin-left: 20px;
 }
-
+.sell__upload__head+p {
+  margin: 8px 0 0;
+  line-height: 1.5;
+  font-size: 12px;
+}
 pre {
   overflow: auto;
 }
@@ -360,11 +341,26 @@ i[class^='icon-'], i[class*='icon-'] {
 .form-group:first-child {
   margin: 0;
 }
-.form-group {
-  margin: 40px 0 0;
+.form {
+  &__group {
+    margin: 40px 0 0;
+  }
+  &__require {
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  }
+  &__suggest{
+    &__container {
+      position: relative;
+    }
+  }
 }
-
-.form-group label {
+.form__group label {
   font-weight: 600;
 }
 label {

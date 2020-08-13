@@ -1,4 +1,5 @@
 class SellsController < ApplicationController
+<<<<<<< HEAD
   before_action :set_parents, only: [:new, :create]
 
   def search
@@ -76,3 +77,12 @@ class SellsController < ApplicationController
   end
 
 end
+=======
+  def index
+  end
+
+  def edit
+    @sell = Sell.find[:id]
+  end
+end
+>>>>>>> bdfff18... haml/scss_commit
