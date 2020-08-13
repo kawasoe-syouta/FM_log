@@ -86,6 +86,10 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'devise'
 gem 'ancestry'
+<<<<<<< HEAD
 =======
 gem 'font-awesome-sass'
 >>>>>>> 55513b6... initial commit
+=======
+gem 'seed-fu'
+>>>>>>> 5f01a79... カテゴリーupdate
