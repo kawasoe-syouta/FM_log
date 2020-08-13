@@ -11,9 +11,9 @@
         .Contents__box__center__field
           .Contents__box__center__field__left
             %figure.Contents__box__center__field__left__photo
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m72728220507_1.jpg?1597039840", alt: "", size: "90x90"
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG", alt: "", size: "auto"
           .Contents__box__center__right
-            %p.Contents__box__center__right__name NIKE エアマックス 95 イエロー中古 デッドストック キムタクモデル
+            %p.Contents__box__center__right__name テストああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
             %p.Contents__box__center__right__titleBox
               %span.Contents__box__center__right__titleBox__name 送料込み（税込）
               %span.Contents__box__center__right__titleBox__price ¥16,500
@@ -26,7 +26,7 @@
             %span.Contents__box__centerZero__point__left__checkBox
               %span.Contents__box__centerZero__point__left__checkBox__click
                 %input{type: 'checkbox'}
-            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/icon-mercari-point-1da76e8760639b3454f14e979fbb7ca1.svg"
+            = image_tag ""
             %p.Contents__box__centerZero__point__left__title ポイントの使用
           %p.Contents__box__centerZero__point__right 所持ポイント: P0
       %section.Contents__box__centerOne
@@ -34,14 +34,14 @@
           .Contents__box__centerOne__field__methodOfPayment
             %h3.Contents__box__centerOne__field__methodOfPayment__title 支払い方法
           .Contents__box__centerOne__field__register
-            = link_to "＃", class: "Contents__box__centerOne__field__register__btn" do
+            = link_to "#", class: "Contents__box__centerOne__field__register__btn" do
               = icon('fas', 'plus-circle')
               %span.Contents__box__centerOne__field__register__text 登録してください
       %section.Contents__box__centerTwo
         .Contents__box__centerTwo__field
           .Contents__box__centerTwo__field__shippingAddress
             %h3.Contents__box__centerTwo__field__shippingAddress__text 配送先
-            = link_to "＃", class: "Contents__box__centerTwo__field__shippingAddress__btn" do
+            = link_to "#", class: "Contents__box__centerTwo__field__shippingAddress__btn" do
               変更する
               = icon('fas', 'angle-right')
           .Contents__box__centerTwo__field__details
@@ -51,12 +51,12 @@
       %section.Contents__box__centerThree
         .Contents__box__centerThree__field
           %p.Contents__box__centerThree__field__text 支払い方法を確認してください。
-          %input.Form__submitBtn{"type": "submit", "value": "購入する"}
+          %input.Contents__box__centerThree__field__btn{type: "submit", name: "commit", value: "購入する"}
   .Footer
     .Footer__title
       %ul.Footer__title__field
         %li.Footer__title__field__text
-          = link_to "＃", class: "Footer__title__field__text__privacy" do
+          = link_to "#", class: "Footer__title__field__text__privacy" do
             プライバシーポリシー
         %li.Footer__title__field__text
           = link_to "#", class: "Footer__title__field__text__termsOfService" do
@@ -65,5 +65,5 @@
           = link_to "#", class: "Footer__title__field__text__transaction" do
             特定商取引に関する表記
     = link_to "#", class: "Footer__logo" do
-      = image_tag "material/logo/logo.png", size: "150x60"
+      = image_tag "material/logo/logo.png", class:"Footer__logo__image"
     %p.Footer__box__text ©︎Fm_log,inc
