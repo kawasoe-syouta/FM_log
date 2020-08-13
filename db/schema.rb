@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_08_12_025657) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.string "image", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
     t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "sell_user_id", null: false
     t.bigint "buy_user_id", null: false
     t.bigint "category_id", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
     t.index ["sell_user_id"], name: "index_items_on_sell_user_id"
   end
 
-  create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "prefecture_id", null: false
     t.string "postal_code", limit: 7, null: false
@@ -57,7 +60,8 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
     t.index ["user_id"], name: "index_streets_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "street_id", null: false
     t.string "image"
     t.string "surname", null: false
     t.string "surname_kana", null: false
