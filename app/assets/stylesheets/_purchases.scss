@@ -6,10 +6,10 @@
   min-width: 100vw;
   height: 100vh;
   .Header {
-    .Header__list {
+    &__list {
       height: 130px;
-      .Header__list__btn {
-        .Header__list__btn__logo {
+      &__btn {
+        &__logo {
           height: 80px;
           width: 13%;
           padding-top: 35px;
@@ -30,7 +30,7 @@
         justify-content: center;
         font-size: 25px;
         padding: 19px 0px 20px 0px;
-        .Contents__box__title__weight {
+        &__weight {
           font-weight: bolder;
         }
       }
@@ -41,11 +41,11 @@
         max-width: 375px;
         padding: 32px 16px;
         margin: 0px auto;
-        .Contents__box__center__field {
+        &__field {
           display: flex;
           width: 100vw;
-          .Contents__box__center__field__left {
-            .Contents__box__center__field__left__photo {
+          &__left {
+            &__photo {
               height: 80px;
               width: 80px;
               border-radius: 4px;
@@ -54,14 +54,14 @@
               overflow: hidden;
             }
           }
-          .Contents__box__center__right {
+          &__right {
             width: 300px;
             margin-left: 16px;
-            .Contents__box__center__right__name {
+            &__name {
               font-size: 14px;
               margin-bottom: 10px;
             }
-            .Contents__box__center__right__titleBox {
+            &__titleBox {
               text-align: right;
               &__name {
                 font-size: 12px;
@@ -80,28 +80,28 @@
         max-width: 375px;
         margin: 0px auto;
         padding: 32px 16px;
-        .Contents__box__centerZero__payment {
+        &__payment {
           display: flex;
           font-size: 18px;
           font-weight: bolder;
           justify-content: space-between;
           align-items: center;
-          .Contents__box__centerZero__payment__price {
+          &__price {
             color: black;
           }
         }
-        .Contents__box__centerZero__point {
+        &__point {
           padding-top: 20px;
           font-size: 14px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .Contents__box__centerZero__point__left {
+          &__left {
             cursor: not-allowed;
-            .Contents__box__centerZero__point__left__checkBox {
+            &__checkBox {
               color: #888;
               font-size: 14px;
-              .Contents__box__centerZero__point__left__checkBox__click {
+              &__click {
                 display: inline-block;
                 flex: 0 0 auto;
                 height: 20px;
@@ -109,7 +109,7 @@
                 width: 20px;
               }
             }
-            .Contents__box__centerZero__point__left__title {
+            &__title {
               display: inline-block;
               font-weight: 600;
               line-height: 1.4em;
@@ -117,7 +117,7 @@
               margin-bottom: 5px;
             }
           }
-          .Contents__box__centerZero__point__right {
+          &__right {
             font-size: 12px;
             text-align: right;
             line-height: 1.6;
@@ -130,18 +130,18 @@
         padding: 32px 16px;
         max-width: 375px;
         margin: 0px auto;
-        .Contents__box__centerOne__field {
-          .Contents__box__centerOne__field__methodOfPayment {
+        &__field {
+          &__methodOfPayment {
             margin-bottom: 16px;
-            .Contents__box__centerOne__field__methodOfPayment__title {
+            &__title {
               font-size: 14px;
               font-weight: 600;
             }
           }
-          .Contents__box__centerOne__field__register {
-            .Contents__box__centerOne__field__register__btn {
+          &__register {
+            &__btn {
               text-decoration: none;
-              .Contents__box__centerOne__field__register__text {
+              &__text {
                 color: rgb(0, 149, 238);
                 margin-left: 4px;
               }
@@ -154,8 +154,8 @@
         padding: 32px 16px;
         max-width: 375px;
         margin: 0px auto;
-        .Contents__box__centerTwo__field {
-          .Contents__box__centerTwo__field__shippingAddress {
+        &__field {
+          &__shippingAddress {
             display: flex;
             justify-content: space-between;
             &__text {
@@ -167,7 +167,7 @@
               text-decoration: none;
             }
           }
-          .Contents__box__centerTwo__field__details {
+          &__details {
             line-height: 1.4em;
           }
         }
@@ -177,7 +177,7 @@
         border-top: 1px solid rgb(245, 245, 245);
         max-width: 375px;
         margin: 0px auto;
-        .Contents__box__centerThree__field {
+        &__field {
           &__text {
             color: rgb(255, 2, 17);
             line-height: 1.5;
@@ -205,19 +205,19 @@
     margin-top: auto;
     text-align: center;
     .Footer__title {
-      .Footer__title__field {
+      &__field {
         display: inline-block;
         margin: -16px 0px 40px -16px;
-        .Footer__title__field__text {
+        &__text {
           margin: 16px 0px 0px 16px;
           display: inline-block;
-          .Footer__title__field__text__privacy {
+          &__privacy {
             font-size: 12px;
             color: inherit;
             text-decoration: none;
           }
         }
-        .Footer__title__field__text {
+        &__text {
           margin: 16px 0px 0px 16px;
           &__termsOfService {
             font-size: 12px;
@@ -225,7 +225,7 @@
             text-decoration: none;
           }
         }
-        .Footer__title__field__text {
+        &__text {
           margin: 16px 0px 0px 16px;
           &__transaction {
             font-size: 12px;
@@ -238,7 +238,7 @@
     .Footer__logo {
       color: inherit;
       text-decoration: none;
-      .Footer__logo__image {
+      &__image {
         height: 60px;
         width: 13%;
       }
