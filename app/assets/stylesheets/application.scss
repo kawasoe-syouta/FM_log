@@ -17,3 +17,186 @@
 @import "modules/sells";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+a {
+  text-decoration: none;
+}
+
+.pc-header-nav-root {
+  position: relative;
+  height: 44px;
+  line-height: 32px;
+}
+
+.pc-header-nav-root.list-parent {
+  font-weight: 700
+}
+
+.pc-header-nav-root:hover {
+  color: #0099e8
+}
+
+.pc-header-nav-root span {
+  vertical-align: middle
+}
+
+.pc-header-nav {
+  margin: 25px 0 0 120px;
+  font-size: 0;
+}
+
+.pc-header-nav>li {
+  position: relative;
+  display: inline-block;
+  padding: 0 11px;
+  cursor: pointer
+}
+
+.pc-header-nav>li:first-child {
+  padding-left: 0
+}
+
+.pc-header-nav>li:last-child {
+  padding-right: 0
+}
+
+.pc-header-nav>li.hover .pc-header-nav-nochild,.pc-header-nav>li.hover .pc-header-nav-parent,.pc-header-nav>li:hover .pc-header-nav-nochild,.pc-header-nav>li:hover .pc-header-nav-parent {
+  display: block
+}
+
+.pc-header-nav h2 {
+  font-size: 14px;
+  font-weight: 400
+}
+
+.pc-header-nav a {
+  display: block;
+  color: #333
+}
+
+.pc-header-nav a:hover {
+  opacity: 1;
+  text-decoration: none
+}
+
+.pc-header-nav .icon-arrow-bottom {
+  margin: 0 0 0 8px;
+  font-size: 7px
+}
+
+.pc-header-nav-parent-wrap {
+  position: absolute;
+  top: 44px;
+  left: -34px;
+  z-index: 1000;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24)
+}
+
+@media screen and (min-width: 1068px) {
+  .pc-header-nav-parent-wrap {
+      left:0
+  }
+}
+
+.pc-header-nav-parent-wrap a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px
+}
+
+.pc-header-nav-parent {
+  display: none;
+  width: 224px
+}
+
+.pc-header-nav-parent:hover>ul .pc-header-nav-child,.pc-header-nav-parent.hover>ul .pc-header-nav-child,.pc-header-nav-parent.active>ul .pc-header-nav-child {
+  display: block
+}
+
+.pc-header-nav-parent h3 {
+  font-weight: 400;
+  font-size: 14px
+}
+
+.pc-header-nav-parent h3 a {
+  padding: 0 16px;
+  line-height: 44px
+}
+
+.pc-header-nav-parent h3 a:hover,.pc-header-nav-parent h3 a.active {
+  background: #ea352d;
+  color: #fff
+}
+
+.pc-header-nav-nochild {
+  display: none;
+  width: 224px
+}
+
+.pc-header-nav-nochild h3 {
+  font-weight: 400;
+  font-size: 14px
+}
+
+.pc-header-nav-nochild h3 a {
+  padding: 0 16px;
+  line-height: 44px
+}
+
+.pc-header-nav-nochild h3 a:hover,.pc-header-nav-nochild h3 a.active {
+  background: #ea352d;
+  color: #fff
+}
+
+.pc-header-nav-child-wrap {
+  position: absolute;
+  top: 0;
+  left: 224px;
+  bottom: 0;
+  background: #fff;
+  -webkit-box-shadow: 1px 0 0 0 #eee inset;
+  box-shadow: 1px 0 0 0 #eee inset
+}
+
+.pc-header-nav-child {
+  display: none;
+  width: 224px
+}
+
+.pc-header-nav-child.hover>ul .pc-header-nav-grand-child,.pc-header-nav-child:hover>ul .pc-header-nav-grand-child {
+  display: block
+}
+
+.pc-header-nav-child>a {
+  padding: 8px 16px
+}
+
+.pc-header-nav-child>a:hover,.pc-header-nav-child>a.active {
+  background: #eee
+}
+
+.pc-header-nav-grand-child-wrap {
+  position: absolute;
+  top: 0;
+  left: 224px;
+  bottom: 0;
+  background: #fff;
+  -webkit-box-shadow: 1px 0 0 0 #eee inset;
+  box-shadow: 1px 0 0 0 #eee inset
+}
+
+.pc-header-nav-grand-child {
+  display: none;
+  width: 320px
+}
+
+.pc-header-nav-grand-child>a {
+  padding: 8px 16px
+}
+
+.pc-header-nav-grand-child>a:hover,.pc-header-nav-grand-child>a.active {
+  background: #eee
+}

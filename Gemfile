@@ -77,3 +77,5 @@ gem "ancestry"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'ancestry'
+gem 'seed-fu'
