@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_025657) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.integer "street_id", null: false
     t.string "image"
     t.string "surname", null: false
     t.string "surname_kana", null: false
