@@ -80,8 +80,9 @@ end
 gem "haml-rails", "~> 2.0"
 gem 'font-awesome-sass'
 gem "active_hash"
-gem "ancestry"
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 gem 'devise'
+gem 'ancestry'
+gem 'seed-fu'
