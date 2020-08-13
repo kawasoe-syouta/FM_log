@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin item {
+  line-height: 38px;
+  padding: 0 0 0 16px;
+}
+
+@mixin itemlink {
+  color: #333;
+  text-decoration: none;
+  line-height: 32px;
+}
+
+header.header {
+  padding: 0 60px;
+  .header__interior {
+    max-width: 1040px;
+    width: 100%;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+    .middle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .icon {
+        padding-bottom: 10px;
+        margin-right: 30px;
+        border-radius: 4px;
+        a {
+          width: 140px;
+          display: block;
+          img{
+            width: 100%;
+            vertical-align: bottom;
+          }
+        }
+      }
+      .searchBox{
+        margin-left: auto;
+        width: 100%;
+        form {
+          width: 100%;
+          display: flex;
+          margin-bottom: 5px;
+          input {
+            width: calc(100% - 26px);
+            height: 36px;
+            padding: 0 0 0 5px;
+          }
+          button {
+            width: 36px;
+            border: 0;
+            cursor: pointer;
+            background-color: #3CCACE;
+            padding: 8px;
+            .searchBox__icon{
+              img {
+                width: 100%;
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+      }
+      .resultLists {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 36px;
+        z-index: 2;
+      }
+    }
+
+    .nav {
+      font-size: 14px;
+      display: flex;
+      margin-bottom: 10px;
+      .listLeft {
+        position: relative;
+        display: flex;
+        &__item {
+          display: flex;
+          @include item;
+          a {
+            @include itemlink;
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            padding-right: 30px;
+          }
+          &-first {
+            text-decoration: none;
+            padding: 0;
+            >a {
+              background-image: url("icon_category.png");
+            }
+          }
+
+          .tree {
+            z-index: 2;
+            position: absolute;
+            background-color: #fff;
+            width: 240px;
+            top: 40px;
+            .categoryTree {
+              background-color: #fff;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              .categoryTree--item {
+                position: relative;
+              }
+            }
+          }
+        }
+        
+        .displayNone {
+            display: none;
+        }
+        .brandPlldouwn {
+          position: absolute;
+          z-index: 1;
+          background-color: #fff;
+          .displayNone {
+            display: none;
+          }
+        }
+
+        &__item:nth-child(2)>a {
+          background-image: url("icon_brand.png");
+        }
+        
+      }
+      .listsRight {
+        margin-left: auto;
+        display: flex;
+        &__item {
+          color: #333;
+          @include item;
+          a {
+            display: flex;
+            align-items: center;
+            @include itemlink;
+          }
+        }
+      }
+    }
+  }
+}
+
