@@ -64,6 +64,9 @@ group :development, :test do
   gem 'capistrano-rails-console'
 end
 
+# include jQuery gem
+gem 'jquery-rails'
+
 # 以下全てをGemfile下部にコピー
 group :production do
   gem 'unicorn'
