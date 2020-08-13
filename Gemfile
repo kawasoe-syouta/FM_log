@@ -87,9 +87,13 @@ gem 'mini_magick'
 gem 'devise'
 gem 'ancestry'
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 gem 'font-awesome-sass'
 >>>>>>> 55513b6... initial commit
 =======
 gem 'seed-fu'
 >>>>>>> 5f01a79... カテゴリーupdate
+=======
+gem 'seed-fu'
+>>>>>>> 54b1955... カテゴリーupdate

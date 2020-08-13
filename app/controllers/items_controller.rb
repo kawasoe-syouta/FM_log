@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :items, only: [:show, :destroy]
   before_action :set_parents, only: [:new, :create, :edit]
   def index
+<<<<<<< HEAD
     @items = Item.all
   end
   
@@ -27,6 +28,9 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @parents = Category.where(ancestry: nil)
+=======
+    @categories = Category.order(:id)
+>>>>>>> 54b1955... カテゴリーupdate
   end
   
   def show

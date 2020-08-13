@@ -6,6 +6,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+<<<<<<< HEAD
     = javascript_include_tag 'application'
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
     %script{type: "text/javascript"} Payjp.setPublicKey('pk_test_652cb03ddb4c2f2e025b449c');
@@ -113,3 +114,31 @@
     .buyBtn
       %span.buyBtn__text 出品する
       = image_tag('material/icon/icon_camera.png', class: "buyBtn__icon")
+=======
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body     
+    %nav
+      %ul.pc-header-nav
+        %li.toppage-header-top__footer-search-wrapper
+          %h2
+            = link_to root_path, class: "pc-header-nav-root list-parent" do
+              = icon('fas', 'list-ul lg',
+              alt: 'list-icon', style: 'color:#3CCACE')
+              %span.toppage-header-top__footer-search-text カテゴリーから探す
+          %ul.pc-header-nav-parent-wrap
+            - @categories.roots.each do |root_category|
+              %li.pc-header-nav-parent
+                %h3
+                  %a{:href => "/"}= root_category.name
+                %ul.pc-header-nav-child-wrap
+                  - root_category.children.each do |children_category|
+                    %li.pc-header-nav-child
+                      %a{:href => "/"}= children_category.name
+                      %ul.pc-header-nav-grand-child-wrap
+                        - children_category.children.each do |children_chidren_category|
+                          %li.pc-header-nav-grand-child
+                            %a{:href => "/"}= children_chidren_category.name
+              
+
+    = yield
+>>>>>>> 54b1955... カテゴリーupdate

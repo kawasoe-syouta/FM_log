@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_08_24_112101) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
@@ -59,15 +60,12 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
     t.index ["sell_user_id"], name: "index_items_on_sell_user_id"
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-=======
->>>>>>> 75f966b... commit
   create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "prefecture_id", null: false
@@ -81,15 +79,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
     t.index ["user_id"], name: "index_streets_on_user_id"
   end
 
-<<<<<<< HEAD
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-=======
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "street_id", null: false
->>>>>>> 5f01a79... カテゴリーupdate
-=======
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
->>>>>>> 75f966b... commit
     t.string "image"
     t.string "surname", null: false
     t.string "surname_kana", null: false
@@ -112,12 +103,5 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buy_user_id"
   add_foreign_key "items", "users", column: "sell_user_id"
-<<<<<<< HEAD
-<<<<<<< HEAD
   add_foreign_key "streets", "users"
-=======
->>>>>>> 5f01a79... カテゴリーupdate
-=======
-  add_foreign_key "streets", "users"
->>>>>>> 75f966b... commit
 end
