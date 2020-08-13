@@ -87,7 +87,7 @@
     &--text {
       display: block;
       padding: 1px 16px;
-      width: calc(100% - 36px);
+      width: calc(100%);
       line-height: 48px;
       font-size: 16px;
       margin: 10px 0;
@@ -97,7 +97,7 @@
       padding: 10px 16px;
       resize: vertical;
       height: 200px;
-      width: calc(100% - 36px);
+      width: calc(100%);
       line-height: 24px;
       font-size: 16px;
       margin: 10px 0;
@@ -117,10 +117,10 @@
       font-size: 16px;
       &--deliverdays {
         margin: 10px 0;
-        width: calc(100% - 36px);
+        width: calc(100%);
       }
       &--prices {
-        width: calc(60% - 18px);
+        width: calc(60%);
         text-align: right;
       }
     }
