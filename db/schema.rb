@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_08_24_112101) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
     t.index ["sell_user_id"], name: "index_items_on_sell_user_id"
   end
 
+<<<<<<< HEAD
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+=======
+>>>>>>> bcf6f2e... commit
   create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "prefecture_id", null: false
