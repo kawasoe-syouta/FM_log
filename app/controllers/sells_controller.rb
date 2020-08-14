@@ -2,7 +2,7 @@ class SellsController < ApplicationController
 
   def index
     @item = Item.new()
-    @item.item_images.new()
+    @item_images = @item.item_images.build
   end
 
   def create
@@ -13,7 +13,7 @@ class SellsController < ApplicationController
     if @item.save
       respond_to do |format|
         #出品完了(出品完了ページに飛ばす事)
-        format.html {redirect_to sells_path, notice: '出品完了'}
+        format.html {render :index, notice: '出品完了'}
       end
     else
       redirect_to sells_path, alert: '出品エラー'
@@ -24,7 +24,7 @@ class SellsController < ApplicationController
 
   #ストロングパラメータ(items)
   def item_params
-    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price,item_images_attributes: [:image])
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price, item_images_attributes: [:image])
     # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
   end
 
