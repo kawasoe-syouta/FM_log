@@ -2,7 +2,7 @@
   .SellPage__header
     = image_tag "material/logo/logo.png", class: "SellPage__header__logo"
   .SellPage__contents
-    = form_with url: sells_path, model: @item, class: "SellPage__format" do |form|
+    = form_with url: sells_path, model: @item, local: true, class: "SellPage__format" do |form|
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           全般
@@ -12,8 +12,13 @@
             必須
         .SellPage__contents__detail
           画像をアップロード出来ます
+        .SellPage__contents__imagefield
+        = form.label "item_images_attributes_0_image" , class: "SellPage__contents__imgbtm", data:{index: 0} do
+          = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
+          .SellPage__contents__imgbtm--text
+            クリックしてファイルをアップロード
         = form.fields_for :item_images do |i|
-          = render "image", index: i
+          = i.file_field :image, class: "SellPage__contents__imgbtm--file"
         .SellPage__contents__title
           商品名
           %span.SellPage__contents--required
