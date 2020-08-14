@@ -25,6 +25,7 @@ class SellsController < ApplicationController
   #ストロングパラメータ(items)
   def item_params
     params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price, item_images_attributes: [:image])
+    # user連携時にコメントを外すこと
     # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
   end
 
