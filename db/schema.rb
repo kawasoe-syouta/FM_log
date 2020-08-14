@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_08_13_060328) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
@@ -47,8 +46,20 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
     t.index ["sell_user_id"], name: "index_items_on_sell_user_id"
   end
 
+  create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "prefecture_id", null: false
+    t.string "postal_code", limit: 7, null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number", limit: 12, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_streets_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "street_id", null: false
     t.string "image"
     t.string "surname", null: false
     t.string "surname_kana", null: false
@@ -71,4 +82,5 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buy_user_id"
   add_foreign_key "items", "users", column: "sell_user_id"
+  add_foreign_key "streets", "users"
 end
