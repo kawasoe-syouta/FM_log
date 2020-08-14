@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
       @child = Category.find_by(id: @category.ancestry.split("/")[1])
       @grandchild = @category
     end
+    @image = Item_image.all
   end
 
   def destroy
@@ -29,6 +30,12 @@ class ItemsController < ApplicationController
     else
       alert:"削除ができません"
     end
+  end
+  
+  def show_image
+    @items = Item.find(params[:id])
+    @image = Item_image.find(params[:id])
+    send_data @image.image, :type => 'image/jpeg', :disposition => 'inline'
   end
 
   private
