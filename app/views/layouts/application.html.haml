@@ -123,7 +123,8 @@
       %span.buyBtn__text 出品する
       = image_tag('material/icon/icon_camera.png', class: "buyBtn__icon")
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body     
+  %body
+
     %nav
       %ul.pc-header-nav
         %li.toppage-header-top__footer-search-wrapper
@@ -147,3 +148,5 @@
                             %a{:href => "/"}= children_chidren_category.name
 
   = yield
+
+  
