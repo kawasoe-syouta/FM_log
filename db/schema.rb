@@ -10,21 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_08_24_112101) do
-=======
-ActiveRecord::Schema.define(version: 2020_08_13_060328) do
->>>>>>> 5f01a79... カテゴリーupdate
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-<<<<<<< HEAD
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_customer", null: false
     t.string "card_default"
@@ -37,8 +31,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-=======
->>>>>>> 5f01a79... カテゴリーupdate
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.string "image", null: false
@@ -49,11 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "sell_user_id", null: false
-<<<<<<< HEAD
     t.bigint "buy_user_id"
-=======
-    t.bigint "buy_user_id", null: false
->>>>>>> 5f01a79... カテゴリーupdate
     t.bigint "category_id", null: false
     t.integer "phase_id", null: false
     t.integer "status_id", null: false
@@ -61,16 +49,10 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "item_detail"
-<<<<<<< HEAD
     t.integer "delivery_day_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "delivery_area_id"
-=======
-    t.integer "delivery_days", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
->>>>>>> 5f01a79... カテゴリーupdate
     t.index ["buy_user_id"], name: "index_items_on_buy_user_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
@@ -78,11 +60,14 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+=======
+>>>>>>> 75f966b... commit
   create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "prefecture_id", null: false
@@ -96,11 +81,15 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
     t.index ["user_id"], name: "index_streets_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
 =======
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "street_id", null: false
 >>>>>>> 5f01a79... カテゴリーupdate
+=======
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+>>>>>>> 75f966b... commit
     t.string "image"
     t.string "surname", null: false
     t.string "surname_kana", null: false
@@ -124,7 +113,11 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
   add_foreign_key "items", "users", column: "buy_user_id"
   add_foreign_key "items", "users", column: "sell_user_id"
 <<<<<<< HEAD
+<<<<<<< HEAD
   add_foreign_key "streets", "users"
 =======
 >>>>>>> 5f01a79... カテゴリーupdate
+=======
+  add_foreign_key "streets", "users"
+>>>>>>> 75f966b... commit
 end
