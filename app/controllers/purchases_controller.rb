@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
-  def index
+  def show
+    
   end
 end
