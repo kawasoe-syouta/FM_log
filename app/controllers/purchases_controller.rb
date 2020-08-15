@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  def show
-    
+  def index
+    @purchases = Purchase.all
   end
 end
