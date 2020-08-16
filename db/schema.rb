@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_072130) do
+ActiveRecord::Schema.define(version: 2020_08_12_025657) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,6 +51,19 @@ ActiveRecord::Schema.define(version: 2020_08_10_072130) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "prefecture_id", null: false
+    t.string "postal_code", limit: 7, null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number", limit: 12, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_streets_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "street_id", null: false
     t.string "image"
@@ -73,4 +88,5 @@ ActiveRecord::Schema.define(version: 2020_08_10_072130) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buy_user_id"
   add_foreign_key "items", "users", column: "sell_user_id"
+  add_foreign_key "streets", "users"
 end
