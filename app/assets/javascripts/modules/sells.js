@@ -9,9 +9,39 @@ $(function(){
                     <div class="SellPage__uploadfile--remove">
                       削除
                     </div>
-                  </div
-                  `;
+                  </div>`;
     return html;
+  }
+
+    // 画像用のinputを生成する関数
+  function buildFileList(index){
+    const html = `<div class="SellPage__contents__imagefield--list" list-index="${index}">
+                  </div>`;
+    return html;
+  }
+
+  function Imageupload(target, url){
+    // listの追加
+    if (rowIndex < Math.ceil((fileIndex + 1 )/ 5)){
+      rowIndex += 1
+      $(".SellPage__contents__imagefield").append(buildFileList(rowIndex))
+    }
+    let AddList = $(`.SellPage__contents__imagefield--list[list-index="${rowIndex}"]`)[0]
+    // 画像表示フィールドの追加
+    $(AddList).append(buildFileField(target, url));
+    $(".SellPage__contents__imgbtm--file").clone(true).appendTo(`.SellPage__uploadfile[data-index="${fileIndex}"]`);
+    $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__contents__imgbtm--file").attr('class', "SellPage__uploadfile--input")
+    $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__uploadfile--input").attr('name', `item[item_images_attributes][${fileIndex}][image]`)
+    // indexに1追加する
+    fileIndex += 1
+    // 入力ラベルの宛先を変更
+    $(".SellPage__contents__imgbtm").attr('data-index',fileIndex)
+    $(".SellPage__contents__imgbtm").attr('for',`item_item_images_attributes_${fileIndex}_image`)
+    // ファイル出力フォームを変更
+    $(".SellPage__contents__imgbtm--file").val('')
+    $(".SellPage__contents__imgbtm--file").attr('data-index',fileIndex)
+    $(".SellPage__contents__imgbtm--file").attr('id',`item_item_images_attributes_${fileIndex}_image`)
+    $(".SellPage__contents__imgbtm--file").attr('name', ``)
   }
 
   // 空き番号のシフト
@@ -33,6 +63,8 @@ $(function(){
 
   // 追加する時に割り振る画像番地
   let fileIndex = 0;
+  // 列番号
+  let rowIndex = 0;
 
   // 画像表示
   $(".SellPage__contents__imgbtm--file").on("change",function(e){
@@ -44,19 +76,7 @@ $(function(){
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      $(".SellPage__contents__imagefield").append(buildFileField(targetIndex, blobUrl));
-      $(".SellPage__contents__imgbtm--file").clone(true).appendTo(`.SellPage__uploadfile[data-index="${fileIndex}"]`);
-      $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__contents__imgbtm--file").attr('class', "SellPage__uploadfile--input")
-      $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__uploadfile--input").attr('name', `item[item_images_attributes][${fileIndex}][image]`)
-      // indexに1追加する
-      fileIndex += 1
-      // 入力ラベルの宛先を変更
-      $(".SellPage__contents__imgbtm").attr('data-index',fileIndex)
-      $(".SellPage__contents__imgbtm").attr('for',`item_item_images_attributes_${fileIndex}_image`)
-      // ファイル出力フォームを変更
-      $(".SellPage__contents__imgbtm--file").attr('data-index',fileIndex)
-      $(".SellPage__contents__imgbtm--file").attr('id',`item_item_images_attributes_${fileIndex}_image`)
-      $(".SellPage__contents__imgbtm--file").attr('name', ``)
+      Imageupload(targetIndex,blobUrl)
     }
   })
 
@@ -89,7 +109,3 @@ $(function(){
     $(this).val(int_input)
   })
 })
-
-{/* <input class="SellPage__uploadfile--input" type="file"
-name="item[item_images_attributes][${index}][image]"
-id="item_item_images_attributes_${index}_image"> */}

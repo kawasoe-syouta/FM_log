@@ -18,7 +18,8 @@
           .SellPage__contents__imgbtm--text
             クリックしてファイルをアップロード
         = form.fields_for :item_images do |i|
-          = i.file_field :image, class: "SellPage__contents__imgbtm--file"
+          .SellPage__contents__imgbtm--filefield
+            = i.file_field :image, class: "SellPage__contents__imgbtm--file"
         .SellPage__contents__title
           商品名
           %span.SellPage__contents--required
