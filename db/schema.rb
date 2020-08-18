@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_08_13_060328) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
@@ -28,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_060328) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "sell_user_id", null: false
-    t.bigint "buy_user_id", null: false
+    t.bigint "sell_user_id"
+    t.bigint "buy_user_id"
     t.bigint "category_id", null: false
     t.integer "phase_id", null: false
     t.integer "status_id", null: false
