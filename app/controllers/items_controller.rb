@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
+<<<<<<< HEAD
   before_action :items, only: [:show, :destroy]
   def index
     @items = Item.all
   end
+=======
+>>>>>>> 9b1489e... commit
   
   def show
     
