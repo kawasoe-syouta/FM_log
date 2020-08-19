@@ -9,4 +9,4 @@
       .CreditPage__contents__cardinfo__expiration--info
         = data[:exp_month] + " / " + data[:exp_year]
     .CreditPage__contents__cardinfo__brand
-      -# = image_tag "cards/#{data[:brand]}", class: "CreditPage__contents__cardinfo__brand--img", alt: data[:brand]
+      = image_tag "material/card/#{data[:logo]}", class: "CreditPage__contents__cardinfo__brand--img", alt: data[:brand]

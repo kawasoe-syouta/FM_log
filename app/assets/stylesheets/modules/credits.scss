@@ -43,23 +43,35 @@
       display: block;
       margin: 10px 0;
     }
+    &__cardindex {
+      margin-top: 20px; 
+    }
     &__cardinfo {
       display: flex;
       font-size: 14px;
       color: #333333;
       align-items: center;
+      margin: 20px 10px;
       &--check {
         width: 15px;
         height: 15px;
         border: 1px solid #333333;
         border-radius: 100%;
-        margin-right: 10px;
+        margin-right: 15px;
       }
       &__expiration {
         display: flex;
         align-items: center;
         &--title {
           margin-right:5px;
+        }
+      }
+      &__brand {
+        height: 40px;
+        width: 60px;
+        &--img {
+          height: 100%;
+          width: 100%;
         }
       }
     }
