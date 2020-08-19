@@ -146,6 +146,14 @@
       text-align: center;
       margin: 20px;
     }
+    &__imageflex {
+      display: flex;
+    }
+    &--image {
+      height: 40px;
+      width: 50px;
+      margin: 0 2px;
+    }
   }
   &__format {
     display: block;
