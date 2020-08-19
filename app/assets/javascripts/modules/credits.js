@@ -8,7 +8,6 @@ $(function(){
 
   // カード情報の登録
   $("#card_submit").on('click',function(e){
-    console.log(this)
     e.preventDefault();
     // カード情報の取得
     let card = {
