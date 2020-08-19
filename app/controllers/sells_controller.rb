@@ -2,6 +2,7 @@ class SellsController < ApplicationController
 
   before_action :redirect_no_user
   def index
+    @categories = Category.order(:id)
     @item = Item.new()
     @item_images = @item.item_images.build
   end
