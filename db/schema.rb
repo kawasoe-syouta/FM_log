@@ -45,10 +45,16 @@ ActiveRecord::Schema.define(version: 2020_08_19_061339) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "item_detail"
+<<<<<<< HEAD
     t.integer "delivery_day_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "delivery_area_id"
+=======
+    t.integer "delivery_days", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+>>>>>>> 006ec8d... fix credit-index view
     t.index ["buy_user_id"], name: "index_items_on_buy_user_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"

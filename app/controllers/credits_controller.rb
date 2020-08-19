@@ -26,12 +26,28 @@ class CreditsController < ApplicationController
       last = cardinfo.last4
       # カードブランド
       brand = cardinfo.brand
+      case cardinfo.brand
+      when "Visa" then
+        brand_logo = "visa"
+      when "MasterCard" then
+        brand_logo = "mc"
+      when "JCB" then
+        brand_logo = "jcb"
+      when "American Express" then
+        brand_logo = "amex"
+      when "Diners Club"
+        brand_logo = "diners"
+      when "Discover"
+        brand_logo = "discover"
+      end
+
       # 有効期限
       exp_month = cardinfo.exp_month.to_s
       exp_year = cardinfo.exp_year.to_s.slice(2,3)
 
-      carddata = {last: last, brand: brand, exp_month: exp_month, exp_year: exp_year}
+      carddata = {last: last, brand: brand, logo: brand_logo, exp_month: exp_month, exp_year: exp_year}
       @carddata << carddata
+      
     end
 
   end
