@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :sells, only: [:index,:create]
   resources :items, only: [:index,:show]
   resources :purchases, only: :index
+  resources :credits, only: [:index, :new, :create]
 end

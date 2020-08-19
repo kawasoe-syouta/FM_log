@@ -68,6 +68,9 @@ end
 # include jQuery gem
 gem 'jquery-rails'
 
+# include payjp gem
+gem 'payjp'
+
 # 以下全てをGemfile下部にコピー
 group :production do
   gem 'unicorn'
