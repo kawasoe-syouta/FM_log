@@ -8,7 +8,13 @@
         %span.CardPage__contents--required
           必須
       = form.text_field :card_number, placeholder: "半角数字のみ",id: "card_number", class: "CardPage__format--text", maxlength: 16
-      .CardPage__contents--image
+      .CardPage__contents__imageflex
+        = image_tag "material/card/visa.png", class: "CardPage__contents--image"
+        = image_tag "material/card/mc.png", class: "CardPage__contents--image"
+        = image_tag "material/card/jcb.png", class: "CardPage__contents--image"
+        = image_tag "material/card/amex.png", class: "CardPage__contents--image"
+        = image_tag "material/card/diners.png", class: "CardPage__contents--image"
+        = image_tag "material/card/discover.png", class: "CardPage__contents--image"
       .CardPage__contents--title
         有効期限
         %span.CardPage__contents--required

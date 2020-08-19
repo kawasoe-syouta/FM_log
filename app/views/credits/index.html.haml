@@ -2,7 +2,6 @@
   .CreditPage__header
     = image_tag "material/logo/logo.png", class: "CreditPage__header__logo"
   .CreditPage__contents
-    -# = form_with url: credits_path, model: @item, local: true, class: "CreditPage__format" do |form|
     .CreditPage__contents__largetitle
       支払い方法
     .CreditPage__contents__paragraph
@@ -13,6 +12,5 @@
           = render partial: "card", locals: {data: card}
       = link_to new_credit_path, class: "CreditPage__contents__link" do
         新規カードを登録する
-    -# = form.submit "選択した支払い方法を使う", class: "CreditPage__format__submit"
   .CreditPage__footer
     = image_tag "material/logo/logo.png", class: "CreditPage__footer__logo"
