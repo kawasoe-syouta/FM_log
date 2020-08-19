@@ -22,6 +22,8 @@ class CreditsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.card_customer)
       # カード情報を表示
       cardinfo = customer.cards.retrieve(card.card_default)
+      # カードID
+      id = card.id
       # 末尾4文字
       last = cardinfo.last4
       # カードブランド
@@ -45,9 +47,9 @@ class CreditsController < ApplicationController
       exp_month = cardinfo.exp_month.to_s
       exp_year = cardinfo.exp_year.to_s.slice(2,3)
 
-      carddata = {last: last, brand: brand, logo: brand_logo, exp_month: exp_month, exp_year: exp_year}
+      carddata = {id: id,last: last, brand: brand, logo: brand_logo, exp_month: exp_month, exp_year: exp_year}
       @carddata << carddata
-      
+
     end
 
   end
@@ -56,6 +58,7 @@ class CreditsController < ApplicationController
 
   end
 
+  #カード登録
   def create
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     customer = Payjp::Customer.create(
@@ -68,6 +71,30 @@ class CreditsController < ApplicationController
     else
       redirect_to new_credit_path
     end
+  end
+
+  #カード削除
+  def destroy
+
+    @card = Credit.find_by(id: params[:id])
+    # user連携時にコメントを外すこと
+    # @card = Credit.find_by(id: params[:id], user_id: current_user.id)
+
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+
+    # カード情報から登録されている顧客情報を参照
+    customer = Payjp::Customer.retrieve(@card.card_customer)
+    cardinfo = customer.cards.retrieve(@card.card_default)
+
+    # 情報を削除
+    cardinfo.delete
+    customer.delete
+    if @card.delete
+      redirect_to credits_path, notice: 'クレジットカード情報を削除しました'
+    else
+      redirect_to credits_path, alert: '削除が出来ませんでした'
+    end
+
   end
 
   private
