@@ -50,8 +50,15 @@
             必須
           = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
+          発送元の地域
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
           発送までの日数
-          = form.number_field :delivery_days, in: 1.0..10.0, step: 1, value: 1, class: "SellPage__format--numfield SellPage__format--numfield--deliverdays"
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_days_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           価格

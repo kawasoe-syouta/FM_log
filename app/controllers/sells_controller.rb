@@ -10,6 +10,7 @@ class SellsController < ApplicationController
     category_data = Category.find_by(id: params[:item][:category])
     #フォームの取得(カテゴリ、phase:出品中 追加)
     @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
+    binding.pry()
     if @item.save
       respond_to do |format|
         #出品完了(出品完了ページに飛ばす事)
@@ -24,9 +25,9 @@ class SellsController < ApplicationController
 
   #ストロングパラメータ(items)
   def item_params
-    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image])
     # user連携時にコメントを外すこと
-    # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
+    # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_area_id, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
   end
 
   #数値に変換可能な文字列を数値に変換する

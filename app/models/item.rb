@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   # belongs_to :buy_user, class_name: "User", optional: true
   belongs_to_active_hash :phase
   belongs_to_active_hash :status
+  belongs_to_active_hash :delivery_area, class_name: "Prefecture"
   belongs_to_active_hash :delivery_to_pay
   belongs_to :category
 
