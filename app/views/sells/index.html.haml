@@ -2,7 +2,7 @@
   .SellPage__header
     = image_tag "material/logo/logo.png", class: "SellPage__header__logo"
   .SellPage__contents
-    = form_with url: sells_path, model: @item, local: true, class: "SellPage__format" do |form|
+    = form_with url: {action: "create"}, model: @item, local: true, class: "SellPage__format" do |form|
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           全般
@@ -58,7 +58,7 @@
           発送までの日数
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_days_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           価格
