@@ -1,8 +1,13 @@
 class SellsController < ApplicationController
 
+<<<<<<< HEAD
   before_action :redirect_no_user
 
   def new
+=======
+  def index
+    @categories = Category.order(:id)
+>>>>>>> 4dc0644... commit
     @item = Item.new()
     @item_images = @item.item_images.build
   end
