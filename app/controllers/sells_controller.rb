@@ -1,6 +1,7 @@
 class SellsController < ApplicationController
 
   def index
+    @categories = Category.order(:id)
     @item = Item.new()
     @item_images = @item.item_images.build
   end
