@@ -43,6 +43,26 @@
       display: block;
       margin: 10px 0;
     }
+    &__cardinfo {
+      display: flex;
+      font-size: 14px;
+      color: #333333;
+      align-items: center;
+      &--check {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #333333;
+        border-radius: 100%;
+        margin-right: 10px;
+      }
+      &__expiration {
+        display: flex;
+        align-items: center;
+        &--title {
+          margin-right:5px;
+        }
+      }
+    }
   }
   &__format {
     &__submit {

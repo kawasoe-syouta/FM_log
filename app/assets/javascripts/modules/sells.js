@@ -62,7 +62,6 @@ $(function(){
 
   // 画像の削除
   $(".SellPage__contents__imagefield").on('click',".SellPage__uploadfile--remove",function() {
-    console.log(this);
     // 削除する画像の番号を取得
     index = $(this).parent().attr('data-index')
     // 画像を削除
