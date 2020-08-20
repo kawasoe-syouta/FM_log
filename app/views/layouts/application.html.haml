@@ -26,8 +26,10 @@
       %nav.nav
         %ul.listLeft
           %li.listLeft__item.listLeft__item-first
-            = link_to "カテゴリー", "#", id: "categoryBtn"
-            .tree.displayNone
+            = link_to  "#", id: "categoryBtn" do
+              %span
+                カテゴリー
+            .tree
               %ul.categoryTree
                 - @categories.roots.each do |root_category|
                   %li.categoryTree--item
@@ -36,7 +38,8 @@
                     %ul.categoryTree2
                       - root_category.children.each do |children_category|
                         %li.categoryTree--item2
-                          %a{:href => "/"}= children_category.name
+                          %h2
+                            %a{:href => "/"}= children_category.name
                           %ul.categoryTree3
                             - children_category.children.each do |children_chidren_category|
                               %li.categoryTree--item3
