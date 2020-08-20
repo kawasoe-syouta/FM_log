@@ -57,6 +57,9 @@
       font-size : 12px;
       border-radius : 2px;
     }
+    &__imagefield {
+      display: flex;
+    }
     &__imgbtm {
       display: flex;
       flex-direction: column;
@@ -73,6 +76,9 @@
       &--text {
         color: #333333;
       }
+      &--file {
+        display: none;
+      }
     }
     &__backlink {
       display: block;
@@ -80,11 +86,29 @@
       margin: 20px;
     }
   }
+  &__uploadfile {
+    width: 120px;
+    display: block;
+    text-align: center;
+    &--input {
+      display: none;
+    }
+    &--file {
+      height: 120px;
+      border: 1px solid #333333;
+    }
+    &--remove {
+      display: inline-block;
+      margin: 5px auto;
+      border: 1px solid #333333;
+      padding: 2px 5px;
+    }
+  }
   &__format {
     &--text {
       display: block;
       padding: 1px 16px;
-      width: calc(100% - 36px);
+      width: calc(100%);
       line-height: 48px;
       font-size: 16px;
       margin: 10px 0;
@@ -94,7 +118,7 @@
       padding: 10px 16px;
       resize: vertical;
       height: 200px;
-      width: calc(100% - 36px);
+      width: calc(100%);
       line-height: 24px;
       font-size: 16px;
       margin: 10px 0;
@@ -114,10 +138,10 @@
       font-size: 16px;
       &--deliverdays {
         margin: 10px 0;
-        width: calc(100% - 36px);
+        width: calc(100%);
       }
       &--prices {
-        width: calc(60% - 18px);
+        width: calc(60%);
         text-align: right;
       }
     }
