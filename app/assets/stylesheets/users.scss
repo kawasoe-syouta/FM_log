@@ -39,10 +39,6 @@
       font-size : 12px;
       border-radius : 2px;
     }
-    &__identification p {
-      padding-top: 20px;
-      font-weight: bold;
-    }
     &__field {
       color: #333333;
       display: block;
@@ -104,4 +100,74 @@
   }
 }
 
+.SignInPage {
+  width: 100vw;
+  height: 100%;
+  background-color :#f8f8f8;
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__logo {
+      display: block;
+      margin: 2.5% 0;
+      width: 12%;
+    }
+  }
+  &__contents {
+    background-color : #ffffff;
+    height: calc(100vh - 15%);
+    width: 40%;
+    margin: 0 auto;
+    &__SignUp {
+      padding-top: 20px;
+      width: 700px;
+      padding-left:150px ;
+      &__btn {
+        border-bottom: solid 1px #888888;
+      }
+    }
+    &__title {
+      padding-top: 20px;
+    }
+    &__btn {
+      padding:20px 0px 20px  50px;
+    }
+  }
+  &__format {
+    padding-right: 150px;
+    &__text {
+      display: block;
+      padding: 1px 16px;
+      width: 330px;
+      line-height: 48px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    &__submit {
+      display: block;
+      background-color: #3ccace;
+      color: #ffffff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      width: 220px;
+      height: 60px;
+      font-size: 20px;
+      margin: 20px auto;
+    }
+  }
+}
+.SigunUp {
+  display: block;
+  background-color: #3ccace;
+  color: #ffffff;
+  border-radius: 4px;
+  width: 220px;
+  height: 60px;
+  font-size: 20px;
+  margin: 20px auto;
+  text-decoration: none;
+  padding: 13px 0px 0px 50px;
+}
 
