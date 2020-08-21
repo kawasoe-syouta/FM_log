@@ -1,0 +1,47 @@
+.Cardinfo {
+  display: flex;
+  font-size: 14px;
+  color: #333333;
+  align-items: center;
+  margin: 20px 10px;
+  &--check {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333333;
+    border-radius: 100%;
+  }
+  &__number {
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 100px;
+  }
+  &__expiration {
+    display: flex;
+    align-items: center;
+    &--title {
+      margin-right:5px;
+    }
+  }
+  &__brand {
+    height: 40px;
+    width: 60px;
+    &--img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__delete {
+    display: block;
+    height: 40px;
+    width: 80px;
+    border: 1px solid #ff0211;
+    border-radius: 4px;
+    text-decoration: none;
+    line-height: 40px;
+    color: #ff0211;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
