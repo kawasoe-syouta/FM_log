@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   root to: 'items#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -13,4 +14,12 @@ Rails.application.routes.draw do
     resource :purchases, only: [:show, :update]   
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy]
+=======
+  devise_for :users
+  root 'items#index'
+  resources :sells, only: [:index,:create,:edit]
+  resources :items, only: [:index,:show]
+  resources :users, only: [:new,:create]
+  resources :purchases, only: :index
+>>>>>>> 4a6c796... master commit
 end

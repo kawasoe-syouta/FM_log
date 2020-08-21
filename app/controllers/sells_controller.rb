@@ -1,10 +1,13 @@
 class SellsController < ApplicationController
 
   before_action :redirect_no_user
-
-  def new
+  def index
     @item = Item.new()
     @item_images = @item.item_images.build
+  end
+
+  def edit
+    @sell = Sell.find[:id]
   end
 
   def create
