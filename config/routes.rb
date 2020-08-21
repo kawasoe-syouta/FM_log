@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     get 'streets', to: 'users/registrations#new_streets'
     post 'streets', to: 'users/registrations#create_streets'
   end
-  
-  resources :products, except:[:show, :destroy]
 
   resources :sells, only: [:index,:create,:new,:edit] do
     collection do
@@ -33,8 +31,4 @@ Rails.application.routes.draw do
       get 'grandchild'
     end
   end
-
-  
-  
-  resources :credits, only: [:index, :show, :new, :create, :destroy]
 end

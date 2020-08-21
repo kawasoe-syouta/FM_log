@@ -1,5 +1,4 @@
 class SellsController < ApplicationController
-<<<<<<< HEAD
   before_action :set_parents, only: [:new, :create]
 
   def search
@@ -24,6 +23,10 @@ class SellsController < ApplicationController
     @parents = Category.where(ancestry: nil)
     @item = Item.new()
     @item_images = @item.item_images.build
+  end
+
+  def edit
+    @sell = Sell.find[:id]
   end
 
   def create
@@ -77,12 +80,5 @@ class SellsController < ApplicationController
   end
 
 end
-=======
-  def index
-  end
-
-  def edit
-    @sell = Sell.find[:id]
-  end
 end
->>>>>>> bdfff18... haml/scss_commit
+
