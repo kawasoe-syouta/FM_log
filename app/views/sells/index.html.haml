@@ -2,7 +2,7 @@
   .SellPage__header
     = image_tag "material/logo/logo.png", class: "SellPage__header__logo"
   .SellPage__contents
-    = form_with url: sells_path, model: @item, local: true, class: "SellPage__format" do |form|
+    = form_with url: {action: "create"}, model: @item, local: true, class: "SellPage__format" do |form|
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           全般
@@ -18,7 +18,8 @@
           .SellPage__contents__imgbtm--text
             クリックしてファイルをアップロード
         = form.fields_for :item_images do |i|
-          = i.file_field :image, class: "SellPage__contents__imgbtm--file"
+          .SellPage__contents__imgbtm--filefield
+            = i.file_field :image, class: "SellPage__contents__imgbtm--file"
         .SellPage__contents__title
           商品名
           %span.SellPage__contents--required
@@ -49,8 +50,15 @@
             必須
           = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
+          発送元の地域
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
           発送までの日数
-          = form.number_field :delivery_days, in: 1.0..10.0, step: 1, value: 1, class: "SellPage__format--numfield SellPage__format--numfield--deliverdays"
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           価格
