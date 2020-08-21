@@ -4,8 +4,13 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
   
+
+  def index
+    @categories = Category.order(:id)
+  end
+
   def show
-    
+    @categories = Category.order(:id)
   end
 
   def destroy
