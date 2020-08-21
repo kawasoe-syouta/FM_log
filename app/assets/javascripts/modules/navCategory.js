@@ -1,28 +1,4 @@
 $(function(){
-<<<<<<< HEAD
-
-  // $('.category__parent').hover(
-  //   function(){
-  //     $(this).find('li').find('.category__parent--name').css({
-  //       backgroundColor : '#3CCAEC',
-  //       color : '#fff'
-  //   });
-  //   },
-  //   function(){
-  //     $(this).find('li').find('.category__parent--name').css({
-  //       backgroundColor : '#fff',
-  //       color : 'black'
-  //   });
-  //   }
-  // )
-  // $('.category__child').hover(
-  //   function(){
-  //     $(this).find('li').find('a').css('backgroundColor','#eee');
-  //   },
-  //   function(){
-  //     $(this).find('li').find('a').css('backgroundColor','#fff');
-  //   }
-  // )
   
   $(function(){
     // #で始まるリンクをクリックしたらイベント発火
@@ -41,28 +17,4 @@ $(function(){
     });
   });
   
-=======
-  $('.categoryTree--item').hover(
-    function(){
-      $(this).find('h3').find('a').css({
-        backgroundColor : '#3CCAEC',
-        color : '#fff'
-    });
-    },
-    function(){
-      $(this).find('h3').find('a').css({
-        backgroundColor : '#fff',
-        color : 'black'
-    });
-    }
-  )
-  $('.categoryTree--item2').hover(
-    function(){
-      $(this).find('h2').find('a').css('backgroundColor','#eee');
-    },
-    function(){
-      $(this).find('h2').find('a').css('backgroundColor','#fff');
-    }
-  )
->>>>>>> 7e158ff... categoryの見た目
 });

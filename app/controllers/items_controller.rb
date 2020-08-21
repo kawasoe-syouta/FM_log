@@ -31,7 +31,13 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
   
+
+  def index
+    @categories = Category.order(:id)
+  end
+
   def show
+<<<<<<< HEAD
     @parents = Category.where(ancestry: nil)
   end
   
@@ -100,4 +106,10 @@ class ItemsController < ApplicationController
     return model_params
   end
 
+=======
+    @categories = Category.order(:id)
+  end
+
+  
+>>>>>>> 345877c... commit
 end
