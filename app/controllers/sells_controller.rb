@@ -1,13 +1,12 @@
 class SellsController < ApplicationController
 
-  def edit
-    @sell = Sell.find[:id]
-  end
-end
-
   def index
     @item = Item.new()
     @item_images = @item.item_images.build
+  end
+
+  def edit
+    @sell = Sell.find[:id]
   end
 
   def create
