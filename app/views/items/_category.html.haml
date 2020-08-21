@@ -3,7 +3,7 @@
     .productList
       = link_to "#" do
         %figure.productList--img
-          = image_tag 'material/icon/icon-02.png'
+          = image_tag url_for(:controller => "items", :action => "show_image", :id => @items)
         .productList--body
           %h3.name
             = item.name
