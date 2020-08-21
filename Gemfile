@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :development do
@@ -64,6 +65,9 @@ group :development, :test do
   gem 'capistrano-rails-console'
 end
 
+# include jQuery gem
+gem 'jquery-rails'
+
 # 以下全てをGemfile下部にコピー
 group :production do
   gem 'unicorn'
@@ -72,3 +76,8 @@ end
 # include haml-rails gem, Referenced haml-rails README.md
 gem "haml-rails", "~> 2.0"
 gem 'font-awesome-sass'
+gem "active_hash"
+gem "ancestry"
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'devise'

@@ -24,7 +24,9 @@
 /config/master.key
 
 /public/packs
+/public/material
 /public/packs-test
+/public/uploads
 /node_modules
 /yarn-error.log
 yarn-debug.log*

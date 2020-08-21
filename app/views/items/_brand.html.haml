@@ -1,0 +1,17 @@
+.productLists
+  - @items.each do |item|
+    .productList
+      = link_to "#" do
+        %figure.productList--img
+          = image_tag 'material/icon/icon-02.png'
+        .productList--body
+          %h3.name
+            = item.name
+          .details
+            %ul
+              %li
+                = item.price
+              %li
+                %i.fas.fa-star.likeIcon
+                1
+            %p (税込)
