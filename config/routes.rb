@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   resources :items, only: [:index,:show]
   resources :users, only: [:new,:create]
   resources :purchases, only: :index
+
+  resources :sells do
+    collection do
+      get :search
+    end
+  end
 end

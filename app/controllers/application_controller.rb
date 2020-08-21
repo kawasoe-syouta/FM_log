@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production? 
 
+  def index
+    @categories = Category.order(:id)
+  end
+
   private
   
   def production?

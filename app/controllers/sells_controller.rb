@@ -1,6 +1,26 @@
 class SellsController < ApplicationController
+  before_action :set_parents, only: [:new, :create]
+
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+    @categories = Category.order(:id)
+  end
 
   def index
+    @categories = Category.order(:id)
     @item = Item.new()
     @item_images = @item.item_images.build
   end
@@ -10,6 +30,7 @@ class SellsController < ApplicationController
   end
 
   def create
+    @categories = Category.order(:id)
     #カテゴリーの取得
     category_data = Category.find_by(id: params[:item][:category])
     #フォームの取得(カテゴリ、phase:出品中 追加)
