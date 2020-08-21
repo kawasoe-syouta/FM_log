@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
   
-  def show
-    
+
+  def index
+    @categories = Category.order(:id)
   end
+
+  def show
+    @categories = Category.order(:id)
+  end
+
+  
 end
