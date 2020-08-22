@@ -9,7 +9,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @items.destroy
+    if @items.destroy
+      redirect_to root_path
+    else
+      alert:"削除ができません"
+    end
   end
 
   private
