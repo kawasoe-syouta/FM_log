@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
       @grandchild = @category
     end
     @image = Item_image.all
+    @image = ItemImage.all
   end
 
   def destroy
@@ -34,8 +35,8 @@ class ItemsController < ApplicationController
   
   def show_image
     @items = Item.find(params[:id])
-    @image = Item_image.all
-    send_data @image.image, :type => 'image/jpeg', :disposition => 'inline'
+    @image = @items.item_images
+    send_data @image[0].image.file.read, :type => 'image.content_type', :disposition => 'inline'
   end
 
   private
