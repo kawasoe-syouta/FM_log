@@ -7,27 +7,37 @@
     .sell__container__inner
       %h2.l__single__head
         商品情報を入力
-      %form.sell__form
+      = form_with url: {action: "edit"}, model: @item, local: true, class: "sell__form" do |form|
         .sell__upload__box
           %h3.sell__upload__head
             出品画像
             %span.form__require
               必須
           .sell__dropbox__container.clearfix
-            .sell__upload__items__container
-              .sell__upload__items
-                .sell__upload__up
-                  = link_to "#", class: "sell__upload__upBtn" do
-                    投稿
-                %ul
-                  %li.sell__upload__item
-                    %figure.sell__upload__figure.square
-                      = image_tag ""
-                    .sell__upload__button
-                      = link_to "#", class: "sell__upload__edit sell__upload__btn" do
-                        編集
-                      = link_to "#", class: "sell__upload__btn" do
-                        削除
+            .SellPage__contents__detail
+              画像をアップロード出来ます
+            .SellPage__contents__imagefield
+            = form.label "item_images_attributes_0_image" , class: "SellPage__contents__imgbtm", data:{index: 0} do
+              = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
+              .SellPage__contents__imgbtm--text
+                クリックしてファイルをアップロード
+            = form.fields_for :item_images do |i|
+              .SellPage__contents__imgbtm--filefield
+                = i.file_field :image, class: "SellPage__contents__imgbtm--file"
+            -# .sell__upload__items
+            -# .sell__upload__items__container
+                -# .sell__upload__up
+                -#   = link_to "#", class: "sell__upload__upBtn" do
+                -#     投稿
+                -# %ul
+                -#   %li.sell__upload__item
+                -#     %figure.sell__upload__figure.square
+                -#       = image_tag ""
+                -#     .sell__upload__button
+                -#       = link_to "#", class: "sell__upload__edit sell__upload__btn" do
+                -#         編集
+                -#       = link_to "#", class: "sell__upload__btn" do
+                -#         削除
         .sell__content
           .form__group
             %label
@@ -35,13 +45,15 @@
               %span.form__require
                 必須
             %div
-              %input{class: "input__default", placeholder: "商品名(必須 40文字まで)"}
+              = form.text_field :name, placeholder: "40文字まで", class: "SellPage__format--text"
+              -# %input{class: "input__default", placeholder: "商品名(必須 40文字まで)"}
           .form__group
             %label
               商品の説明
               %span.form__require
                 必須
-            %textarea{class: "textarea__default", rows: 5, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+            = form.text_area :item_detail, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）", class: "SellPage__format--textarea"
+            -# %textarea{class: "textarea__default", rows: 5, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
         .sell__content.clearfix
           %h3.sell__sub__head
             商品の詳細
@@ -53,56 +65,58 @@
                   必須
               %div
                 .select__wrap
-                  %select.select__default
-                    %option{value: ""}
-                      ーーー
-                    %option{value: 1}
-                      レディース
-                    %option{value: 2}
-                      メンズ
-                    %option{value: 3}
-                      ベビー・キッズ
-                    %option{value: 4}
-                      インテリア・住まい・小物
-                    %option{value: 5}
-                      本・音楽・ゲーム
-                    %option{value: 6}
-                      おもちゃ・ホビー・グッズ
-                    %option{value: 7}
-                      コスメ・香水・美容
-                    %option{value: 8}
-                      家電・スマホ・カメラ
-                    %option{value: 9}
-                      スポーツ・レジャー
-                    %option{value: 10}
-                      ハンドメイド
-                    %option{value: 11}
-                      チケット
-                    %option{value: 12}
-                      自動車・オートバイ
-                    %option{value: 13}
-                      その他
+                  #category_field
+                    = form.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "select__default"
+                    -# %option{value: ""}
+                    -#   ーーー
+                    -# %option{value: 1}
+                    -#   レディース
+                    -# %option{value: 2}
+                    -#   メンズ
+                    -# %option{value: 3}
+                    -#   ベビー・キッズ
+                    -# %option{value: 4}
+                    -#   インテリア・住まい・小物
+                    -# %option{value: 5}
+                    -#   本・音楽・ゲーム
+                    -# %option{value: 6}
+                    -#   おもちゃ・ホビー・グッズ
+                    -# %option{value: 7}
+                    -#   コスメ・香水・美容
+                    -# %option{value: 8}
+                    -#   家電・スマホ・カメラ
+                    -# %option{value: 9}
+                    -#   スポーツ・レジャー
+                    -# %option{value: 10}
+                    -#   ハンドメイド
+                    -# %option{value: 11}
+                    -#   チケット
+                    -# %option{value: 12}
+                    -#   自動車・オートバイ
+                    -# %option{value: 13}
+                    -#   その他
             .form__group
               %label
                 商品の状態
                 %span.form__require
                   必須
               .select__wrap
-                %select.select__default
-                  %option{value: ""}
-                    ーーー
-                  %option{value: 1}
-                    新品・未使用
-                  %option{value: 2}
-                    未使用に近い
-                  %option{value: 3}
-                    目立った傷や汚れなし
-                  %option{value: 4}
-                    やや傷や汚れあり
-                  %option{value: 5}
-                    傷や汚れあり
-                  %option{value: 6}
-                    全体的に状態が悪い
+                = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+                -# %select.select__default
+                -#   %option{value: ""}
+                -#     ーーー
+                -#   %option{value: 1}
+                -#     新品・未使用
+                -#   %option{value: 2}
+                -#     未使用に近い
+                -#   %option{value: 3}
+                -#     目立った傷や汚れなし
+                -#   %option{value: 4}
+                -#     やや傷や汚れあり
+                -#   %option{value: 5}
+                -#     傷や汚れあり
+                -#   %option{value: 6}
+                -#     全体的に状態が悪い
         .sell__content.clearfix
           %h3.sell__sub__head
             配送について
@@ -113,158 +127,161 @@
                 %span.form__require
                   必須
               .select__wrap
-                %select.select__default
-                  %option{value: ""}
-                    ーーー
-                  %option{value: 1}
-                    送料込み(出品者負担)
-                  %option{value: 2}
-                    着払い(購入者負担)
-            .form__group
-              %label
-                配送の方法
-                %span.form__require
-                  必須
-              .select__wrap
-                %select.select__default
-                  %option{value: ""}
-                    ーーー
-                  %option{value: 1}
-                    ゆうメール
-                  %option{value: 2}
-                    レターパック
-                  %option{value: 3}
-                    普通郵便(定形・不定形)
-                  %option{value: 4}
-                    クロネコヤマト
-                  %option{value: 5}
-                    ゆうパック
-                  %option{value: 6}
-                    クリックポスト
-                  %option{value: 7}
-                    ゆうパケット
+                = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+                -# %select.select__default
+                -#   %option{value: ""}
+                -#     ーーー
+                -#   %option{value: 1}
+                -#     送料込み(出品者負担)
+                -#   %option{value: 2}
+                -#     着払い(購入者負担)
+            -# .form__group
+            -#   %label
+            -#     配送の方法
+            -#     %span.form__require
+            -#       必須
+            -#   .select__wrap
+            -#     %select.select__default
+            -#       %option{value: ""}
+            -#         ーーー
+            -#       %option{value: 1}
+            -#         ゆうメール
+            -#       %option{value: 2}
+            -#         レターパック
+            -#       %option{value: 3}
+            -#         普通郵便(定形・不定形)
+            -#       %option{value: 4}
+            -#         クロネコヤマト
+            -#       %option{value: 5}
+            -#         ゆうパック
+            -#       %option{value: 6}
+            -#         クリックポスト
+            -#       %option{value: 7}
+            -#         ゆうパケット
             .form__group
               %label
                 発送元の地域
                 %span.form__require
                   必須
               .select__wrap
-                %select.select__default
-                  %option{value: ""}
-                    ーーー
-                  %option{value: 1}
-                    北海道
-                  %option{value: 2}
-                    青森県
-                  %option{value: 3}
-                    岩手県
-                  %option{value: 4}
-                    宮城県
-                  %option{value: 5}
-                    秋田県
-                  %option{value: 6}
-                    山形県
-                  %option{value: 7}
-                    福島県
-                  %option{value: 8}
-                    茨城県
-                  %option{value: 9}
-                    栃木県
-                  %option{value: 10}
-                    群馬県
-                  %option{value: 11}
-                    埼玉県
-                  %option{value: 12}
-                    千葉県
-                  %option{value: 13}
-                    東京都
-                  %option{value: 14}
-                    神奈川県
-                  %option{value: 15}
-                    新潟県
-                  %option{value: 16}
-                    富山県
-                  %option{value: 17}
-                    石川県
-                  %option{value: 18}
-                    福井県
-                  %option{value: 19}
-                    山梨県
-                  %option{value: 20}
-                    長野県
-                  %option{value: 21}
-                    岐阜県
-                  %option{value: 22}
-                    静岡県
-                  %option{value: 23}
-                    愛知県
-                  %option{value: 24}
-                    三重県
-                  %option{value: 25}
-                    滋賀県
-                  %option{value: 26}
-                    京都府
-                  %option{value: 27}
-                    大阪府
-                  %option{value: 28}
-                    兵庫県
-                  %option{value: 29}
-                    奈良県
-                  %option{value: 30}
-                    和歌山県
-                  %option{value: 31}
-                    鳥取県
-                  %option{value: 32}
-                    島根県
-                  %option{value: 33}
-                    岡山県
-                  %option{value: 34}
-                    広島県
-                  %option{value: 35}
-                    山口県
-                  %option{value: 36}
-                    徳島県
-                  %option{value: 37}
-                    香川県
-                  %option{value: 38}
-                    愛媛県
-                  %option{value: 39}
-                    高知県
-                  %option{value: 40}
-                    福岡県
-                  %option{value: 41}
-                    佐賀県
-                  %option{value: 42}
-                    長崎県
-                  %option{value: 43}
-                    熊本県
-                  %option{value: 44}
-                    大分県
-                  %option{value: 45}
-                    宮崎県
-                  %option{value: 46}
-                    鹿児島県
-                  %option{value: 47}
-                    沖縄県
-                  %option{value: ""}
-                    未定
+                = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+                -# %select.select__default
+                -#   %option{value: ""}
+                -#     ーーー
+                -#   %option{value: 1}
+                -#     北海道
+                -#   %option{value: 2}
+                -#     青森県
+                -#   %option{value: 3}
+                -#     岩手県
+                -#   %option{value: 4}
+                -#     宮城県
+                -#   %option{value: 5}
+                -#     秋田県
+                -#   %option{value: 6}
+                -#     山形県
+                -#   %option{value: 7}
+                -#     福島県
+                -#   %option{value: 8}
+                -#     茨城県
+                -#   %option{value: 9}
+                -#     栃木県
+                -#   %option{value: 10}
+                -#     群馬県
+                -#   %option{value: 11}
+                -#     埼玉県
+                -#   %option{value: 12}
+                -#     千葉県
+                -#   %option{value: 13}
+                -#     東京都
+                -#   %option{value: 14}
+                -#     神奈川県
+                -#   %option{value: 15}
+                -#     新潟県
+                -#   %option{value: 16}
+                -#     富山県
+                -#   %option{value: 17}
+                -#     石川県
+                -#   %option{value: 18}
+                -#     福井県
+                -#   %option{value: 19}
+                -#     山梨県
+                -#   %option{value: 20}
+                -#     長野県
+                -#   %option{value: 21}
+                -#     岐阜県
+                -#   %option{value: 22}
+                -#     静岡県
+                -#   %option{value: 23}
+                -#     愛知県
+                -#   %option{value: 24}
+                -#     三重県
+                -#   %option{value: 25}
+                -#     滋賀県
+                -#   %option{value: 26}
+                -#     京都府
+                -#   %option{value: 27}
+                -#     大阪府
+                -#   %option{value: 28}
+                -#     兵庫県
+                -#   %option{value: 29}
+                -#     奈良県
+                -#   %option{value: 30}
+                -#     和歌山県
+                -#   %option{value: 31}
+                -#     鳥取県
+                -#   %option{value: 32}
+                -#     島根県
+                -#   %option{value: 33}
+                -#     岡山県
+                -#   %option{value: 34}
+                -#     広島県
+                -#   %option{value: 35}
+                -#     山口県
+                -#   %option{value: 36}
+                -#     徳島県
+                -#   %option{value: 37}
+                -#     香川県
+                -#   %option{value: 38}
+                -#     愛媛県
+                -#   %option{value: 39}
+                -#     高知県
+                -#   %option{value: 40}
+                -#     福岡県
+                -#   %option{value: 41}
+                -#     佐賀県
+                -#   %option{value: 42}
+                -#     長崎県
+                -#   %option{value: 43}
+                -#     熊本県
+                -#   %option{value: 44}
+                -#     大分県
+                -#   %option{value: 45}
+                -#     宮崎県
+                -#   %option{value: 46}
+                -#     鹿児島県
+                -#   %option{value: 47}
+                -#     沖縄県
+                -#   %option{value: ""}
+                -#     未定
             .form__group
               %label
                 発送までの日数
                 %span.form__require
                   必須
               .select__wrap
-                %select.select__default
-                  %option{value: ""}
-                    ーーー
-                  %option{value: 1}
-                    未定
-                  %option{value: 2}
-                    1~2日で発送
-                  %option{value: 3}
-                    2~3日で発送
-                  %option{value: 4}
-                    4~7日で発送
+                = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+                -# %select.select__default
+                -#   %option{value: ""}
+                -#     ーーー
+                -#   %option{value: 1}
+                -#     未定
+                -#   %option{value: 2}
+                -#     1~2日で発送
+                -#   %option{value: 3}
+                -#     2~3日で発送
+                -#   %option{value: 4}
+                -#     4~7日で発送
         .sell__content.clearfix
           %h3.sell__sub__head
             販売価格
@@ -281,11 +298,12 @@
                       .sell__price__text
                         ¥
                       %div
-                        %input{class: "input__default", placeholder: "例)300"}
-  %form.sell__form
-    .sell__content.sell__btn__box
-      %button{type: "submit", class: "btn__default btn__change"}
-        変更する
+                        = form.number_field :price, in: 300.0..9999999.0, step: 1, value: 0, class: "SellPage__format--numfield SellPage__format--numfield--prices input__default"
+                        
+        = form.submit "変更する", class: "SellPage__format__submit btn__change sell__form"
       = link_to "#", class: "btn__default btn__gray" do
         キャンセル
-  .overlay
+    .SellPage__footer
+      = image_tag "material/logo/logo.png", class: "SellPage__footer__logo"
+            
+  

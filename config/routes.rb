@@ -15,8 +15,19 @@ Rails.application.routes.draw do
     end
   end
   resources :items, only: [:index,:show, :destroy] do
-    resource :purchases, only: [:show, :update,:index]   
+    resource :purchases, only: [:show, :update,:index] 
+    collection do
+      get :search
+    end  
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy]
   resources :users, only: [:new,:create]
+
+  resources :categories, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
 end
