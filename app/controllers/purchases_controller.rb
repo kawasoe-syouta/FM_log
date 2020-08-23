@@ -11,7 +11,6 @@ class PurchasesController < ApplicationController
 
     # 出品中以外は購入不可
     if @item.phase_id != 1
-      binding.pry()
       redirect_to item_path(@item.id), alert: "購入済みです"
     else
       @item.with_lock do
