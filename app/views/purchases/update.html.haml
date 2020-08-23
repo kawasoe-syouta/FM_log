@@ -7,11 +7,13 @@
     .PurchaseComplete__contents__smalltitle
       購入内容の確認
     .PurchaseComplete__contents__itemfield
-      .PurchaseComplete__contents__itemfield--image
+      = image_tag @item.item_images[0].image.url, class: 'PurchaseComplete__contents__itemfield--image'
       .PurchaseComplete__contents__itemfield__label
         .PurchaseComplete__contents__itemfield__name
+          = @item.name
         .PurchaseComplete__contents__itemfield__price
-  .PurchaseComplete__backbtm
-    一覧に戻る
+          = "#{@item.price} 円"
+    = link_to items_path, class: "PurchaseComplete__contents__backbtm" do
+      一覧に戻る
   .PurchaseComplete__footer
     = image_tag "material/logo/logo.png", class: "SellPage__footer__logo"
