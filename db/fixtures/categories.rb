@@ -1,3 +1,7 @@
+class Categories < ApplicationRecord
+has_many :items
+has_ancestry
+
 Category.seed(:id,
   {:id=>1, :name=>"レディース", :ancestry=>nil},
   {:id=>2, :name=>"メンズ", :ancestry=>nil},
@@ -747,3 +751,4 @@ Category.seed(:id,
   {:id=>732, :name=>"ラッピング/包装", :ancestry=>"13/157"},
   {:id=>733, :name=>"その他", :ancestry=>"13/157"}
 )
+end
