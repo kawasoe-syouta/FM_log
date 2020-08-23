@@ -31,4 +31,17 @@ Rails.application.routes.draw do
       get 'grandchild'
     end
   end
+  resources :items do
+    collection do
+      get :search
+    end
+  end
+
+  resources :categories, only: [:index] do
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
 end

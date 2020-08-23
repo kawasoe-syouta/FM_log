@@ -25,10 +25,6 @@ class SellsController < ApplicationController
     @item_images = @item.item_images.build
   end
 
-  def edit
-    @sell = Sell.find[:id]
-  end
-
   def create
     @parents = Category.where(ancestry: nil)
     #カテゴリーの取得

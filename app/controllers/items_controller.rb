@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
-<<<<<<< HEAD
+
   before_action :items, only: [:show, :destroy]
   before_action :set_parents, only: [:new, :create, :edit]
   def index
-<<<<<<< HEAD
     @items = Item.all
   end
   
@@ -34,10 +33,11 @@ class ItemsController < ApplicationController
 
   def index
     @categories = Category.order(:id)
+    @item = Item.new()
+    @item_images = @item.item_images.build
   end
 
   def show
-<<<<<<< HEAD
     @parents = Category.where(ancestry: nil)
   end
   
@@ -110,6 +110,37 @@ class ItemsController < ApplicationController
     @categories = Category.order(:id)
   end
 
+<<<<<<< HEAD
   
 >>>>>>> 345877c... commit
+=======
+  def edit
+    @categories = Category.order(:id)
+  end
+
+  private
+
+  #数値に変換可能な文字列を数値に変換する
+  def integer_string?(str)
+    Integer(str)
+    true
+  rescue ArgumentError
+    false
+  end
+
+  #paramsの内容を数値に変換
+  def params_int(model_params)
+    model_params.each do |key,value|
+      begin
+        if integer_string?(value)
+          model_params[key]=value.to_i
+        end              
+      rescue => exception
+        # nothing
+      end
+    end
+    return model_params
+  end
+
+>>>>>>> 4ea26c1... commit
 end
