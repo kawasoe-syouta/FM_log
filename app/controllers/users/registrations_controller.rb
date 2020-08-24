@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
 
   def new
     @user = User.new
@@ -14,6 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
+
+    # streetビュー完成後に追加する
     # session["devise.regist_data"] = {user: @user.attributes}
     # session["devise.regist_data"][:user]["password"] = params[:user][:password]
     # @streets = @user.build_street
@@ -24,6 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
 
+  # streetビュー完成後に追加する
   def new_streets
 
   end
