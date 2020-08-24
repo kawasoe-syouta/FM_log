@@ -2,12 +2,12 @@ class ItemsController < ApplicationController
   
 
   def index
-    @categories = Category.order(:id)
+    @items = Item.all
+    @parents = Category.where(ancestry: nil)
   end
 
   def show
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
   end
 
-  
 end

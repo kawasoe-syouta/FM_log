@@ -1,7 +1,7 @@
 $(function(){
   function build_childSelect(){
     let child_select = `
-    <select name="post[category_id]" class="child_category_id">
+    <select name="post[category_id]" class="child_category_id SellPage__format--select">
       <option value="">---</option>
     </select>
     `
@@ -40,8 +40,9 @@ $(function(){
 
   function build_gcSelect(){
     let gc_select = `
-    <select name="post[category_id]" class="gc_category_id">
-              </select>
+    <select name="post[category_id]" class="gc_category_id SellPage__format--select">
+      <option value="">---</option>
+    </select>
     `
     return gc_select;
   }

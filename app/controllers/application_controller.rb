@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production? 
 
   def index
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
   end
 
   private
