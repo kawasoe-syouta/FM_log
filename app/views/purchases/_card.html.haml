@@ -1,5 +1,5 @@
 .Cardinfo
-  .Cardinfo--check
+  = form.radio_button :card_id, data[:id], class: "Cardinfo--check"
   .Cardinfo__number
     .Cardinfo__text
       = "************" + data[:last]
@@ -10,5 +10,3 @@
         = data[:exp_month] + " / " + data[:exp_year]
     .Cardinfo__brand
       = image_tag "material/card/#{data[:logo]}", class: "Cardinfo__brand--img", alt: data[:brand]
-  = link_to credit_path(data[:id]), method: :delete, class: "Cardinfo__delete" do
-    削除する
