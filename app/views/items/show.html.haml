@@ -42,17 +42,17 @@
                   %th.showTable__th
                     カテゴリー
                   %td.showTable__td
-                    - @parents.each do |parent|
-                      = link_to parent_category_path(parent) do
-                        = parent.name
-                      %br/
-                      - parent.children.each do |child|
-                        = link_to child_category_path(child) do
-                          = child.name
-                        %br/
-                        - child.children.each do |grandchild|
-                          = link_to grandchild_category_path(grandchild) do
-                            = grandchild.name
+                    -# - @parents.each do |parent|
+                    -#   = link_to parent_category_path(parent) do
+                    -#     = parent.name
+                    -#   %br/
+                    -#   - parent.children.each do |child|
+                    -#     = link_to child_category_path(child) do
+                    -#       = child.name
+                    -#     %br/
+                    -#     - child.children.each do |grandchild|
+                    -#       = link_to grandchild_category_path(grandchild) do
+                    -#         = grandchild.name
                 %tr.showTable__tr
                   %th.showTable__th
                     ブランド
