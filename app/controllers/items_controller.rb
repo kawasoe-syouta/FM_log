@@ -38,6 +38,11 @@ class ItemsController < ApplicationController
     @image = @items.item_images
     send_data @image[0].image.file.read, :type => 'image.content_type', :disposition => 'inline'
   end
+  
+  def done
+    @buyer = Item.find(params[:id])
+    @buyer.update( buy_user_id: current_user.id )
+  end
 
   private
   def items

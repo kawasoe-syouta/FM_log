@@ -275,6 +275,25 @@
                 object-fit: cover;
               }
             }
+            .productList--sold {
+              width: 0;
+              height: 0;
+              border-top: 60px solid #ea352e;
+              border-right: 60px solid transparent;
+              border-right: 60px solid transparent;
+              border-bottom: 60px solid #ea352e;
+              z-index: 5;
+              position: relative;
+              top: -320px;
+              &__inner{
+                transform: rotate(-45deg);
+                font-size: 28px;
+                margin: -35px 0px 0px -55px;
+                color: #fff;
+                letter-spacing: 2px;
+                font-weight: 600;
+              }
+            }
             .productList--body {
               background-color: white;
               color: #333;
@@ -297,7 +316,7 @@
                     font-size: inherit;
                     text-rendering: auto;
                     -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale
+                    -moz-osx-font-smoothing: grayscale;
                   }
                 }
                 p {
