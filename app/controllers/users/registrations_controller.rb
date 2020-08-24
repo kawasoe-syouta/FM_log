@@ -14,10 +14,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_address
+    # session["devise.regist_data"] = {user: @user.attributes}
+    # session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    # @streets = @user.build_street
+    # render :new_streets
 
+    @user.save
+    render :new_streets
+
+  end
+
+  def new_streets
+
+  end
+
+  def create_streets
+    
   end
 
   private
