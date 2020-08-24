@@ -12,7 +12,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_to_pay
   belongs_to_active_hash :delivery_day
   belongs_to :category
-  belongs_to :user
 
   validates :name, presence: true
   validates :price, presence: true
