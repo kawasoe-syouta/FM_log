@@ -32,11 +32,12 @@
 |category_id|integer|null: false, foreign_key: true|
 |phase_id|integer|null: false, foreign_key: true|
 |status_id|integer|null: false, foreign_key: true|
+|delivery_area_id|integer|null: false, foreign_key: true|
 |delivery_to_pay_id|integer|null: false, foreign_key: true|
+|delivery_day_id|integer|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
 |item_detail|text||
-|delivery_days|integer|null: false|
 |created_at|date|null: false|
 |updated_at|date|null: false|
 
@@ -47,6 +48,7 @@
 - belongs_to :user, foreign_key: "buy_user_id", class_name: "User"
 - belongs_to :phase
 - belongs_to :status
+- belongs_to :prefecture, foreign_key: "delivery_area", class_name: "Prefecture"
 - belongs_to :delivery_to_pay
 - belongs_to :category
 

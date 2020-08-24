@@ -1,0 +1,20 @@
+.SignInPage
+  .SignInPage__header
+    = image_tag "material/logo/logo.png", class: "SignInPage__header__logo"
+  .SignInPage__contents
+    .SignInPage__contents__SignUp
+      アカウントをお持ちでない方はこちら
+    .SignInPage__contents__SignUp__btn
+      %a.SigunUp{:href => "#"} 新規会員登録
+    = form_with url: "#", class: "SignInPage__format" do |form|
+      .SignInPage__contents
+        .SignInPage__contents__title
+          メールアドレス
+          = form.text_field :name, placeholder: "入力してください", class: "SignInPage__format__text"
+        .SignInPage__contents__title
+          パスワード
+          = form.text_field :name, placeholder: "入力してください", class: "SignInPage__format__text"
+        .SignInPage__contents__btn  
+          = form.submit "ログイン", class: "SignInPage__format__submit"
+  .UserPage__footer
+    = image_tag "material/logo/logo.png", class: "UserPage__footer__logo" 

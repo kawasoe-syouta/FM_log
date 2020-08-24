@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :sells, only: [:index,:create]
+  resources :users, only: [:new,:create]
   resources :purchases, only: :index
   root to: 'items#index'
   resources :items, only: [:index, :show, :destroy]
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :credits, only: [:index, :show, :new, :create, :destroy]
 end
