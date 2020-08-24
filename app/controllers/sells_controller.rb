@@ -1,6 +1,6 @@
 class SellsController < ApplicationController
 
-  def index
+  def new
     @item = Item.new()
     @item_images = @item.item_images.build
   end
@@ -17,7 +17,7 @@ class SellsController < ApplicationController
       end
     else
       @item_images = @item.item_images.build
-      render :index, alert: '出品エラー'
+      render :new, alert: '出品エラー'
     end
   end
 
