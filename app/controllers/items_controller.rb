@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
 
   def show
     @parents = Category.where(ancestry: nil)
+<<<<<<< HEAD
   end
   
   def new
@@ -105,15 +106,6 @@ class ItemsController < ApplicationController
     end
     return model_params
   end
-
-=======
-    @categories = Category.order(:id)
-  end
-
-<<<<<<< HEAD
-  
->>>>>>> 345877c... commit
-=======
   def edit
     @categories = Category.order(:id)
   end
@@ -141,6 +133,5 @@ class ItemsController < ApplicationController
     end
     return model_params
   end
-
->>>>>>> 4ea26c1... commit
+end
 end
