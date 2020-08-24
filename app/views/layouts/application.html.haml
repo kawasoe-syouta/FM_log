@@ -7,6 +7,8 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    %script{type: "text/javascript"} Payjp.setPublicKey('pk_test_652cb03ddb4c2f2e025b449c');
   %body
 
   %header.header
@@ -53,9 +55,13 @@
 
         %ul.listsRight
           %li.listsRight__item.listsRight__item--login
-            = link_to "ログイン", "#"
+            -# 仮配置
+            - unless user_signed_in?
+              = link_to "ログイン", user_session_path
+            - else
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
           %li.listsRight__item.listsRight__item--new
-            = link_to "新規会員登録", "#"
+            = link_to "新規会員登録", new_user_registration_path
 
   = yield
 
