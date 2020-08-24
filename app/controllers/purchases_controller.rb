@@ -6,6 +6,15 @@ class PurchasesController < ApplicationController
   end
 
   def update
+
+    # カードが選択されていない場合
+    if card_params == nil
+      @purchases = Purchase.all
+      @carddata = card_index()
+      @item = Item.find(params[:item_id])
+      return render :show, alert: "支払い方法を選択してください"
+    end
+
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     @item = Item.find(params[:item_id])
 
@@ -30,7 +39,11 @@ class PurchasesController < ApplicationController
   private
 
   def card_params
-    params.require(:item).permit(:card_id)
+    unless params[:item] == nil
+      return params.require(:item).permit(:card_id)
+    else
+      return nil
+    end
   end
 
 end
