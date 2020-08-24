@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   root to: 'items#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -10,10 +11,18 @@ Rails.application.routes.draw do
   end
 
   resources :sells, only: [:index,:new,:create,:edit] do
+=======
+  devise_for :users
+  root 'items#index'
+  resources :items, only: [:index,:show]
+
+  resources :sells, only: [:index,:create] do
+>>>>>>> e78065a... commit
     collection do
       get :search
     end
   end
+<<<<<<< HEAD
   resources :items, only: [:index,:show, :destroy] do
     resource :purchases, only: [:show, :update,:index] 
     collection do
@@ -22,6 +31,8 @@ Rails.application.routes.draw do
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy]
   resources :users, only: [:new,:create]
+=======
+>>>>>>> e78065a... commit
 
   resources :categories, only: [:index] do
     member do
@@ -30,4 +41,8 @@ Rails.application.routes.draw do
       get 'grandchild'
     end
   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> e78065a... commit
 end

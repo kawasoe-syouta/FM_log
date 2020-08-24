@@ -36,7 +36,7 @@
           %span.SellPage__contents--required
             必須
           #category_field
-            = form.collection_select :category_id, @categories, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "SellPage__format--select"
+            = form.collection_select :category_id, @parents, :id, :name, { include_blank: "---", selected:"" }, id: "category_form", class: "SellPage__format--select"
           -# = form.select :category, options_for_select(Category.all.map { |ct| [ct.name, ct.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
           商品の状態

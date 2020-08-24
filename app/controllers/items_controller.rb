@@ -25,13 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @categories = Category.order(:id)
-    @item = Item.new()
+    @items = Item.all
+    @parents = Category.where(ancestry: nil)
     @item_images = @item.item_images.build
   end
 
   def show
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
   end
 
   def destroy

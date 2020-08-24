@@ -1,9 +1,12 @@
 class CategoriesController < ApplicationController
-  
   before_action :set_category, only: [:parent, :child, :grandchild]
   
+  def index
+    @parents = Category.where(ancestry: nil)
+  end
+
   def parent
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
     #親要素の子要素代入
     children = @category.children
     grandchildren = []
@@ -19,9 +22,9 @@ class CategoriesController < ApplicationController
       end
     end
   end
-  
+
   def child
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
     #子要素の孫要素代入
     grandchildren = @category.children
     @items = []
@@ -30,17 +33,18 @@ class CategoriesController < ApplicationController
       @items += Item.where(category_id: grandchild.id)
     end
   end
-  
+
   def grandchild
-    @categories = Category.order(:id)
+    @parents = Category.where(ancestry: nil)
     @items = Item.where(category_id: params[:id])
   end
-  
+
   private
-  
+
   def set_category
-    @categories = Category.order(:id)
-    #パラメーターに入ってくカテゴリーidを基にクリックされたカテゴリーのレコードを取得
+  #パラメーターに入ってくカテゴリーidを基にクリックされたカテゴリーのレコードを取得
     @category = Category.find(params[:id])
   end
+
+
 end
