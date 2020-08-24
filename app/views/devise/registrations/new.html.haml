@@ -50,7 +50,7 @@
           .UserPage__contents__title__user
             .UserPage__contents__title__user__birthday__text
             = form.date_select :Birthday, {use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, {class: "UserPage__birthday__text"}
-        = form.submit "登録する", class: "UserPage__format__submit"
+        = form.submit "次へ", class: "UserPage__format__submit"
   .UserPage__footer
     = image_tag "material/logo/logo.png", class: "UserPage__footer__logo"      
 
