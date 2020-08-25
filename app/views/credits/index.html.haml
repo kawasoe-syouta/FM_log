@@ -8,8 +8,9 @@
       .CreditPage__contents__smalltitle
         クレジットカード
       .CreditPage__contents__cardindex
-        - @carddata.each do |card|
-          = render partial: "card", locals: {data: card}
+        - unless @carddata == nil
+          - @carddata.each do |card|
+            = render partial: "card", locals: {data: card}
       = link_to new_credit_path, class: "CreditPage__contents__link" do
         新規カードを登録する
   .CreditPage__footer

@@ -19,9 +19,7 @@ class ApplicationController < ActionController::Base
     # 初期化
     carddata = []
 
-    cards = Credit.all()
-    # user連携時にコメントを外すこと
-    # cards = Credit.find_by(user_id: current_user.id)
+    cards = Credit.where(user_id: current_user.id)
     if cards == nil
       return;
     end

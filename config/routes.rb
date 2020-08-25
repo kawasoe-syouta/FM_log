@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index,:show, :destroy] do
     resource :purchases, only: [:show, :update]   
   end
-  resources :credits, only: [:index, :show, :new, :create, :destroy]
+  resources :credits, only: [:index, :new, :create, :destroy]
 end
