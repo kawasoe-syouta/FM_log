@@ -8,7 +8,21 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @parents = Category.where(ancestry: nil)
+    
+    @category = Category.find_by(id: @item.category_id) 
+    if @category.ancestry == nil
+      @parent = @category
+      @child = nil
+      @grandchild = nil
+    elsif @category.ancestry.include?("/") == false
+      @parent = Category.find_by(id: @category.ancestry)
+      @child = @category
+      @grandchild = nil
+    else
+      @parent = Category.find_by(id: @category.ancestry.split("/")[0])
+      @child = Category.find_by(id: @category.ancestry.split("/")[1])
+      @grandchild = @category
+    end
   end
 
   def destroy

@@ -1,7 +1,7 @@
 $(function(){
   function build_childSelect(){
     let child_select = `
-    <select name="post[category_id]" class="child_category_id SellPage__format--select">
+    <select class="child_category_id SellPage__format--select">
       <option value="">---</option>
     </select>
     `
@@ -40,7 +40,7 @@ $(function(){
 
   function build_gcSelect(){
     let gc_select = `
-    <select name="post[category_id]" class="gc_category_id SellPage__format--select">
+    <select class="gc_category_id SellPage__format--select">
       <option value="">---</option>
     </select>
     `
@@ -64,6 +64,8 @@ $(function(){
       })
         .done(function(gc_data){
           let gc_select = build_gcSelect
+          $('select[name="item[category]"]').attr('name','');
+          $('.child_category_id').attr('name','item[category]');
           $("#category_field").append(gc_select);
           gc_data.forEach(function (gc_d) {
             let option_html = build_Option(gc_d)
@@ -74,6 +76,10 @@ $(function(){
           alert("gcで通信エラーです！");
         });
     }
+  });
+  $(document).on("change", ".gc_category_id", function(){
+    $('select[name="item[category]"]').attr('name','');
+    $('.gc_category_id').attr('name','item[category]');
   });
 });
 

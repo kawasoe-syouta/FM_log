@@ -26,7 +26,6 @@ class SellsController < ApplicationController
   end
 
   def create
-    @parents = Category.where(ancestry: nil)
     #カテゴリーの取得
     category_data = Category.find_by(id: params[:item][:category])
     #フォームの取得(カテゴリ、phase:出品中 追加)
