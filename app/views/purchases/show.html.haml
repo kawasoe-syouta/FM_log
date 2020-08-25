@@ -58,7 +58,8 @@
               %p 名前
         %section.Contents__box__centerThree
           .Contents__box__centerThree__field
-            %p.Contents__box__centerThree__field__text 支払い方法を確認してください。
+            %p.Contents__box__centerThree__field__text
+              = @message
             = form.submit "購入する", name: "commit", class: "Contents__box__centerThree__field__btn"
   .Footer
     .Footer__title

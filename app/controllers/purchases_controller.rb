@@ -5,6 +5,7 @@ class PurchasesController < ApplicationController
   def show
     @carddata = card_index()
     @item = Item.find(params[:item_id])
+    @message = ""
     # 出品者が購入は禁止
     if @item.sell_user_id == current_user.id 
       redirect_to item_path(@item.id), alert: "購入することが出来ません"
@@ -25,11 +26,14 @@ class PurchasesController < ApplicationController
       redirect_to item_path(@item.id), alert: "購入済みです"
     else
       @item.with_lock do
-        @card = Credit.find_by(id: card_params[:card_id])
 
-        binding.pry()
-        # 支払い処理
+        @card = Credit.find_by(id: card_params[:card_id])
         begin
+          # ダブルチェック
+          if @card.user_id != current_user.id 
+            return create_action_error("カード照合にて異常が発生しました")
+          end
+          # 支払い処理
           charge = Payjp::Charge.create(
             amount: @item.price,
             customer: Payjp::Customer.retrieve(@card.card_customer),
@@ -59,6 +63,7 @@ class PurchasesController < ApplicationController
   def create_action_error(alert)
     @carddata = card_index()
     @item = Item.find(params[:item_id])
+    @message = alert
     return render :show, alert: alert
   end
 

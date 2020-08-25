@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   end
   resources :sells, only: [:new,:create]
   resources :items, only: [:index,:show, :destroy] do
-    resource :purchases, only: [:show, :update]   
+    resource :purchases, only: [:show, :update]
+    member do
+      get "show_image"
+    end
   end
   resources :credits, only: [:index, :new, :create, :destroy]
 end
