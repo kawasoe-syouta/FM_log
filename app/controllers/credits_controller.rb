@@ -1,12 +1,10 @@
 class CreditsController < ApplicationController
   require "payjp"
 
-  # user連携時はshow
+  before_action :redirect_no_user
+
   def index
-  # def show
-
     @carddata = card_index()
-
   end
   
   def new
@@ -20,7 +18,7 @@ class CreditsController < ApplicationController
       description: '顧客登録',
       card: params[:payjp_token]
     )
-    @credit = Credit.new(card_default: customer.default_card ,card_customer: customer.id)
+    @credit = Credit.new(user_id: current_user.id, card_default: customer.default_card ,card_customer: customer.id)
     if @credit.save
       redirect_to credits_path, notice: 'クレジットカード情報を登録しました'
     else
@@ -31,10 +29,7 @@ class CreditsController < ApplicationController
   #カード削除
   def destroy
 
-    @card = Credit.find_by(id: params[:id])
-    # user連携時にコメントを外すこと
-    # @card = Credit.find_by(id: params[:id], user_id: current_user.id)
-
+    @card = Credit.find_by(id: params[:id], user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
 
     # カード情報から登録されている顧客情報を参照
@@ -53,11 +48,9 @@ class CreditsController < ApplicationController
   end
 
   private
-  #ストロングパラメータ(items)
-  def credit_params
-    params.permit(:payjp_token)
-    # user連携時にコメントを外すこと
-    # params.permit(:payjp_token).merge(user_id: current_user.id)
-  end
   
+  def redirect_no_user
+    redirect_to root_path unless user_signed_in?
+  end
+
 end
