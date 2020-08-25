@@ -1,7 +1,7 @@
 .productLists
   - @items.each do |item|
     .productList
-      = link_to "#" do
+      = link_to item_path(item.id) do
         %figure.productList--img
           = image_tag 'material/icon/icon-02.png'
         .productList--body
