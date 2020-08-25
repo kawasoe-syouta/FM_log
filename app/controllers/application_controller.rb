@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
     carddata = []
 
     cards = Credit.where(user_id: current_user.id)
-    if cards == nil
-      return;
+    if cards.blank?
+      return nil
     end
 
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
