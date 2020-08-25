@@ -1,1 +1,40 @@
-住所登録
+.StreetPage
+  .StreetPage__header
+    = image_tag "material/logo/logo.png", class: "StreetPage__header__logo"
+  .StreetPage__contents
+    = form_with url: streets_path do |form|
+      .StreetPage__contents__InputOrchid
+        住所入力
+      .StreetPage__contents__title
+        郵便番号
+        %span.UserPage__contents__require
+          必須
+        = form.text_field :nick_name, placeholder: "例) 123-4567", class: "StreetPage__format__text"
+      .StreetPage__contents__title
+        都道府県
+        %span.StreetPage__contents__require
+          必須
+        = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: "StreetPage__format__text"}
+      .StreetPage__contents__title
+        市区町村
+        %span.StreetPage__contents__require
+          必須
+        = form.text_field :nick_name, placeholder: "例) 名古屋市中村区", class: "StreetPage__format__text"
+      .Street__contents__title
+        番地
+        %span.StreetPage__contents__require
+          必須
+        = form.text_field :nick_name, placeholder: "例) 青山1-1-1", class: "StreetPage__format__text"
+      .Street__contents__title
+        建物名
+        %span.StreetPage__contents__any
+          任意
+        = form.text_field :nick_name, placeholder: "例)フリマビル 201", class: "StreetPage__format__text"
+      .Street__contents__title
+        電話番号
+        %span.StreetPage__contents__require
+          必須
+        = form.text_field :nick_name, placeholder: "例) 09012345678", class: "StreetPage__format__text"
+      = form.submit "登録", class: "StreetPage__format__submit"
+.StreetPage__footer
+  = image_tag "material/logo/logo.png", class: "UserPage__footer__logo"      
