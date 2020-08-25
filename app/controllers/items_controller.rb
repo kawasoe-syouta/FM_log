@@ -34,6 +34,30 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
+  def new
+    @product = Product.new
+    @product.images.new
+  end
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @product = Product.new
+  end
+  def update
+    if @product.update(product_params)
+      redirect_to products_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     if @items.destroy
       redirect_to root_path

@@ -3,10 +3,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
+    @parents = Category.where(ancestry: nil)
     @user = User.new
   end
 
   def create
+    @parents = Category.where(ancestry: nil)
     @user = User.new(user_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
@@ -26,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # streetビュー完成後に追加する
   def new_streets
-
+    
   end
 
   def create_streets
