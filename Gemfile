@@ -82,5 +82,6 @@ gem 'font-awesome-sass'
 gem "active_hash"
 gem "ancestry"
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'mini_magick'
 gem 'devise'

@@ -1,0 +1,19 @@
+.SellComplete
+  .SellComplete__header
+    = image_tag "material/logo/logo.png", class: "SellComplete__header__logo"
+  .SellComplete__contents
+    .SellComplete__contents__largetitle
+      出品が完了しました
+    .SellComplete__contents__smalltitle
+      出品内容の確認
+    .SellComplete__contents__itemfield
+      = image_tag @item.item_images[0].image.url, class: 'SellComplete__contents__itemfield--image'
+      .SellComplete__contents__itemfield__label
+        .SellComplete__contents__itemfield__name
+          = @item.name
+        .SellComplete__contents__itemfield__price
+          = "#{@item.price} 円"
+    = link_to items_path, class: "SellComplete__contents__backbtm" do
+      一覧に戻る
+  .SellComplete__footer
+    = image_tag "material/logo/logo.png", class: "SellComplete__footer__logo"
