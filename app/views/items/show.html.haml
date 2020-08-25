@@ -94,7 +94,10 @@
                 = link_to "#" do
                   = icon('fas', 'flag')
                   不適切な商品の通報
-        - if user_signed_in? && current_user.id == @items.sell_user_id
+        - if user_signed_in? && current_user.id != @items.buy_user_id
+          .buyArea
+            = link_to "購入画面へ進む", purchase_path(@items.id), method: :get
+        - if user_signed_in? && current_user.id == @item.sell_user_id
           .deleteArea
             = link_to "投稿を削除", item_path(@items.id), method: :delete
         .commentBox
