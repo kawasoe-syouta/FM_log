@@ -1,14 +1,14 @@
 class ItemsController < ApplicationController
-<<<<<<< HEAD
   before_action :items, only: [:show, :destroy]
+
   def index
     @items = Item.all
+    @parents = Category.where(ancestry: nil)
   end
-=======
->>>>>>> 9b1489e... commit
-  
+
   def show
-    
+    @item = Item.find(params[:id])
+    @parents = Category.where(ancestry: nil)
   end
 
   def destroy
@@ -23,4 +23,5 @@ class ItemsController < ApplicationController
   def items
     @items = Item.find(params[:id])
   end
+
 end

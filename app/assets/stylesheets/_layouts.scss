@@ -127,129 +127,73 @@ header.header {
   }
 }
 
-#categoryBtn {
-  position: relative;
-  height: 44px;
-  line-height: 32px;
-}
-
-#categoryBtn span {
-  vertical-align: middle;
-}
-
-.listLeft>li {
-  position: relative;
-  display: inline-block;
-  padding: 0 11px;
-  cursor: pointer;
-}
-
-.listLeft>li:first-child {
-  padding-left: 0;
-}
-
-.listLeft>li:last-child {
-  padding-right: 0;
-}
-
-.listLeft>li.hover,.listLeft>li.hover .categoryTree--item,.listLeft>li:hover,.listLeft>li:hover .categoryTree--item {
-  display: block;
-}
-
-.listLeft h2 {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.listLeft a {
-  display: block;
-  color: #333;
-}
-
-.listLeft a:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-.categoryTree {
-  position: absolute;
-  top: 44px;
-  left: -34px;
-  z-index: 1000;
-  background: #fff;
-  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
-}
-.categoryTree a {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 14px;
-}
-.categoryTree--item {
+// カテゴリー
+.category__child, .category__parent, .category__grandchild{
   display: none;
-  width: 224px;
+  z-index: 999;
 }
-@media screen and (min-width: 1068px) {
-  .categoryTree {
-      left:0;
+
+.category__icon,.brands__icon{
+  color: #3CCAEC;
+}
+
+// カテゴリーの大枠の要素の共通項
+.category__list{
+  position: absolute;
+  height: 720px;
+  background-color: white;
+  border-right: 1px solid whitesmoke;
+}
+
+// 子要素はカテゴリー名の共通項
+.category__child--name{
+  width: 100%;
+  color: black;
+  display: inline-block;
+  padding: 3px 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  &:hover{
+    background-color: #eeeeee;
   }
 }
-.categoryTree--item:hover>ul .categoryTree--item2,.categoryTree--item.hover>ul .categoryTree--item2,.categoryTree--item.active>ul .categoryTree--item2 {
-  display: block;
-}
-.categoryTree--item h3 {
-  font-weight: 400;
-  font-size: 14px;
-}
-.categoryTree--item h3 a {
-  padding: 8px 16px;
-  line-height: 44px;
-  background-color: #fff;
-}
-.categoryTree--item h3 a:hover,.categoryTree--item h3 a.active {
-  background-color: #3CCEAC;
-  color: #fff;
-}
-.categoryTree2 {
-  position: absolute;
-  top: 0;
-  left: 224px;
-  bottom: 0;
-  background: #fff;
-  -webkit-box-shadow: 1px 0 0 0 #eee inset;
-  box-shadow: 1px 0 0 0 #eee inset
-}
-.categoryTree--item2 {
-  display: none;
-  width: 224px
-}
-.categoryTree--item2.hover>ul .categoryTree--item3,.categoryTree--item2:hover>ul .categoryTree--item3 {
-  display: block;
-}
-.categoryTree--item2>h2 a {
-  padding: 0 16px;
-  background-color: #fff;
-}
-.categoryTree--item2>a:hover,.categoryTree--item2>a.active {
-  background: #eee;
-}
-.categoryTree3 {
-  position: absolute;
-  top: 0;
-  left: 224px;
-  bottom: 0;
-  background: #fff;
-  -webkit-box-shadow: 1px 0 0 0 #eee inset;
-  box-shadow: 1px 0 0 0 #eee inset;
-}
-.categoryTree--item3 {
-  display: none;
-  width: 320px;
-}
-.categoryTree--item3>a {
-  padding: 0 16px;
-  background-color: #fff;
-}
-.categoryTree--item3>a:hover,.categoryTree--item3>a.active {
-  background: #eee;
+
+.categories{
+  &:hover{
+    .category__parent{
+      display: block;
+      &--name{
+        width: 100%;
+        color: black;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 13px;
+        letter-spacing: 2px;
+        &:hover{
+          background-color: #3CCAEC;
+          color: #fff;
+        }
+      }
+      li {
+        &:hover{
+          .category__child{
+            width: 100%;
+            display: block;
+            top: 0;
+            left: 221px;
+            li {
+              &:hover{
+                .category__grandchild{
+                  width: 300px;
+                  display: block;
+                  top: 0;
+                  left: 220px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

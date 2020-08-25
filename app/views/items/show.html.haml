@@ -42,14 +42,14 @@
                   %th.showTable__th
                     カテゴリー
                   %td.showTable__td
-                    = link_to "#" do
-                      レディース
+                    = link_to parent_category_path(@parents) do
+                      = @parents.name
                     %br/
-                    = link_to "#" do
-                      トップス
+                    = link_to child_category_path(@parents) do
+                      = @parents.name
                     %br/
-                    = link_to "#" do
-                      Tシャツ/カットソー(半袖/袖なし)
+                    = link_to grandchild_category_path(@parents) do
+                      = @parents.name
                 %tr.showTable__tr
                   %th.showTable__th
                     ブランド
@@ -139,3 +139,4 @@
                         1
                     %p
                       (税込)
+
