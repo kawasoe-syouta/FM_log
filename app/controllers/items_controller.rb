@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :items, only: [:show, :destroy]
-
+  before_action :items, only: [:show, :destroy, :show_image]
   def index
     @items = Item.all
     @parents = Category.where(ancestry: nil)
@@ -34,7 +33,6 @@ class ItemsController < ApplicationController
   end
   
   def show_image
-    @items = Item.find(params[:id])
     @image = @items.item_images
     send_data @image[0].image.file.read, :type => 'image.content_type', :disposition => 'inline'
   end
