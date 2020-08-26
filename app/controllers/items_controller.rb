@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :items, only: [:show, :destroy]
+  before_action :items, only: [:show, :destroy, :show_image]
   before_action :set_parents, only: [:new, :create, :edit]
 
   def search
@@ -26,16 +26,23 @@ class ItemsController < ApplicationController
     @item_images = @item.item_images.build
     @parents = Category.where(ancestry: nil)
   end
-  
-
-  def index
-    @categories = Category.order(:id)
-    @item = Item.new()
-    @item_images = @item.item_images.build
-  end
 
   def show
-    @parents = Category.where(ancestry: nil)
+    @category = @items.category
+    if @category.ancestry == nil
+      @parent = @category
+      @child = nil
+      @grandchild = nil
+    elsif @category.ancestry.include?("/") == false
+      @parent = Category.find_by(id: @category.ancestry)
+      @child = @category
+      @grandchild = nil
+    else
+      @parent = Category.find_by(id: @category.ancestry.split("/")[0])
+      @child = Category.find_by(id: @category.ancestry.split("/")[1])
+      @grandchild = @category
+    end
+    @image = ItemImage.all
   end
 
   def new
@@ -69,63 +76,15 @@ class ItemsController < ApplicationController
       alert:"削除ができません"
     end
   end
+  
+  def show_image
+    @image = @items.item_images
+    send_data @image[0].image.file.read, :type => 'image.content_type', :disposition => 'inline'
+  end
+  
 
   private
   def items
     @items = Item.find(params[:id])
-  end
-  def edit
-    
-  end
-
-  private
-
-  #数値に変換可能な文字列を数値に変換する
-  def integer_string?(str)
-    Integer(str)
-    true
-  rescue ArgumentError
-    false
-  end
-
-  #paramsの内容を数値に変換
-  def params_int(model_params)
-    model_params.each do |key,value|
-      begin
-        if integer_string?(value)
-          model_params[key]=value.to_i
-        end              
-      rescue => exception
-        # nothing
-      end
-    end
-    return model_params
-  end
-  def edit
-    @categories = Category.order(:id)
-  end
-
-  private
-
-  #数値に変換可能な文字列を数値に変換する
-  def integer_string?(str)
-    Integer(str)
-    true
-  rescue ArgumentError
-    false
-  end
-
-  #paramsの内容を数値に変換
-  def params_int(model_params)
-    model_params.each do |key,value|
-      begin
-        if integer_string?(value)
-          model_params[key]=value.to_i
-        end              
-      rescue => exception
-        # nothing
-      end
-    end
-    return model_params
   end
 end

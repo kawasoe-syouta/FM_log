@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'items#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -23,6 +22,8 @@ Rails.application.routes.draw do
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy]
   resources :users, only: [:new,:create]
+    get 'show_image', :on => :member
+  end
 
   resources :categories, only: [:index] do
     member do

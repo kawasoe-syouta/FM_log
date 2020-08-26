@@ -1,5 +1,6 @@
 class SellsController < ApplicationController
   before_action :set_parents, only: [:new, :create]
+  before_action :redirect_no_user
 
   def search
     respond_to do |format|
@@ -18,15 +19,13 @@ class SellsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
-  before_action :redirect_no_user
-  def index
+  def new
     @parents = Category.where(ancestry: nil)
     @item = Item.new()
     @item_images = @item.item_images.build
   end
 
   def create
-    @parents = Category.where(ancestry: nil)
     #カテゴリーの取得
     category_data = Category.find_by(id: params[:item][:category])
     #フォームの取得(カテゴリ、phase:出品中 追加)
