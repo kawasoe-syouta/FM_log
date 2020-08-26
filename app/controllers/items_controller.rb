@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
       @child = Category.find_by(id: @category.ancestry.split("/")[1])
       @grandchild = @category
     end
-    @image = Item_image.all
     @image = ItemImage.all
   end
 
