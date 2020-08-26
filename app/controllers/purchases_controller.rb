@@ -5,6 +5,8 @@ class PurchasesController < ApplicationController
   def show
     @carddata = card_index()
     @item = Item.find(params[:item_id])
+    @user = current_user
+    @street = Street.find_by(user_id: current_user.id)
     @message = ""
     # 出品者が購入は禁止
     if @item.sell_user_id == current_user.id 
@@ -64,6 +66,8 @@ class PurchasesController < ApplicationController
     @carddata = card_index()
     @item = Item.find(params[:item_id])
     @message = alert
+    @user = current_user
+    @street = Street.find_by(user_id: current_user.id)
     return render :show, alert: alert
   end
 

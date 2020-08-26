@@ -43,9 +43,21 @@
               %h3.Contents__box__centerTwo__field__shippingAddress__text 
                 配送先
             .Contents__box__centerTwo__field__details
-              %p 郵便番号
-              %p 住所
-              %p 名前
+              .Contents__box__centerTwo__field__details--postalcode
+                .Contents__box__centerTwo__field__details__title
+                  郵便番号
+                .Contents__box__centerTwo__field__details__field
+                  = @street.postal_code
+              .Contents__box__centerTwo__field__details--address
+                .Contents__box__centerTwo__field__details__title
+                  住所
+                .Contents__box__centerTwo__field__details__field
+                  = @street.address
+              .Contents__box__centerTwo__field__details--name
+                .Contents__box__centerTwo__field__details__title
+                  名前
+                .Contents__box__centerTwo__field__details__field
+                  = "#{@user.firstname} #{@user.surname}"
         %section.Contents__box__centerThree
           .Contents__box__centerThree__field
             %p.Contents__box__centerThree__field__text
