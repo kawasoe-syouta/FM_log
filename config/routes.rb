@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new,:create]
   resources :purchases, only: :index
   resources :mypages
+  resources :logouts
 end

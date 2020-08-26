@@ -1,23 +1,23 @@
 .MyPage
   .MyPage__main
-    .Mypage__main__content
-      .Mypage__main__content__icon
-        .Mypage__main__content__icon__user
+    .MyPage__main__content
+      .MyPage__main__content__icon
+        .MyPage__main__content__icon__user
           %a{:href => "#"}
-            .Mypage__main__content__icon__user__figure
+            .MyPage__main__content__icon__user__figure
               %h2.bold フリマ太郎
               .mypage-number
                 評価
                 %span.bold 0
                 出品数
                 %span.bold 0
-      .Mypage__main__content__notification-todo
-        %ul.Mypage__main__content__notification-todo__menu
+      .MyPage__main__content__notification-todo
+        %ul.MyPage__main__content__notification-todo__menu
           %li
             %a#about.menu_item.active{:href => "#"} お知らせ
           %li
             %a#service.menu_item{:href => "#"} やることリスト
-        %ul.Mypage__main__content__notification-todo__contents
+        %ul.MyPage__main__content__notification-todo__contents
           %ul.contents
             %li.content.show
             %li.content
@@ -25,7 +25,7 @@
       .MyPage__main__side__nav
         %ul.MyPage__main__side__nav__list
           %li
-            %a.MyPage__main__side__nav__list__item{:href => "/#"}
+            %a.MyPage__main__side__nav__list__item{:href => "/mypages/index"}
               マイページ
           %li
             %a.MyPage__main__side__nav__list__item{:href => "/#"}
@@ -81,7 +81,7 @@
             %a.MyPage__main__side__nav__list__item{:href => "/#"}
               クレジットカード
           %li
-            %a.MyPage__main__side__nav__list__item{:href => "/#"}
+            %a.MyPage__main__side__nav__list__item{:href => "/logouts"}
               ログアウト
         
  
