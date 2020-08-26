@@ -21,6 +21,11 @@
           %span.UserPage__contents__require
             必須
           = form.password_field :password, placeholder: "7文字以上の半角英数字", class: "UserPage__format__text"
+        .UserPage__contents__title
+          パスワード(確認)
+          %span.UserPage__contents__require
+            必須
+          = form.password_field :password_confirmation, placeholder: "7文字以上の半角英数字", class: "UserPage__format__text"
         .UserPage__contents__identification
           %p 本人確認
           %br
