@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production? 
+  before_action :categories
 
   private
+
+  def categories
+    @parents = Category.where(ancestry: nil)
+  end
   
   def production?
     Rails.env.production?
