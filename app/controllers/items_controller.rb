@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
     @items = Item.all
     @item = Item.new()
     @item_images = @item.item_images.build
-    @parents = Category.where(ancestry: nil)
   end
 
   def show
@@ -45,25 +44,13 @@ class ItemsController < ApplicationController
     @image = ItemImage.all
   end
 
-  def new
-    @product = Product.new
-    @product.images.new
-  end
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to products_path
-    else
-      render :new
-    end
-  end
-
   def edit
-    @product = Product.new
+    @item = Item.find(params[:id])
+    @item_images = @item.item_images.build
   end
   def update
-    if @product.update(product_params)
-      redirect_to products_path
+    if @item.update(item_params)
+      redirect_to items_path
     else
       render :edit
     end
@@ -86,5 +73,9 @@ class ItemsController < ApplicationController
   private
   def items
     @items = Item.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image]).merge(sell_user_id: current_user.id)
   end
 end
