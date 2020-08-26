@@ -1,0 +1,69 @@
+.MyPage
+  .MyPage__main
+    .MyPage__main__content
+      .MyPage__main__content__icon
+        .MyPage__main__content__icon__user
+          .MyPage__main__content__icon__user__figure
+            %h2.bold フリマ太郎
+            .mypage-number
+              評価
+              %span.bold 0
+              出品数
+              %span.bold 0
+      .MyPage__main__content__notification-todo
+        %ul.MyPage__main__content__notification-todo__menu
+          %li
+            %a#about.menu_item.active{:href => "#"} お知らせ
+          %li
+            %a#service.menu_item{:href => "#"} やることリスト
+        %ul.MyPage__main__content__notification-todo__contents
+          %ul.contents
+            %li.content.show
+            %li.content
+    .MyPage__main__side
+      .MyPage__main__side__nav
+        %ul.MyPage__main__side__nav__list
+          %li
+            = link_to "マイページ", "/mypages/index", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "お知らせ", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "やることリスト", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "いいね！一覧", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "出品する", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "下書き一覧", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "出品した商品 - 出品中", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "出品した商品 - 取引中", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "出品した商品 - 売却済み", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "購入した商品 - 取引中", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "購入した商品 - 売却済み", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "購入した商品 - 過去の取引", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "ニュース一覧", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "評価一覧", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "ガイド", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "お問い合わせ", "#", class: "MyPage__main__side__nav__list__item"
+        %h3.MyPage__main__side__nav__head 設定
+        %ul.MyPage__main__side__nav__list
+          %li
+            = link_to "プロフィール", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "クレジットカード", "#", class: "MyPage__main__side__nav__list__item"
+          %li
+            = link_to "ログアウト", "/logouts", class: "MyPage__main__side__nav__list__item"
+        
+ 
+          
+    
