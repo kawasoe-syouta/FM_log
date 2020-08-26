@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'items#index'
-  resources :sells, only: [:index,:create]
-  resources :items, only: [:index,:show]
-  resources :users, only: [:new,:create]
-  resources :purchases, only: :index
+  root to: 'items#index'
   resources :mypages
   resources :logouts
-  root to: 'items#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
