@@ -20,7 +20,6 @@ class SellsController < ApplicationController
   end
 
   def new
-    @parents = Category.where(ancestry: nil)
     @item = Item.new()
     @item_images = @item.item_images.build
   end

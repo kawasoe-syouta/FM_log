@@ -2,11 +2,10 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:parent, :child, :grandchild]
   
   def index
-    @parents = Category.where(ancestry: nil)
+    
   end
 
   def parent
-    @parents = Category.where(ancestry: nil)
     #親要素の子要素代入
     children = @category.children
     grandchildren = []

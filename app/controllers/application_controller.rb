@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :categories
   
   def index
-    @parents = Category.where(ancestry: nil)
+    
   end
 
   private
