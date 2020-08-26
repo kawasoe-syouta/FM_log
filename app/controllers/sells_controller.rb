@@ -1,6 +1,23 @@
 class SellsController < ApplicationController
-
+  before_action :set_parents, only: [:new, :create]
   before_action :redirect_no_user
+
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
 
   def new
     @item = Item.new()
