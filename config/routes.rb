@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'show_image', :on => :member
     resource :purchases, only: [:show, :update]
   end
-  resources :credits, only: [:index, :show, :new, :create, :destroy]
+  resources :credits, only: [:index, :new, :create, :destroy]
 
   resources :categories, only: [:index] do
     member do
