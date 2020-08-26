@@ -3,72 +3,51 @@
     .LogOut__main__content
       .LogOut__main__content__icon
         .LogOut__main__content__icon__user
-          %a{:href => "#"}
-            .LogOut__main__content__icon__user__logout
-              = link_to "ログアウト", "#"
-          
+          .LogOut__main__content__icon__user__logout
+            = link_to "ログアウト", "#"
     .LogOut__main__side
       .LogOut__main__side__nav
         %ul.LogOut__main__side__nav__list
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/mypages/index"}
-              マイページ
+            = link_to "マイページ", "/mypages/index", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              お知らせ
+            = link_to "お知らせ", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              やることリスト
+            = link_to "やることリスト", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              いいね！一覧
+            = link_to "いいね！一覧", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              出品する
+            = link_to "出品する", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              下書き一覧
+            = link_to "下書き一覧", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              出品した商品 - 出品中
+            = link_to "出品した商品 - 出品中", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              出品した商品 - 取引中
+            = link_to "出品した商品 - 取引中", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              出品した商品 - 売却済み
+            = link_to "出品した商品 - 売却済み", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              購入した商品 - 取引中
+            = link_to "購入した商品 - 取引中", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              購入した商品 - 売却済み
+            = link_to "購入した商品 - 売却済み", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              購入した商品 - 過去の取引
+            = link_to "購入した商品 - 過去の取引", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              ニュース一覧
+            = link_to "ニュース一覧", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              評価一覧
+            = link_to "評価一覧", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              ガイド
+            = link_to "ガイド", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              お問い合わせ
+            = link_to "お問い合わせ", "#", class: "LogOut__main__side__nav__list__item"
         %h3.LogOut__main__side__nav__head 設定
         %ul.LogOut__main__side__nav__list
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              プロフィール
+            = link_to "プロフィール", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              クレジットカード
+            = link_to "クレジットカード", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            %a.LogOut__main__side__nav__list__item{:href => "/#"}
-              ログアウト
+            = link_to "ログアウト", "/logouts", class: "LogOut__main__side__nav__list__item"
         
  
           
