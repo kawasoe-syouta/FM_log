@@ -178,6 +178,18 @@
           }
           &__details {
             line-height: 1.4em;
+            &--postalcode {
+              display: flex;
+              justify-content: space-between;
+            }
+            &--address {
+              display: flex;
+              justify-content: space-between;
+            }
+            &--name {
+              display: flex;
+              justify-content: space-between;
+            }
           }
         }
       }
