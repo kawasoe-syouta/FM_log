@@ -129,4 +129,3 @@ class ItemsController < ApplicationController
     return model_params
   end
 end
-end
