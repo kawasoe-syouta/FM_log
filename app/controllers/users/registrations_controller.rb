@@ -10,8 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(user_params)
+    @user.password_confirmation = user_params[:password_confirmation]
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
+      @user.Birthday = nil
       render :new and return
     end
 
@@ -26,7 +28,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_streets
-
     @user = User.new(session["devise.regist_data"]["user"])
     @streets = Street.new(street_params)
     unless @streets.valid?
@@ -43,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:nick_name,:email,:password,:firstname,:surname,:firstname_kana,:surname_kana,:Birthday)
+    params.require(:user).permit(:nick_name,:email,:password, :password_confirmation,:firstname,:surname,:firstname_kana,:surname_kana,:Birthday)
   end
 
   def street_params

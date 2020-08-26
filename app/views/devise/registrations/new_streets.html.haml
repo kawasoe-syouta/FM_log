@@ -9,7 +9,7 @@
         郵便番号
         %span.UserPage__contents__require
           必須
-        = form.text_field :postal_code, placeholder: "例) 123-4567", class: "StreetPage__format__text"
+        = form.text_field :postal_code, placeholder: "例) 123-4567", class: "StreetPage__format__text", id: "street_postalcode"
       .StreetPage__contents__title
         都道府県
         %span.StreetPage__contents__require
@@ -34,7 +34,7 @@
         電話番号
         %span.StreetPage__contents__require
           必須
-        = form.text_field :phone_number, placeholder: "例) 09012345678", class: "StreetPage__format__text"
-      = form.submit "登録", class: "StreetPage__format__submit"
+        = form.text_field :phone_number, placeholder: "例) 09012345678", class: "StreetPage__format__text", id: "street_phonenumber"
+      = form.submit "登録", class: "StreetPage__format__submit", id: "street_submit"
   .StreetPage__footer
     = image_tag "material/logo/logo.png", class: "StreetPage__footer__logo"      
