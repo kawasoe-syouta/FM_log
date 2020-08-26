@@ -41,11 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_112101) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-<<<<<<< HEAD
     t.bigint "sell_user_id", null: false
-=======
-    t.bigint "sell_user_id"
->>>>>>> 9b1489e... commit
     t.bigint "buy_user_id"
     t.bigint "category_id", null: false
     t.integer "phase_id", null: false

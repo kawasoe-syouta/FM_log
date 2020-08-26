@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :items, only: [:show, :destroy]
+  before_action :set_parents, only: [:new, :create, :edit]
   def index
     @items = Item.all
   end
   
-  before_action :set_parents, only: [:new, :create, :edit]
 
   def search
     respond_to do |format|
@@ -27,16 +27,16 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @parents = Category.where(ancestry: nil)
-    @item_images = @item.item_images.build
   end
-
+  
   def show
     @parents = Category.where(ancestry: nil)
   end
-
+  
   def new
     @product = Product.new
     @product.images.new
+    @item_images = @item.item_images.build
   end
   def create
     @product = Product.new(product_params)
@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
   def edit
-    @categories = Category.order(:id)
+    
   end
 
   private
