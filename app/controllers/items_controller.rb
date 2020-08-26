@@ -29,31 +29,6 @@ class ItemsController < ApplicationController
   def show
     @parents = Category.where(ancestry: nil)
   end
-  
-  def new
-    @product = Product.new
-    @product.images.new
-    @item_images = @item.item_images.build
-  end
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to products_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @product = Product.new
-  end
-  def update
-    if @product.update(product_params)
-      redirect_to products_path
-    else
-      render :edit
-    end
-  end
 
   def destroy
     if @items.destroy
