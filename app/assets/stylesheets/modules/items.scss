@@ -193,6 +193,23 @@ img {
   border: 1px solid #333;
   text-decoration: none;
 }
+.deleteArea {
+  line-height: 48px;
+  background: #3ccace;
+  border: 1px solid #3ccace;
+  color: #fff;
+  width: 60%;
+  font-size: 18px;
+  border-radius: 100px;
+  text-align: center;
+  margin: 20px auto;
+  margin-top: 50px;
+}
+.deleteArea a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .commentBox {
   padding: 24px;
   background-color: #fff;
@@ -303,4 +320,7 @@ img {
 .details p {
   font-size: 10px;
   text-align: left;
+}
+#size_box{
+  display: none;
 }

@@ -1,0 +1,14 @@
+.Cardinfo
+  .Cardinfo--check
+  .Cardinfo__number
+    .Cardinfo__text
+      = "************" + data[:last]
+    .Cardinfo__expiration
+      .Cardinfo__expiration--title
+        有効期限
+      .Cardinfo__expiration--info
+        = data[:exp_month] + " / " + data[:exp_year]
+    .Cardinfo__brand
+      = image_tag "material/card/#{data[:logo]}", class: "Cardinfo__brand--img", alt: data[:brand]
+  = link_to credit_path(data[:id]), method: :delete, class: "Cardinfo__delete" do
+    削除する

@@ -1,0 +1,74 @@
+// Place all the styles related to the credits controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.CreditPage {
+  width: 100vw;
+  height: 100%;
+  background-color :#f8f8f8;
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__logo {
+      display: block;
+      margin: 2.5% 0;
+      width: 12%;
+    }
+  }
+  &__contents {
+    background-color : #ffffff;
+    height: calc(100vh - 15%);
+    width: 40%;
+    margin: 0 auto;
+    padding: 3% 8%;
+    &__paragraph{
+      margin-bottom: 30px;
+    }
+    &__largetitle {
+      color: #222222;
+      display: block;
+      font-size: 26px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    &__smalltitle {
+      color: #333333;
+      display: block;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    &__link {
+      display: block;
+      margin: 10px 0;
+    }
+    &__cardindex {
+      margin-top: 20px; 
+    }
+  }
+  &__format {
+    &__submit {
+      display: block;
+      background-color: #3ccace;
+      color: #ffffff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      width: 350px;
+      height: 60px;
+      font-size: 20px;
+      margin: 20px auto;
+    }
+  }
+  &__footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__logo {
+      display: block;
+      margin: 2% 0;
+      width: 8%;
+    }
+  }
+}

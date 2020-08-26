@@ -42,14 +42,17 @@
                   %th.showTable__th
                     カテゴリー
                   %td.showTable__td
-                    = link_to "#" do
-                      レディース
-                    %br/
-                    = link_to "#" do
-                      トップス
-                    %br/
-                    = link_to "#" do
-                      Tシャツ/カットソー(半袖/袖なし)
+                    - unless @parent == nil
+                      = link_to parent_category_path(@parent) do
+                        = @parent.name
+                      %br/
+                    - unless @child == nil
+                      = link_to child_category_path(@child) do
+                        = @child.name
+                      %br/
+                    - unless @grandchild == nil
+                      = link_to grandchild_category_path(@grandchild) do
+                        = @grandchild.name
                 %tr.showTable__tr
                   %th.showTable__th
                     ブランド
@@ -91,6 +94,9 @@
                 = link_to "#" do
                   = icon('fas', 'flag')
                   不適切な商品の通報
+        - if user_signed_in? && current_user.id == @items.sell_user_id
+          .deleteArea
+            = link_to "投稿を削除", item_path(@items.id), method: :delete
         .commentBox
           %ul.commentContents
           %form.new_comments
@@ -136,3 +142,4 @@
                         1
                     %p
                       (税込)
+

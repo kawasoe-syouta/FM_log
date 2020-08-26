@@ -1,0 +1,39 @@
+.CardPage
+  .CardPage__header
+    = image_tag "material/logo/logo.png", class: "CardPage__header__logo"
+  .CardPage__contents
+    = form_with url: credits_path, model: @credit, local: true, class: "CardPage__format" do |form|
+      .CardPage__contents--title
+        カード番号
+        %span.CardPage__contents--required
+          必須
+      = form.text_field :card_number, placeholder: "半角数字のみ",id: "card_number", class: "CardPage__format--text", maxlength: 16
+      .CardPage__contents__imageflex
+        = image_tag "material/card/visa.png", class: "CardPage__contents--image"
+        = image_tag "material/card/mc.png", class: "CardPage__contents--image"
+        = image_tag "material/card/jcb.png", class: "CardPage__contents--image"
+        = image_tag "material/card/amex.png", class: "CardPage__contents--image"
+        = image_tag "material/card/diners.png", class: "CardPage__contents--image"
+        = image_tag "material/card/discover.png", class: "CardPage__contents--image"
+      .CardPage__contents--title
+        有効期限
+        %span.CardPage__contents--required
+          必須
+      .CardPage__contents--expiration
+        - months = [{month: "01", id: 1},{month: "02", id: 2},{month: "03", id: 3},{month: "04", id: 4},{month: "05", id: 5},{month: "06", id: 6},{month: "07", id: 7},{month: "08", id: 8},{month: "09", id: 9},{month: "10", id: 10},{month: "11", id: 11},{month: "12", id: 12}]
+        = form.select :exp_month, options_for_select(months.map {|mon| [mon[:month], mon[:id]] }, 0), {prompt: ""} ,id: "card_month", class: "CardPage__format--select"
+        .CardPage__contents--slash
+          \/
+        = form.text_field :exp_year, id: "card_year", class: "CardPage__format--texthalf", maxlength: 2
+      .CardPage__contents--title
+        セキュリティコード
+        %span.CardPage__contents--required
+          必須
+      = form.text_field :card_number,id: "card_cvc", class: "CardPage__format--text", maxlength: 3
+      .CardPage__contents--question
+        カード裏面の番号とは？
+      = form.submit "登録する",id: "card_submit", class: "CardPage__format__submit"
+    = link_to credits_path, class: "CardPage__contents__backlink" do
+      もどる
+  .CreditPage__footer
+    = image_tag "material/logo/logo.png", class: "CardPage__footer__logo"

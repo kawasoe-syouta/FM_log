@@ -1,6 +1,25 @@
 class SellsController < ApplicationController
+  before_action :set_parents, only: [:new, :create]
+  before_action :redirect_no_user
 
-  def index
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @childrens = Category.find(params[:parent_id]).children
+        elsif params[:children_id]
+          @grandChilds = Category.find(params[:children_id]).children
+        end
+      end
+    end
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
+  def new
     @item = Item.new()
     @item_images = @item.item_images.build
   end
@@ -12,11 +31,12 @@ class SellsController < ApplicationController
     @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
     if @item.save
       respond_to do |format|
-        #出品完了(出品完了ページに飛ばす事)
-        format.html {render :index, notice: '出品完了'}
+        #出品完了
+        format.html {}
       end
     else
-      redirect_to sells_path, alert: '出品エラー'
+      @item_images = @item.item_images.build
+      render :new, alert: '出品エラー'
     end
   end
 
@@ -24,9 +44,7 @@ class SellsController < ApplicationController
 
   #ストロングパラメータ(items)
   def item_params
-    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price, item_images_attributes: [:image])
-    # user連携時にコメントを外すこと
-    # params.require(:item).permit(:name, :item_detail, :status_id, :delivery_days, :delivery_to_pay_id, :price).merge(sell_user_id: current_user.id)
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image]).merge(sell_user_id: current_user.id)
   end
 
   #数値に変換可能な文字列を数値に変換する
@@ -49,6 +67,10 @@ class SellsController < ApplicationController
       end
     end
     return model_params
+  end
+
+  def redirect_no_user
+    redirect_to root_path unless user_signed_in?
   end
 
 end

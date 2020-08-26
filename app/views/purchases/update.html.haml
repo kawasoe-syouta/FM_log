@@ -1,0 +1,19 @@
+.PurchaseComplete
+  .PurchaseComplete__header
+    = image_tag "material/logo/logo.png", class: "PurchaseComplete__header__logo"
+  .PurchaseComplete__contents
+    .PurchaseComplete__contents__largetitle
+      購入が完了しました
+    .PurchaseComplete__contents__smalltitle
+      購入内容の確認
+    .PurchaseComplete__contents__itemfield
+      = image_tag @item.item_images[0].image.url, class: 'PurchaseComplete__contents__itemfield--image'
+      .PurchaseComplete__contents__itemfield__label
+        .PurchaseComplete__contents__itemfield__name
+          = @item.name
+        .PurchaseComplete__contents__itemfield__price
+          = "#{@item.price} 円"
+    = link_to items_path, class: "PurchaseComplete__contents__backbtm" do
+      一覧に戻る
+  .PurchaseComplete__footer
+    = image_tag "material/logo/logo.png", class: "PurchaseComplete__footer__logo"

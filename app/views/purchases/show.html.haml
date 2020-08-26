@@ -1,0 +1,72 @@
+.Wrapper 
+  .Header
+    .Header__list
+      = image_tag "material/logo/logo.png", class: "Header__list__btn__logo"
+  .Contents
+    = form_with url: item_purchases_path, model: @item, local: true do |form|
+      .Contents__box
+        %section.Contents__box__title
+          %h2.Contents__box__title__weight 購入内容の確認
+        %section.Contents__box__center
+          .Contents__box__center__field
+            .Contents__box__center__field__left
+              %figure.Contents__box__center__field__left__photo
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG", alt: "", size: "auto"
+            .Contents__box__center__field__right
+              %p.Contents__box__center__field__right__name テストああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              %p.Contents__box__center__field__right__titleBox
+                %span.Contents__box__center__field__right__titleBox__name 送料込み（税込）
+                %span.Contents__box__center__field__right__titleBox__price ¥16,500
+        %section.Contents__box__centerZero
+          .Contents__box__centerZero__payment
+            %span 支払い金額
+            %span.Contents__box__centerZero__payment__price ¥16,500
+          %label.Contents__box__centerZero__point
+            %label.Contents__box__centerZero__point__left
+              %span.Contents__box__centerZero__point__left__checkBox
+                %span.Contents__box__centerZero__point__left__checkBox__click
+                  %input{type: 'checkbox'}
+              = image_tag ""
+              %p.Contents__box__centerZero__point__left__title ポイントの使用
+            %p.Contents__box__centerZero__point__right 所持ポイント: P0
+        %section.Contents__box__centerOne
+          .Contents__box__centerOne__field
+            .Contents__box__centerOne__field__methodOfPayment
+              %h3.Contents__box__centerOne__field__methodOfPayment__title 支払い方法
+            .Contents__box__centerOne__field__register
+              - if @carddata == nil
+                = link_to credits_path, class: "Contents__box__centerOne__field__register__btn" do
+                  = icon('fas', 'plus-circle')
+                  %span.Contents__box__centerOne__field__register__text 登録してください
+              - else
+                - @carddata.each do |card|
+                  = render partial: "card", locals: {data: card, form: form}
+        %section.Contents__box__centerTwo
+          .Contents__box__centerTwo__field
+            .Contents__box__centerTwo__field__shippingAddress
+              %h3.Contents__box__centerTwo__field__shippingAddress__text 配送先
+              = link_to "#", class: "Contents__box__centerTwo__field__shippingAddress__btn" do
+                変更する
+                = icon('fas', 'angle-right')
+            .Contents__box__centerTwo__field__details
+              %p 郵便番号
+              %p 住所
+              %p 名前
+        %section.Contents__box__centerThree
+          .Contents__box__centerThree__field
+            %p.Contents__box__centerThree__field__text 支払い方法を確認してください。
+            = form.submit "購入する", name: "commit", class: "Contents__box__centerThree__field__btn"
+  .Footer
+    .Footer__title
+      %ul.Footer__title__field
+        %li.Footer__title__field__text
+          = link_to "#", class: "Footer__title__field__text__privacy" do
+            プライバシーポリシー
+        %li.Footer__title__field__text
+          = link_to "#", class: "Footer__title__field__text__termsOfService" do
+            利用規約
+        %li.Footer__title__field__text
+          = link_to "#", class: "Footer__title__field__text__transaction" do
+            特定商取引に関する表記
+    = image_tag "material/logo/logo.png", class:"Footer__logo__image"
+    %p.Footer__box__text ©︎Fm_log,inc
