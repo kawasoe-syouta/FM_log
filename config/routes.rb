@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
   end
   resources :items, only: [:index,:show, :destroy] do
-    resource :purchases, only: [:show, :update]   
+    get 'show_image', :on => :member
+    resource :purchases, only: [:show, :update]
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy]
 
