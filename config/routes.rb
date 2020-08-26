@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :items, only: [:index,:show, :destroy] do
+  resources :items, only: [:index,:show, :destroy,:edit] do
     get 'show_image', :on => :member
     resource :purchases, only: [:show, :update]
   end
