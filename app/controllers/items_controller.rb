@@ -7,9 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    
-    @category = Category.find_by(id: @item.category_id) 
+    @category = @items.category
     if @category.ancestry == nil
       @parent = @category
       @child = nil
