@@ -39,7 +39,6 @@ $(function(){
     $(".SellPage__contents__imgbtm--file").clone(true).appendTo(`.SellPage__uploadfile[data-index="${fileIndex}"]`);
     $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__contents__imgbtm--file").attr('class', "SellPage__uploadfile--input")
     $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__uploadfile--input").attr('name', `item[item_images_attributes][${fileIndex}][image]`)
-    // $(`.SellPage__uploadfile[data-index="${fileIndex}"]`).children(".SellPage__uploadfile--input").off();
     // indexに1追加する
     fileIndex += 1
     // 入力ラベルの宛先を変更
@@ -83,7 +82,6 @@ $(function(){
   // 画像表示
   $(".SellPage__contents__imgbtm--file").on("change",function(e){
     const targetIndex = $(this).attr('data-index');
-    // const targetIndex = $(".SellPage__contents__imgbtm").attr('data-index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
