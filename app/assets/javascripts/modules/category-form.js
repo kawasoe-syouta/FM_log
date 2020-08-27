@@ -1,11 +1,11 @@
 $(function(){
   function build_childSelect(){
-    let child_select = `
-    <select class="child_category_id SellPage__format--select">
-      <option value="">---</option>
-    </select>
-    `
-    return child_select;
+      let child_select = `
+      <select class="child_category_id SellPage__format--select">
+        <option value="">---</option>
+      </select>
+      `
+      return child_select; 
   }
 
   function build_Option(children) {
@@ -77,5 +77,8 @@ $(function(){
         });
     }
   });
+  $(document).on("change", ".gc_category_id", function(){
+    $('select[name="item[category]"]').attr('name','');
+    $('.gc_category_id').attr('name','item[category]');
+  });
 });
-
