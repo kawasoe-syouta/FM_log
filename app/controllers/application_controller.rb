@@ -24,11 +24,9 @@ class ApplicationController < ActionController::Base
     # 初期化
     carddata = []
 
-    cards = Credit.all()
-    # user連携時にコメントを外すこと
-    # cards = Credit.find_by(user_id: current_user.id)
-    if cards == nil
-      return;
+    cards = Credit.where(user_id: current_user.id)
+    if cards.blank?
+      return nil
     end
 
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]

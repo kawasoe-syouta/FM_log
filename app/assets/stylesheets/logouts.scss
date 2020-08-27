@@ -1,0 +1,130 @@
+.LogOut {
+  background-color: #eee;
+  height: 1200px;
+  &__main {
+    padding-top: 40px;
+    margin: 40px auto 0 ;
+    width: 1020px;
+    height: 1000px;
+    &__content {
+      float: right;
+      width: 700px;
+      height: 1000px;
+      &__icon{
+        height: 200px;
+        background-color: #fff;
+        position: relative;
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        &__user {
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translate(0, -50%);
+          color: #333;
+          &__logout {
+            height: 48px;
+            width: 30%;
+            margin-left: 240px;
+            background-color: #3CCACE;
+            padding-top: 11px;
+            vertical-align: middle;
+          }
+        }
+        &__notification-todo {
+          margin-top: 48px;
+          padding: 0;
+          margin: 0 auto;
+          width: 700px;
+          background: #dce0e0;
+        }
+      }
+    }
+    &__side {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+      &__nav {
+        &__list li {
+          border-top: 1px solid #eee;
+          .LogOut__main__side__nav__list__item {
+            text-decoration: none;
+            position: relative;
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+          }
+        }
+        &__head {
+          margin: 40px 0 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.LogOut__main__content__icon__user a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul.LogOut__main__content__notification-todo__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+ul.LogOut__main__content__notification-todo__menu li {
+  display: inline-block;
+}
+ul.LogOut__main__content__notification-todo__menu li .menu_item {
+  display: inline-block;
+  font-size: 14px;
+  width: 350px;
+  height: 60px;
+  line-height: 20px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 7px;
+  color: #333;
+}
+ul.LogOut__main__content__notification-todo__menu li .active {
+  background: #fff;
+}
+ul.LogOut__main__content__notification-todo__menu li :not(.active):hover {
+  opacity: 0.5;
+  transition: .8s;
+}
+ul.contents li {
+  list-style: none;
+  font-size: 14px;
+  padding: 7px 10px;
+  line-height: 1.4;
+  background:  #fff;
+  min-height: 150px;
+  display: none;
+}
+ul.contents li.show {
+  display: block;
+  height: 500px;
+}
