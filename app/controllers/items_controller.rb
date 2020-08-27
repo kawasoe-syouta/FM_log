@@ -19,13 +19,13 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
-
+  
   def index
     @items = Item.all
     @item = Item.new()
     @item_images = @item.item_images.build
   end
-
+  
   def show
     @category = @items.category
     if @category.ancestry == nil
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     end
     @image = ItemImage.all
   end
-
+  
   def edit
     @item = Item.find(params[:id])
     @item_images = @item.item_images
@@ -76,7 +76,8 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
+    
   def destroy
     if @items.destroy
       redirect_to root_path
