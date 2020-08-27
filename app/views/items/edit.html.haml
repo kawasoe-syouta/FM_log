@@ -20,7 +20,7 @@
                   = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
                   .SellPage__uploadfile--remove
                     削除
-                  = n.file_field :image, class: "SellPage__contents__imgbtm--file", data:{index: n.index}
+                  = n.file_field :image, class: "SellPage__uploadfile--input", data:{index: n.index}
           .SellPage__contents__imagefield--list{list:{index: 2}}
             = form.fields_for :item_images do |n|
               - if 5 <= n.index && n.index <= 9
@@ -28,7 +28,7 @@
                   = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
                   .SellPage__uploadfile--remove
                     削除
-                  = n.file_field :image, class: "SellPage__contents__imgbtm--file", data:{index: n.index}
+                  = n.file_field :image, class: "SellPage__uploadfile--input", data:{index: n.index}
         = form.label "item_images_attributes_#{@item_images.length}_image" , class: "SellPage__contents__imgbtm", data:{index: @item_images.length} do
           = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
           .SellPage__contents__imgbtm--text

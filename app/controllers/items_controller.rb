@@ -52,20 +52,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_images = @item.item_images
     category_data = Category.find_by(id: params[:item][:category])
-    @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
-    if @item.update(params_int(item_params).merge(category: category_data))
-      flash[:notice] = '編集が完了しました'
-      redirect_to items_path(@item)
     # この二つがない時はupdateしない
-    if @item_images.exists? || params[:item].keys.include?("item_images_attributes")
+    if @item_images.exists? || params[:item].include?("item_images_attributes")
       if @item.valid?
-        update_image = params[:item][:item_images_attributes].values
+        update_image = item_images_params.values
         before_image = @item_images.ids
         before_image.each do |i|
-          binding.pry
-          Image.find(i).destroy unless update_image.find {|v| v[:id] == "#{i}"}
+          ItemImage.find(i).destroy unless update_image.find {|v| v[:id] == "#{i}"}
         end
-        if @item.update(params_int(item_params).merge(category: category_data))
+        if @item.update(params_int(update_item_params).merge(category: category_data))
           flash[:notice] = '編集が完了しました'
           redirect_to items_path(@item)
         else
@@ -124,5 +119,13 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image]).merge(sell_user_id: current_user.id)
+  end
+
+  def update_item_params
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image, :id]).merge(sell_user_id: current_user.id)
+  end
+
+  def item_images_params
+    params.require(:item).require(:item_images_attributes)
   end
 end

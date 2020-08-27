@@ -80,7 +80,7 @@ $(function(){
   }
 
   // 画像表示
-  $(".SellPage__contents__imgbtm--file").on("change",function(e){
+  $(".SellPage__contents__imgbtm--file, .SellPage__uploadfile--input").on("change",function(e){
     const targetIndex = $(this).attr('data-index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
