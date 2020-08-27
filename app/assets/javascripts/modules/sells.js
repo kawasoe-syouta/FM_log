@@ -6,7 +6,7 @@ $(function(){
   // 追加する時に割り振る画像番地
   var fileIndex = Number($(".SellPage__contents__imgbtm").attr('data-index'));
   // 列番号
-  var rowIndex = 0;
+  var rowIndex = Math.ceil((fileIndex + 1 )/ cRowlinemax);
   
   // 画像用のinputを生成する関数
   function buildFileField(index, url){
@@ -70,6 +70,9 @@ $(function(){
         $(img).children('.SellPage__uploadfile--input').attr('id', `item_images_attributes_${i-1}_image`)
         // 画像の参照
         $(img).children('img').attr('data-index', i-1)
+        // 画像入力フォームの変更
+        $(`#item_item_images_attributes_${i}_id`).attr('name',`item[item_images_attributes][${i-1}][id]`)
+        $(`#item_item_images_attributes_${i}_id`).attr('id',`item_item_images_attributes_${i-1}_id`)
         // 表示する行がずれている場合は正しい位置に表示する
         if (Math.ceil(i / cRowlinemax) < $(img).parent().attr('list-index')) {
           $(img).clone(true).appendTo(`.SellPage__contents__imagefield--list[list-index="${Math.ceil(i / cRowlinemax)}"]`);
@@ -108,6 +111,8 @@ $(function(){
     index = $(this).parent().attr('data-index')
     // 画像を削除
     $(this).parent().remove();
+    // 画像の入力を削除
+    $(`#item_item_images_attributes_${index}_id`).remove();
     // 空いた番号をシフトする
     ImageShift(index);
     // indexを1減らす

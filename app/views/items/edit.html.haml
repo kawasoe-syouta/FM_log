@@ -14,7 +14,7 @@
           画像をアップロード出来ます
         .SellPage__contents__imagefield
           .SellPage__contents__imagefield--list{list:{index: 1}}
-            = form.fields_for :item_images do |n|
+            = form.fields_for :item_images, @item_images do |n|
               - if n.index <= 4
                 = form.label "item_images_attributes_#{n.index}_image", id: "item_images_attributes_#{n.index}", class: "SellPage__uploadfile", data:{index: n.index} do
                   = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
@@ -22,13 +22,14 @@
                     削除
                   = n.file_field :image, class: "SellPage__uploadfile--input", data:{index: n.index}
           .SellPage__contents__imagefield--list{list:{index: 2}}
-            = form.fields_for :item_images do |n|
-              - if 5 <= n.index && n.index <= 9
-                = form.label "item_images_attributes_#{n.index}_image", id: "item_images_attributes_#{n.index}", class: "SellPage__uploadfile", data:{index: n.index} do
-                  = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
-                  .SellPage__uploadfile--remove
-                    削除
-                  = n.file_field :image, class: "SellPage__uploadfile--input", data:{index: n.index}
+            - @item_images.each_with_index do |image, i|
+              = form.fields_for :item_images, image, child_index: i do |m|
+                - if 5 <= m.index && m.index <= 9
+                  = form.label "item_images_attributes_#{m.index}_image", id: "item_images_attributes_#{m.index}", class: "SellPage__uploadfile", data:{index: m.index} do
+                    = image_tag m.object.image.url, class: "SellPage__uploadfile--file", data:{index: m.index}
+                    .SellPage__uploadfile--remove
+                      削除
+                    = m.file_field :image, class: "SellPage__uploadfile--input", data:{index: m.index}
         = form.label "item_images_attributes_#{@item_images.length}_image" , class: "SellPage__contents__imgbtm", data:{index: @item_images.length} do
           = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
           .SellPage__contents__imgbtm--text
