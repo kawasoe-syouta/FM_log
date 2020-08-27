@@ -56,7 +56,7 @@
           商品の状態
           %span.SellPage__contents--required
             必須
-          = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, @item.status_id), {prompt: @item} ,class: "SellPage__format--select"
+          = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, @item.status_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           配送について
