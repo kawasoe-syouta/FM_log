@@ -46,16 +46,32 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @item_images = @item.item_images.build
+    @item_images = @item.item_images
   end
   def update
     @item = Item.find(params[:id])
+    @item_images = @item.item_images
     category_data = Category.find_by(id: params[:item][:category])
-    @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
-    binding.pry
-    if @item.update(params_int(item_params).merge(category: category_data))
-      flash[:notice] = '編集が完了しました'
-      redirect_to items_path(@item)
+    # この二つがない時はupdateしない
+    if @item_images.exists? || params[:item].keys.include?("item_images_attributes")
+      if @item.valid?
+        update_image = params[:item][:item_images_attributes].values
+        before_image = @item_images.ids
+        before_image.each do |i|
+          binding.pry
+          Image.find(i).destroy unless update_image.find {|v| v[:id] == "#{i}"}
+        end
+        if @item.update(params_int(item_params).merge(category: category_data))
+          flash[:notice] = '編集が完了しました'
+          redirect_to items_path(@item)
+        else
+          flash[:alert] = '未入力項目があります'
+          render :edit
+        end 
+      else
+        flash[:alert] = '未入力項目があります'
+        render :edit
+      end
     else
       flash[:alert] = '未入力項目があります'
       render :edit
