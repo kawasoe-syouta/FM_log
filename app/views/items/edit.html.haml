@@ -57,7 +57,7 @@
           商品の状態
           %span.SellPage__contents--required
             必須
-          = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, 0), {prompt: @item} ,class: "SellPage__format--select"
+          = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, @item.status_id), {prompt: @item} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           配送について
@@ -65,17 +65,17 @@
           配送料の負担
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, @item.delivery_to_pay_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
           発送元の地域
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, @item.delivery_area_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
         .SellPage__contents__title
           発送までの日数
           %span.SellPage__contents--required
             必須
-          = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, 0), {prompt: "選択してください"} ,class: "SellPage__format--select"
+          = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, @item.delivery_day_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
       .SellPage__contents__paragraph
         .SellPage__contents__majoritem
           価格
@@ -85,7 +85,7 @@
               販売価格
             #pricetitle.SellPage__contents__title
               ¥
-          = form.number_field :price, in: 300.0..9999999.0, step: 1, value: 0, class: "SellPage__format--numfield SellPage__format--numfield--prices"
+          = form.number_field :price, in: 300.0..9999999.0, step: 1, value: @item.price, class: "SellPage__format--numfield SellPage__format--numfield--prices"
       = form.submit "変更する", class: "SellPage__format__submit"
     = link_to :back, class: "SellPage__contents__backlink" do
       もどる
