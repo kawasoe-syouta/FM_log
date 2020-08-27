@@ -52,7 +52,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     category_data = Category.find_by(id: params[:item][:category])
     @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
-    binding.pry
     if @item.update(params_int(item_params).merge(category: category_data))
       flash[:notice] = '編集が完了しました'
       redirect_to items_path(@item)
