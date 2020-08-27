@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'items#index'
+  resources :mypages
+  resources :logouts
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -21,8 +23,7 @@ Rails.application.routes.draw do
       get :search
     end  
   end
-  resources :credits, only: [:index, :show, :new, :create, :destroy] 
-  resources :users, only: [:new,:create] 
+  resources :credits, only: [:index, :new, :create, :destroy]
 
   resources :categories, only: [:index] do
     member do
