@@ -103,8 +103,8 @@
               売り切れました
         - if user_signed_in? && current_user.id == @items.sell_user_id
           .editArea
-            = link_to "編集", root_path(@items.id)
-            -# root_path仮置き
+            = link_to "編集", "#"
+            -# 本番環境ではedit_item_path(@item.id)にする
           .deleteArea
             = link_to "投稿を削除", item_path(@items.id), method: :delete
         .commentBox
