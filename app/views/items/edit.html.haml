@@ -13,13 +13,28 @@
         .SellPage__contents__detail
           画像をアップロード出来ます
         .SellPage__contents__imagefield
-        = form.label "item_images_attributes_0_image" , class: "SellPage__contents__imgbtm", data:{index: 0} do
+          .SellPage__contents__imagefield--list{list:{index: 1}}
+            = form.fields_for :item_images do |n|
+              - if n.index <= 4
+                = form.label "item_images_attributes_#{n.index}_image", id: "item_images_attributes_#{n.index}", class: "SellPage__uploadfile", data:{index: n.index} do
+                  = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
+                  .SellPage__uploadfile--remove
+                    削除
+                  = n.file_field :image, class: "SellPage__contents__imgbtm--file", data:{index: n.index}
+          .SellPage__contents__imagefield--list{list:{index: 2}}
+            = form.fields_for :item_images do |n|
+              - if 5 <= n.index && n.index <= 9
+                = form.label "item_images_attributes_#{n.index}_image", id: "item_images_attributes_#{n.index}", class: "SellPage__uploadfile", data:{index: n.index} do
+                  = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
+                  .SellPage__uploadfile--remove
+                    削除
+                  = n.file_field :image, class: "SellPage__contents__imgbtm--file", data:{index: n.index}
+        = form.label "item_images_attributes_#{@item_images.length}_image" , class: "SellPage__contents__imgbtm", data:{index: @item_images.length} do
           = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
           .SellPage__contents__imgbtm--text
             クリックしてファイルをアップロード
-        = form.fields_for :item_images do |i|
-          .SellPage__contents__imgbtm--filefield
-            = i.file_field :image, class: "SellPage__contents__imgbtm--file"
+        .SellPage__contents__imgbtm--filefield
+          = file_field_tag "item_item_images_attributes_#{@item_images.length}_image", class: "SellPage__contents__imgbtm--file", data:{index: @item_images.length}
         .SellPage__contents__title
           商品名
           %span.SellPage__contents--required

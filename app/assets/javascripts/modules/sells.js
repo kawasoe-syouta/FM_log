@@ -3,6 +3,11 @@ $(function(){
   const cImagemax = 10;
   const cRowlinemax = 5;
 
+  // 追加する時に割り振る画像番地
+  var fileIndex = Number($(".SellPage__contents__imgbtm").attr('data-index'));
+  // 列番号
+  var rowIndex = 0;
+  
   // 画像用のinputを生成する関数
   function buildFileField(index, url){
     const html = `<label class="SellPage__uploadfile" data-index="${index}"
@@ -73,11 +78,6 @@ $(function(){
       }
     }
   }
-
-  // 追加する時に割り振る画像番地
-  let fileIndex = 0;
-  // 列番号
-  let rowIndex = 0;
 
   // 画像表示
   $(".SellPage__contents__imgbtm--file").on("change",function(e){
