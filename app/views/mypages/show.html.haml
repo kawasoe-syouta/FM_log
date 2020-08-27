@@ -4,22 +4,16 @@
       .MyPage__main__content__icon
         .MyPage__main__content__icon__user
           .MyPage__main__content__icon__user__figure
-            %h2.bold フリマ太郎
+            = current_user.firstname
+            = current_user.surname
             .mypage-number
               評価
               %span.bold 0
-              出品数
-              %span.bold 0
-      .MyPage__main__content__notification-todo
-        %ul.MyPage__main__content__notification-todo__menu
-          %li
-            %a#about.menu_item.active{:href => "#"} お知らせ
-          %li
-            %a#service.menu_item{:href => "#"} やることリスト
-        %ul.MyPage__main__content__notification-todo__contents
-          %ul.contents
-            %li.content.show
-            %li.content
+              出品数:
+              = @items.count
+      .MyPage__main__content__notification
+        .MyPage__main__content__notification__title
+          お知らせ
     .MyPage__main__side
       .MyPage__main__side__nav
         %ul.MyPage__main__side__nav__list
