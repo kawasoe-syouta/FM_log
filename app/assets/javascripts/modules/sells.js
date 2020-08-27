@@ -6,7 +6,7 @@ $(function(){
   // 追加する時に割り振る画像番地
   var fileIndex = Number($(".SellPage__contents__imgbtm").attr('data-index'));
   // 列番号
-  var rowIndex = Math.ceil((fileIndex + 1 )/ cRowlinemax);
+  var rowIndex = Math.ceil(fileIndex/ cRowlinemax);
   
   // 画像用のinputを生成する関数
   function buildFileField(index, url){
