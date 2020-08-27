@@ -53,11 +53,15 @@
           #category_field
             - if @item.category.ancestry == nil
               = form.collection_select :category, @parents, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "SellPage__format--select"
-              = form.collection_select "", @childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "child_category_id SellPage__format--select"
-            - elsif @item.category.ancestry.split("/")[1] == nil
-              = form.collection_select "", @parents, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[0] }, id: "category_form", class: "SellPage__format--select"
+              = form.collection_select :dummy, @childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "child_category_id SellPage__format--select"
+            - elsif @item.category.ancestry.include?("/") == false
+              = form.collection_select :dummy, @parents, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[0] }, id: "category_form", class: "SellPage__format--select"
               = form.collection_select :category, @childs, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "child_category_id SellPage__format--select"
-              = form.collection_select "", @gc_childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "gc_category_id SellPage__format--select"
+              = form.collection_select :dummy, @gc_childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "gc_category_id SellPage__format--select"
+            - else
+              = form.collection_select :dummy, @parents, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[0] }, id: "category_form", class: "SellPage__format--select"
+              = form.collection_select :dummy, @childs, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[1] }, id: "category_form", class: "child_category_id SellPage__format--select"
+              = form.collection_select :category, @gc_childs, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "gc_category_id SellPage__format--select"
 
         .SellPage__contents__title
           商品の状態

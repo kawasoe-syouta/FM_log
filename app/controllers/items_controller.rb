@@ -48,14 +48,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_images = @item.item_images
     if @item.category.ancestry == nil
-      @childs = Category.where('ancestry like ?', "%#{@item.category.id}")
+      @childs = Category.where(ancestry: @item.category.id)      
       @gc_childs = nil
     elsif @item.category.ancestry.include?("/") == false
       @childs = Category.where(ancestry: @item.category.ancestry)      
       @gc_childs = Category.where('ancestry like ?', "%#{@item.category.id}")
     else
       @childs = Category.where(ancestry: @item.category.ancestry.split("/")[0])      
-      @gc_childs = Category.where(ancestry: @item.category.ancestry.split("/")[1])
+      @gc_childs = Category.where('ancestry like ?', "%#{@item.category.ancestry.split("/")[1]}")
     end
 
   end
@@ -64,6 +64,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_images = @item.item_images
     category_data = Category.find_by(id: params[:item][:category])
+    binding.pry()
     # この二つがない時はupdateしない
     if @item_images.exists? || params[:item].include?("item_images_attributes")
       if @item.valid?
@@ -76,7 +77,7 @@ class ItemsController < ApplicationController
         # 更新
         if @item.update(params_int(update_item_params).merge(category: category_data))
           flash[:notice] = '編集が完了しました'
-          redirect_to items_path(@item)
+          redirect_to item_path(@item)
         else
           flash[:alert] = '未入力項目があります'
           render :edit
