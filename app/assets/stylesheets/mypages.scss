@@ -11,7 +11,7 @@
       width: 700px;
       height: 1000px;
       &__icon {
-        height: 200px;
+        height: 216px;
         background-color: #fff;
         position: relative;
         padding: 20px;
@@ -40,13 +40,19 @@
           text-decoration: none;
         }
       }
-      &__notification-todo {
-        margin-top: 48px;
+      &__notification {
         padding: 0;
         margin: 0 auto;
-        margin-top: 50px;
+        margin-top: 55px;
         width: 700px;
-        background: #dce0e0;
+        background: #fff;
+        height: 400px;
+        &__title {
+          text-align: center;
+          height: 54px;
+          line-height: 54px;
+          border-bottom: 1px solid #eee;
+        }
       }
     }
     &__side {
@@ -74,57 +80,4 @@
       }
     }
   }
-}
-
-ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-
-ul.MyPage__main__content__notification-todo__menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0;
-}
-ul.MyPage__main__content__notification-todo__menu li {
-  display: inline-block;
-}
-ul.MyPage__main__content__notification-todo__menu li .menu_item {
-  display: inline-block;
-  font-size: 14px;
-  width: 350px;
-  height: 60px;
-  line-height: 20px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  text-decoration: none;
-  padding: 7px;
-  color: #333;
-}
-ul.MyPage__main__content__notification-todo__menu li .active {
-  background: #fff;
-}
-ul.MyPage__main__content__notification-todo__menu li :not(.active):hover {
-  opacity: 0.5;
-  transition: .8s;
-}
-ul.contents li {
-  list-style: none;
-  font-size: 14px;
-  padding: 7px 10px;
-  line-height: 1.4;
-  background:  #fff;
-  min-height: 150px;
-  display: none;
-}
-ul.contents li.show {
-  display: block;
-  height: 500px;
 }
