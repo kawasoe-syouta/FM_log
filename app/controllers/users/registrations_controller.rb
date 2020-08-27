@@ -29,14 +29,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_streets
-    @user = User.new(session["devise.regist_data"]["user"])
-    @streets = Street.new(street_params)
-    unless @streets.valid?
-      flash.now[:alert] = @user.errors.full_messages
+
+    begin
+      @user = User.new(session["devise.regist_data"]["user"])
+      @streets = Street.new(street_params)
+      unless @streets.valid?
+        flash.now[:alert] = @streets.errors.full_messages
+        @streets = @user.build_street
+        render :new_streets and return
+      end
+      @user.build_street(@streets.attributes)
+      @user.save      
+    rescue => exception
+      flash.now[:alert] = exception
+      @streets = @user.build_street
       render :new_streets and return
     end
-    @user.build_street(@streets.attributes)
-    @user.save
+
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
 

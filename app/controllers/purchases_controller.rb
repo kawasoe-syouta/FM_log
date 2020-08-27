@@ -66,7 +66,8 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @message = alert
     @street = Street.find_by(user_id: current_user.id)
-    return render :show, alert: alert
+    flash.now[:alert] = alert
+    return render :show
   end
 
   def redirect_no_user
