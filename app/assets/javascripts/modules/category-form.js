@@ -15,6 +15,8 @@ $(function(){
     return option_html;
   }
   $("#category_form").change(function(){
+    $('.child_category_id').remove();
+    $('.gc_category_id').remove();
     let parentValue = $("#category_form").val();
     if (parentValue.length != 0) {
       $.ajax({
@@ -64,6 +66,7 @@ $(function(){
       })
         .done(function(gc_data){
           let gc_select = build_gcSelect
+          $('.gc_category_id').remove();
           $('select[name="item[category]"]').attr('name','');
           $('.child_category_id').attr('name','item[category]');
           $("#category_field").append(gc_select);
