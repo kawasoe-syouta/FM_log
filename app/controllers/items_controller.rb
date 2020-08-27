@@ -56,18 +56,20 @@ class ItemsController < ApplicationController
     # この二つがない時はupdateしない
     if @item_images.exists? || params[:item].include?("item_images_attributes")
       if @item.valid?
-        update_image = item_images_params.values
+        # 更新前と更新後の画像を取得
+        update_image = update_item_params[:item_images_attributes].values
         before_image = @item_images.ids
         before_image.each do |i|
-          ItemImage.find(i).destroy unless update_image.find {|v| v[:id] == "#{i}"}
+          ItemImage.find(i).destroy unless update_image.include?("id" => "#{i}")
         end
+        # 更新
         if @item.update(params_int(update_item_params).merge(category: category_data))
           flash[:notice] = '編集が完了しました'
           redirect_to items_path(@item)
         else
           flash[:alert] = '未入力項目があります'
           render :edit
-        end 
+        end
       else
         flash[:alert] = '未入力項目があります'
         render :edit
