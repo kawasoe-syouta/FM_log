@@ -36,7 +36,8 @@ class SellsController < ApplicationController
       end
     else
       @item_images = @item.item_images.build
-      render :new, alert: '出品エラー'
+      flash.now[:alert] = '出品エラー'
+      render :new
     end
   end
 
