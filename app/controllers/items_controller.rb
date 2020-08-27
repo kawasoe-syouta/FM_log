@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :items, only: [:show, :destroy]
+  before_action :items, only: [:show, :destroy, :edit]
   before_action :move_to_index, except: [:index, :show]
 
   def index
@@ -16,6 +16,10 @@ class ItemsController < ApplicationController
     else
       alert:"削除ができません"
     end
+  end
+
+  def edit
+
   end
 
   private
