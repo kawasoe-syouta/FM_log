@@ -4,7 +4,7 @@
       .LogOut__main__content__icon
         .LogOut__main__content__icon__user
           .LogOut__main__content__icon__user__logout
-            = link_to "ログアウト", "#"
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
     .LogOut__main__side
       .LogOut__main__side__nav
         %ul.LogOut__main__side__nav__list
