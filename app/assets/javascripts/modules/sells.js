@@ -1,9 +1,12 @@
 $(function(){
 
+  const cImagemax = 10;
+  const cRowlinemax = 5;
+
   // 画像用のinputを生成する関数
   function buildFileField(index, url){
-    const html = `<div class="SellPage__uploadfile" data-index="${index}"
-                    id="item_images_attributes_${index}">
+    const html = `<label class="SellPage__uploadfile" data-index="${index}"
+                    id="item_images_attributes_${index}" for="item_item_images_attributes_${index}_image">
                     <img data-index="${index}" src="${url}" class="SellPage__uploadfile--file">
                     </img>
                     <div class="SellPage__uploadfile--remove">
@@ -21,10 +24,14 @@ $(function(){
   }
 
   function Imageupload(target, url){
-    // listの追加
-    if (rowIndex < Math.ceil((fileIndex + 1 )/ 5)){
+    // 追加する行の参照
+    if (rowIndex < Math.ceil((fileIndex + 1 )/ cRowlinemax)){
       rowIndex += 1
-      $(".SellPage__contents__imagefield").append(buildFileList(rowIndex))
+      if ($(`.SellPage__contents__imagefield--list[list-index="${rowIndex}"]`).length == 0) {
+        $(".SellPage__contents__imagefield").append(buildFileList(rowIndex))
+      }
+    } else if(Math.ceil((fileIndex + 1 )/ cRowlinemax) < rowIndex) {
+      rowIndex -= 1
     }
     let AddList = $(`.SellPage__contents__imagefield--list[list-index="${rowIndex}"]`)[0]
     // 画像表示フィールドの追加
@@ -52,11 +59,17 @@ $(function(){
         img = $(`.SellPage__uploadfile[data-index="${i}"]`)[0]
         $(img).attr('data-index', i-1)
         $(img).attr('id', `item_images_attributes_${i-1}`)
+        $(img).attr('for', `item_item_images_attributes_${i-1}_image`)
         // アップロードフォームの参照
         $(img).children('.SellPage__uploadfile--input').attr('name', `item[item_images_attributes][${i-1}][image]`)
         $(img).children('.SellPage__uploadfile--input').attr('id', `item_images_attributes_${i-1}_image`)
         // 画像の参照
         $(img).children('img').attr('data-index', i-1)
+        // 表示する行がずれている場合は正しい位置に表示する
+        if (Math.ceil(i / cRowlinemax) < $(img).parent().attr('list-index')) {
+          $(img).clone(true).appendTo(`.SellPage__contents__imagefield--list[list-index="${Math.ceil(i / cRowlinemax)}"]`);
+          $(img).remove()
+        }
       }
     }
   }
@@ -68,7 +81,7 @@ $(function(){
 
   // 画像表示
   $(".SellPage__contents__imgbtm--file").on("change",function(e){
-    const targetIndex = $(".SellPage__contents__imgbtm").attr('data-index');
+    const targetIndex = $(this).attr('data-index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
@@ -77,6 +90,15 @@ $(function(){
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
       Imageupload(targetIndex,blobUrl)
+    }
+  })
+
+  // 画像追加ボタン
+  $(".SellPage__contents__imgbtm").on("click",function(e){
+    // 画像は10枚まで
+    if (fileIndex >= cImagemax) {
+      alert("画像は" + cImagemax + "枚まで投稿出来ます")
+      e.preventDefault();
     }
   })
 
@@ -100,7 +122,7 @@ $(function(){
 
   // 数字のみの入力制限
   $(".SellPage__format--numfield").on("input", function(){
-    let input = $(this).val().replace(/e/g,"");
+    let input = $(this).val().replace(/[^0-9]/g,"");
     let int_input = (parseInt(input, 10))
     if (isNaN(int_input)) {
       int_input = 0
