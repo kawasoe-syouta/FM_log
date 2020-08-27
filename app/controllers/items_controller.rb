@@ -47,6 +47,17 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @item_images = @item.item_images
+    if @item.category.ancestry == nil
+      @childs = Category.where('ancestry like ?', "%#{@item.category.id}")
+      @gc_childs = nil
+    elsif @item.category.ancestry.include?("/") == false
+      @childs = Category.where(ancestry: @item.category.ancestry)      
+      @gc_childs = Category.where('ancestry like ?', "%#{@item.category.id}")
+    else
+      @childs = Category.where(ancestry: @item.category.ancestry.split("/")[0])      
+      @gc_childs = Category.where(ancestry: @item.category.ancestry.split("/")[1])
+    end
+
   end
   def update
 
