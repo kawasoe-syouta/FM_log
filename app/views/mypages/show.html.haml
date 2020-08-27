@@ -18,7 +18,7 @@
       .MyPage__main__side__nav
         %ul.MyPage__main__side__nav__list
           %li
-            = link_to "マイページ", "/mypages/index", class: "MyPage__main__side__nav__list__item"
+            = link_to "マイページ", mypage_path, class: "MyPage__main__side__nav__list__item"
           %li
             = link_to "お知らせ", "#", class: "MyPage__main__side__nav__list__item"
           %li
@@ -54,9 +54,9 @@
           %li
             = link_to "プロフィール", "#", class: "MyPage__main__side__nav__list__item"
           %li
-            = link_to "クレジットカード", "/credits", class: "MyPage__main__side__nav__list__item"
+            = link_to "クレジットカード", credits_path, class: "MyPage__main__side__nav__list__item"
           %li
-            = link_to "ログアウト", "/logouts", class: "MyPage__main__side__nav__list__item"
+            = link_to "ログアウト", logouts_path, class: "MyPage__main__side__nav__list__item"
         
  
           

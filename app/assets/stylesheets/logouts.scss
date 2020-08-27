@@ -33,6 +33,10 @@
             background-color: #3CCACE;
             padding-top: 11px;
             vertical-align: middle;
+            &__text {
+              text-decoration: none;
+              color: #fff;
+            }
           }
         }
         &__notification-todo {

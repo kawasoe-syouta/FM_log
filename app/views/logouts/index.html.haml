@@ -4,7 +4,7 @@
       .LogOut__main__content__icon
         .LogOut__main__content__icon__user
           .LogOut__main__content__icon__user__logout
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "LogOut__main__content__icon__user__logout__text"
     .LogOut__main__side
       .LogOut__main__side__nav
         %ul.LogOut__main__side__nav__list
@@ -45,9 +45,9 @@
           %li
             = link_to "プロフィール", "#", class: "LogOut__main__side__nav__list__item"
           %li
-            = link_to "クレジットカード", "#", class: "LogOut__main__side__nav__list__item"
+            = link_to "クレジットカード", credits_path, class: "LogOut__main__side__nav__list__item"
           %li
-            = link_to "ログアウト", "/logouts", class: "LogOut__main__side__nav__list__item"
+            = link_to "ログアウト", logouts_path, class: "LogOut__main__side__nav__list__item"
         
  
           
