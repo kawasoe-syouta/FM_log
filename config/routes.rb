@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :items, only: [:index,:show,:destroy,:edit] do
+  resources :items, only: [:index,:show,:destroy,:edit,:update] do
     get 'show_image', :on => :member
     resource :purchases, only: [:show, :update,:index] 
     collection do
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   end
   resources :credits, only: [:index, :show, :new, :create, :destroy] 
   resources :users, only: [:new,:create] 
-
 
   resources :categories, only: [:index] do
     member do

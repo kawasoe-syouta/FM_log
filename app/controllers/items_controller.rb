@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :items, only: [:show, :destroy, :show_image]
-  before_action :set_parents, only: [:new, :create, :edit]
+  before_action :set_parents, only: [:new, :create, :edit,:update]
 
   def search
     respond_to do |format|
@@ -49,9 +49,15 @@ class ItemsController < ApplicationController
     @item_images = @item.item_images.build
   end
   def update
-    if @item.update(item_params)
-      redirect_to items_path
+    @item = Item.find(params[:id])
+    category_data = Category.find_by(id: params[:item][:category])
+    @item = Item.new(params_int(item_params).merge(category: category_data, phase_id: 1))
+    binding.pry
+    if @item.update(params_int(item_params).merge(category: category_data))
+      flash[:notice] = '編集が完了しました'
+      redirect_to items_path(@item)
     else
+      flash[:alert] = '未入力項目があります'
       render :edit
     end
   end
@@ -73,6 +79,27 @@ class ItemsController < ApplicationController
   private
   def items
     @items = Item.find(params[:id])
+  end
+
+  def integer_string?(str)
+    Integer(str)
+    true
+  rescue ArgumentError
+    false
+  end
+
+  #paramsの内容を数値に変換
+  def params_int(model_params)
+    model_params.each do |key,value|
+      begin
+        if integer_string?(value)
+          model_params[key]=value.to_i
+        end              
+      rescue => exception
+        # nothing
+      end
+    end
+    return model_params
   end
 
   def item_params
