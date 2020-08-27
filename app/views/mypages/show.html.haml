@@ -9,8 +9,8 @@
             .mypage-number
               評価
               %span.bold 0
-              出品数:
-              = @items.count
+              出品数
+              %span.bold 0
       .MyPage__main__content__notification
         .MyPage__main__content__notification__title
           お知らせ
@@ -54,7 +54,7 @@
           %li
             = link_to "プロフィール", "#", class: "MyPage__main__side__nav__list__item"
           %li
-            = link_to "クレジットカード", "#", class: "MyPage__main__side__nav__list__item"
+            = link_to "クレジットカード", "/credits", class: "MyPage__main__side__nav__list__item"
           %li
             = link_to "ログアウト", "/logouts", class: "MyPage__main__side__nav__list__item"
         
