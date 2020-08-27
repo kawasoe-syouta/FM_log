@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
     @item_images = @item.item_images
   end
   def update
+
     @item = Item.find(params[:id])
     @item_images = @item.item_images
     category_data = Category.find_by(id: params[:item][:category])
