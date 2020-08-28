@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     @parents = Category.where(ancestry: nil)
-    # super
+    super
   end
 
   # POST /resource/sign_in
