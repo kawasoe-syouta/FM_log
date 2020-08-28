@@ -28,8 +28,8 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @user = User.find_by(id: @item.sell_user_id)
-    @images = ItemImage.where(item_id: @item.id)
+    @seller = User.find_by(id: @item.sell_user_id)
+    @images = @item.item_images
     @category = @item.category
     if @category.ancestry == nil
       @parent = @category
