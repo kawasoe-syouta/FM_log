@@ -96,9 +96,9 @@
                   不適切な商品の通報
         - if user_signed_in? && current_user.id == @item.sell_user_id
           - if @item.phase_id == 1
+          - else
             .buyArea
               = link_to "購入画面に進む", item_purchases_path(@item.id)
-          - else
             .soldArea
               売り切れました
         - if user_signed_in? && current_user.id == @item.sell_user_id
