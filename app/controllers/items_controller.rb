@@ -97,7 +97,7 @@ class ItemsController < ApplicationController
   end
   
   def show_image
-    @image = @items.item_images
+    @image = @item.item_images
     send_data @image[0].image.file.read, :type => 'image.content_type', :disposition => 'inline'
   end
 
