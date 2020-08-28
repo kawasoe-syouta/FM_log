@@ -30,8 +30,6 @@
         %span.CardPage__contents--required
           必須
       = form.text_field :card_number,id: "card_cvc", class: "CardPage__format--text", maxlength: 3
-      .CardPage__contents--question
-        カード裏面の番号とは？
       = form.submit "登録する",id: "card_submit", class: "CardPage__format__submit"
     = link_to credits_path, class: "CardPage__contents__backlink" do
       もどる
