@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-
-  before_action :items, only: [:show, :destroy, :show_image]
+  before_action :set_item, only: [:edit,:update,:show, :destroy, :show_image]
   before_action :set_parents, only: [:new, :create, :edit,:update]
 
   def search
@@ -27,7 +26,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @category = @items.category
+    @category = @item.category
     if @category.ancestry == nil
       @parent = @category
       @child = nil
@@ -45,7 +44,6 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @item = Item.find(params[:id])
     @item_images = @item.item_images
     if @item.category.ancestry == nil
       @childs = Category.where(ancestry: @item.category.id)      
@@ -60,8 +58,6 @@ class ItemsController < ApplicationController
 
   end
   def update
-
-    @item = Item.find(params[:id])
     @item_images = @item.item_images
     category_data = Category.find_by(id: params[:item][:category])
     # この二つがない時はupdateしない
@@ -107,8 +103,8 @@ class ItemsController < ApplicationController
   
 
   private
-  def items
-    @items = Item.find(params[:id])
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def integer_string?(str)
