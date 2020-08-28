@@ -12,24 +12,22 @@
       .showMain__content
         .itemBox
           %h2.itemBox__name
-            テスト
+            = @item.name
           .itemBox__body
-            %ul
-              %li
-                = image_tag "material/beef.jpeg", alt: "サンプル画像"
-                %ul
-                  %li
-                    = image_tag "material/beef.jpeg",size: "75x75", alt: "サンプル画像"
+            = image_tag @images[0].image.url
+            .itemBox__body__small
+              - @images.each do |img|
+                = image_tag img.image.url ,class: "itemBox__body__small--image"
           .itemBox__price
             %span
-              ¥10000
+              = "¥#{@item.price}"
             .itemBox__price-detail
               %span
                 (税込)
               %span
                 送料込み
           .itemDetail
-            テストテストテストテストテストテスト
+            = @item.item_detail
           .showTable
             %table.showTable__table
               %tbody.showTable__tbody
@@ -37,7 +35,7 @@
                   %th.showTable__th
                     出品者
                   %td.showTable__td
-                    あああ
+                    = @user.nick_name
                 %tr.showTable__tr
                   %th.showTable__th
                     カテゴリー
@@ -67,23 +65,22 @@
                   %th.showTable__th
                     商品の状態
                   %td.showTable__td
-                    新品/未使用
+                    = @item.status.status
                 %tr.showTable__tr
                   %th.showTable__th
                     配送料の負担
                   %td.showTable__td
-                    送料込み (出品者負担)
+                    = @item.delivery_to_pay.to_pay
                 %tr.showTable__tr
                   %th.showTable__th
                     発送元の地域
                   %td.showTable__td
-                    = link_to "#" do
-                      北海道
+                    = @item.delivery_area.name
                 %tr.showTable__tr
                   %th.showTable__th
                     発送日の目安
                   %td.showTable__td
-                    1-2日で発送
+                    = @item.delivery_day.days
           .optionalArea
             %ul
               %li.optionalBtn.likeBtn#likeBtn
@@ -94,18 +91,18 @@
                 = link_to "#" do
                   = icon('fas', 'flag')
                   不適切な商品の通報
+        - if user_signed_in? && current_user.id != @item.sell_user_id
+          - if @item.phase_id == 1
+            .buyArea
+              = link_to "購入画面に進む", item_purchases_path(@item.id)
+          - else
+            .soldArea
+              売り切れました
         - if user_signed_in? && current_user.id == @item.sell_user_id
           .editArea
             = link_to "投稿を編集", edit_item_path(@item.id)
           .deleteArea
             = link_to "投稿を削除", item_path(@item.id), method: :delete
-        - else
-        - if @item.phase_id == 1
-          .buyArea
-            = link_to "購入画面に進む", item_purchases_path(@item.id)
-        - else
-          .soldArea
-            売り切れました
         .commentBox
           %ul.commentContents
           %form.new_comments

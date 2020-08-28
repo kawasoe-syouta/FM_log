@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit,:update,:show, :destroy, :show_image]
   before_action :set_parents, only: [:new, :create, :edit,:update]
+  before_action :redirect_no_user, only: [:edit, :update, :destroy]
+
 
   def search
     respond_to do |format|
@@ -26,6 +28,8 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @user = User.find_by(id: @item.sell_user_id)
+    @images = ItemImage.where(item_id: @item.id)
     @category = @item.category
     if @category.ancestry == nil
       @parent = @category
@@ -40,7 +44,6 @@ class ItemsController < ApplicationController
       @child = Category.find_by(id: @category.ancestry.split("/")[1])
       @grandchild = @category
     end
-    @image = ItemImage.all
   end
   
   def edit
@@ -132,7 +135,7 @@ class ItemsController < ApplicationController
   end
 
   def update_item_params
-    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image, :id]).merge(sell_user_id: current_user.id)
+    params.require(:item).permit(:name, :item_detail, :status_id, :delivery_day_id, :delivery_area_id, :delivery_to_pay_id, :price, item_images_attributes: [:image, :id]).merge(sell_user_id: current_user.id)      
   end
 
   def item_images_params
@@ -143,5 +146,9 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def redirect_no_user
+    redirect_to root_path unless user_signed_in?
   end
 end

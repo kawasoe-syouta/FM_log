@@ -72,6 +72,14 @@ img {
   }
   &__body {
     margin: 16px 0 0;
+    &__small {
+      display: flex;
+      overflow: scroll;
+      &--image {
+        height: 125px;
+        width: 125px;
+      }
+    }
   }
   &__price {
     margin: 24px 0 24px;
