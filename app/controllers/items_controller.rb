@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :items, only: [:show, :destroy, :show_image]
+  before_action :move_to_index, except: [:index, :show]
+
   def index
     @items = Item.all
     @parents = Category.where(ancestry: nil)
@@ -37,9 +39,22 @@ class ItemsController < ApplicationController
   end
   
 
+  def edit
+
+  end
+
+  def edit
+
+  end
+
   private
   def items
     @items = Item.find(params[:id])
   end
 
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
 end

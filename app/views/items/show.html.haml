@@ -94,7 +94,17 @@
                 = link_to "#" do
                   = icon('fas', 'flag')
                   不適切な商品の通報
+        - if user_signed_in? && current_user.id != @items.sell_user_id
+          - if @items.phase_id == 1
+            .buyArea
+              = link_to "購入画面に進む", item_purchases_path(@items.id)
+          - else
+            .soldArea
+              売り切れました
         - if user_signed_in? && current_user.id == @items.sell_user_id
+          .editArea
+            = link_to "編集", "#"
+            -# 本番環境ではedit_item_path(@item.id)にする
           .deleteArea
             = link_to "投稿を削除", item_path(@items.id), method: :delete
         .commentBox

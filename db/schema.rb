@@ -12,14 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_08_25_022029) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_customer", null: false
     t.string "card_default"
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_022029) do
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.string "image", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -36,9 +37,9 @@ ActiveRecord::Schema.define(version: 2020_08_25_022029) do
     t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "sell_user_id", null: false
-    t.bigint "buy_user_id", null: false
+    t.bigint "buy_user_id"
     t.bigint "category_id", null: false
     t.integer "phase_id", null: false
     t.integer "status_id", null: false
@@ -54,11 +55,6 @@ ActiveRecord::Schema.define(version: 2020_08_25_022029) do
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["sell_user_id"], name: "index_items_on_sell_user_id"
-  end
-
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
