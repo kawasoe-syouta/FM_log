@@ -1,0 +1,25 @@
+.Notification {
+  position: absolute;
+  right: 30px;
+  width: 25%;
+  .notice {
+    height: 5rem;
+    line-height: 5rem;
+    width: 100%;
+    background-color: #38AEF0;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #38AEF0;
+    border-radius: 25px;
+  }
+  .alert {
+    height: 5rem;
+    line-height: 5rem;
+    width: 100%;
+    background-color: #F35500;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #F35500;
+    border-radius: 25px;
+  }
+}

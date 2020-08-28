@@ -62,7 +62,7 @@
           - else
             %li.listsRight__item.listsRight__item--mypage
               = link_to "マイページ", mypage_path(current_user.id)
-
+  = render 'layouts/notifications'
   = yield
 
   %aside.appliBanner
