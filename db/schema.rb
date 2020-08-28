@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_022029) do
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
+  
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false

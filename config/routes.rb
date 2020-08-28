@@ -10,14 +10,18 @@ Rails.application.routes.draw do
     get 'streets', to: 'users/registrations#new_streets'
     post 'streets', to: 'users/registrations#create_streets'
   end
-  resources :sells, only: [:new,:create] do
+
+  resources :sells, only: [:create,:new] do
     collection do
       get :search
     end
   end
-  resources :items, only: [:index,:show, :destroy,:edit] do
+  resources :items, only: [:index,:show,:destroy,:edit,:update] do
     get 'show_image', :on => :member
-    resource :purchases, only: [:show, :update]
+    resource :purchases, only: [:show, :update,:index] 
+    collection do
+      get :search
+    end  
   end
   resources :credits, only: [:index, :new, :create, :destroy]
 

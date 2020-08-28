@@ -1,0 +1,104 @@
+.SellPage
+  .SellPage__header
+    = image_tag "material/logo/logo.png", class: "SellPage__header__logo"
+  .SellPage__contents
+    = form_with url: {action: "update"}, model: @item, local: true, class: "SellPage__format" do |form|
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          全般
+        .SellPage__contents__title
+          出品画像
+          %span.SellPage__contents--required
+            必須
+        .SellPage__contents__detail
+          画像をアップロード出来ます
+        .SellPage__contents__imagefield
+          .SellPage__contents__imagefield--list{list:{index: 1}}
+            = form.fields_for :item_images, @item_images do |n|
+              - if n.index <= 4
+                = form.label "item_images_attributes_#{n.index}_image", id: "item_images_attributes_#{n.index}", class: "SellPage__uploadfile", data:{index: n.index} do
+                  = image_tag n.object.image.url, class: "SellPage__uploadfile--file", data:{index: n.index}
+                  .SellPage__uploadfile--remove
+                    削除
+                  = n.file_field :image, class: "SellPage__uploadfile--input", data:{index: n.index}
+          .SellPage__contents__imagefield--list{list:{index: 2}}
+            - @item_images.each_with_index do |image, i|
+              = form.fields_for :item_images, image, child_index: i do |m|
+                - if 5 <= m.index && m.index <= 9
+                  = form.label "item_images_attributes_#{m.index}_image", id: "item_images_attributes_#{m.index}", class: "SellPage__uploadfile", data:{index: m.index} do
+                    = image_tag m.object.image.url, class: "SellPage__uploadfile--file", data:{index: m.index}
+                    .SellPage__uploadfile--remove
+                      削除
+                    = m.file_field :image, class: "SellPage__uploadfile--input", data:{index: m.index}
+        = form.label "item_images_attributes_#{@item_images.length}_image" , class: "SellPage__contents__imgbtm", data:{index: @item_images.length} do
+          = image_tag "material/icon/icon_camera.png", class: "SellPage__contents__imgbtm--icon"
+          .SellPage__contents__imgbtm--text
+            クリックしてファイルをアップロード
+        .SellPage__contents__imgbtm--filefield
+          = file_field_tag "item_item_images_attributes_#{@item_images.length}_image", class: "SellPage__contents__imgbtm--file", data:{index: @item_images.length}
+        .SellPage__contents__title
+          商品名
+          %span.SellPage__contents--required
+            必須
+          = form.text_field :name, placeholder: "40文字まで", maxlength: 40, class: "SellPage__format--text"
+        .SellPage__contents__title
+          商品の説明
+          = form.text_area :item_detail, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）", maxlength: 1000, class: "SellPage__format--textarea"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          商品の状態
+        .SellPage__contents__title
+          カテゴリー
+          %span.SellPage__contents--required
+            必須
+          #category_field
+            - if @item.category.ancestry == nil
+              = form.collection_select :category, @parents, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "SellPage__format--select"
+              = form.collection_select :dummy, @childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "child_category_id SellPage__format--select"
+            - elsif @item.category.ancestry.include?("/") == false
+              = form.collection_select :dummy, @parents, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[0] }, id: "category_form", class: "SellPage__format--select"
+              = form.collection_select :category, @childs, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "child_category_id SellPage__format--select"
+              = form.collection_select :dummy, @gc_childs, :id, :name, { include_blank: "---", selected: "" }, id: "category_form", class: "gc_category_id SellPage__format--select"
+            - else
+              = form.collection_select :dummy, @parents, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[0] }, id: "category_form", class: "SellPage__format--select"
+              = form.collection_select :dummy, @childs, :id, :name, { include_blank: "---", selected: @item.category.ancestry.split("/")[1] }, id: "category_form", class: "child_category_id SellPage__format--select"
+              = form.collection_select :category, @gc_childs, :id, :name, { include_blank: "---", selected: @item.category.id }, id: "category_form", class: "gc_category_id SellPage__format--select"
+
+        .SellPage__contents__title
+          商品の状態
+          %span.SellPage__contents--required
+            必須
+          = form.select :status_id, options_for_select(Status.all.map { |st| [st.status, st.id] }, @item.status_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          配送について
+        .SellPage__contents__title
+          配送料の負担
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_to_pay_id, options_for_select(DeliveryToPay.all.map { |pay| [pay.to_pay, pay.id] }, @item.delivery_to_pay_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
+          発送元の地域
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_area_id, options_for_select(Prefecture.all.map { |pre| [pre.name, pre.id] }, @item.delivery_area_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
+        .SellPage__contents__title
+          発送までの日数
+          %span.SellPage__contents--required
+            必須
+          = form.select :delivery_day_id, options_for_select(DeliveryDay.all.map { |day| [day.days, day.id] }, @item.delivery_day_id), {prompt: "選択してください"} ,class: "SellPage__format--select"
+      .SellPage__contents__paragraph
+        .SellPage__contents__majoritem
+          価格
+        .SellPage__contents__titleline
+          .SellPage__contents__titleline
+            .SellPage__contents__title
+              販売価格
+            #pricetitle.SellPage__contents__title
+              ¥
+          = form.number_field :price, in: 300.0..9999999.0, step: 1, value: @item.price, class: "SellPage__format--numfield SellPage__format--numfield--prices"
+      = form.submit "変更する", class: "SellPage__format__submit"
+    = link_to :back, class: "SellPage__contents__backlink" do
+      もどる
+  .SellPage__footer
+    = image_tag "material/logo/logo.png", class: "SellPage__footer__logo"

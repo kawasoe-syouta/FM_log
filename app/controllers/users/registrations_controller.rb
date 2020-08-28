@@ -5,11 +5,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :redirect_no_session , only: [:new_streets, :create_streets]
 
   def new
+    @parents = Category.where(ancestry: nil)
     @user = User.new
     
   end
 
   def create
+    @parents = Category.where(ancestry: nil)
     @user = User.new(user_params)
     @user.password_confirmation = user_params[:password_confirmation]
     unless @user.valid?
@@ -25,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new_streets
-
+    
   end
 
   def create_streets
