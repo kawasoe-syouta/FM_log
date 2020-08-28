@@ -4,27 +4,21 @@
       .MyPage__main__content__icon
         .MyPage__main__content__icon__user
           .MyPage__main__content__icon__user__figure
-            %h2.bold フリマ太郎
+            = current_user.firstname
+            = current_user.surname
             .mypage-number
               評価
               %span.bold 0
               出品数
               %span.bold 0
-      .MyPage__main__content__notification-todo
-        %ul.MyPage__main__content__notification-todo__menu
-          %li
-            %a#about.menu_item.active{:href => "#"} お知らせ
-          %li
-            %a#service.menu_item{:href => "#"} やることリスト
-        %ul.MyPage__main__content__notification-todo__contents
-          %ul.contents
-            %li.content.show
-            %li.content
+      .MyPage__main__content__notification
+        .MyPage__main__content__notification__title
+          お知らせ
     .MyPage__main__side
       .MyPage__main__side__nav
         %ul.MyPage__main__side__nav__list
           %li
-            = link_to "マイページ", "/mypages/index", class: "MyPage__main__side__nav__list__item"
+            = link_to "マイページ", mypage_path, class: "MyPage__main__side__nav__list__item"
           %li
             = link_to "お知らせ", "#", class: "MyPage__main__side__nav__list__item"
           %li
@@ -60,9 +54,9 @@
           %li
             = link_to "プロフィール", "#", class: "MyPage__main__side__nav__list__item"
           %li
-            = link_to "クレジットカード", "#", class: "MyPage__main__side__nav__list__item"
+            = link_to "クレジットカード", credits_path, class: "MyPage__main__side__nav__list__item"
           %li
-            = link_to "ログアウト", "/logouts", class: "MyPage__main__side__nav__list__item"
+            = link_to "ログアウト", logouts_path, class: "MyPage__main__side__nav__list__item"
         
  
           

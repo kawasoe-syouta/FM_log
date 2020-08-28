@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def set_parents
     @parents = Category.where(ancestry: nil)
   end
-  
+
   def index
     @items = Item.all
     @item = Item.new()
@@ -102,6 +102,14 @@ class ItemsController < ApplicationController
   end
   
 
+  def edit
+
+  end
+
+  def edit
+
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
@@ -138,5 +146,11 @@ class ItemsController < ApplicationController
 
   def item_images_params
     params.require(:item).require(:item_images_attributes)
+  end
+  
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end

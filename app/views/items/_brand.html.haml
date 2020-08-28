@@ -1,11 +1,7 @@
 .productLists
   - @items.each do |item|
     .productList
-      = link_to "#" do
-        -if item.phase_id != 1
-          .productList--sold
-            .productList--sold_inner
-              %p SOLD
+      = link_to item_path(item.id) do
         %figure.productList--img
           = image_tag url_for(:controller => "items", :action => "show_image", :id => item.id)
         .productList--body
