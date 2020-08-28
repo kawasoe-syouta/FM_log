@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   
     
   def destroy
-    if @items.destroy
+    if @item.destroy
       redirect_to root_path
     else
       alert:"削除ができません"
